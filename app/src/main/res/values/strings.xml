@@ -1,5 +1,33 @@
 <resources>
     <string name="app_name">SlicedWork</string>
+    <string name="announcement_icon">Icone de anúncio</string>
+    <string name="contacts_icon">Icone de contatos</string>
+    <string name="vacancy_image">Imagem da vaga</string>
+    <string name="profile">Perfil</string>
+    <string name="announced_vacancies">Vagas Anunciadas</string>
+    <string name="applied_vacancies">Vagas Candidatadas</string>
+    <string name="logo_image">Imagem da Logo</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="applyfor">Candidatar-se</string>
+    <string name="lbl_details">Detalhes:</string>
+    <string name="lbl_price">Preço (R$)</string>
+    <string name="lbl_occupation_area">Área de Atuação</string>
+    <string name="lbl_task">Tarefa</string>
+    <string name="lbl_description">Descrição</string>
+    <string name="lbl_location">Localização:</string>
+    <string name="lbl_postal_code">CEP</string>
+    <string name="lbl_state">Estado</string>
+    <string name="lbl_city">Cidade</string>
+    <string name="lbl_district">Bairro</string>
+    <string name="lbl_public_place">Logradouro</string>
+    <string name="lbl_number">Número</string>
+    <string name="lbl_advertiser">Anunciante:</string>
+    <string name="occupation_area_image">Imagem da Area de atuação</string>
+    <string name="profile_image">Imagem do Perfil</string>
+    <string name="chat_image">Imagem do chat</string>
+    <string name="empty_star_image">Imagem de estrela vazia</string>
+    <string name="full_star_image">Imagem de estrela cheia</string>
+    <string name="lbl_active_since">No SlicedWork desde</string>
+    <string name="lbl_range">Distancia</string>
 </resources>

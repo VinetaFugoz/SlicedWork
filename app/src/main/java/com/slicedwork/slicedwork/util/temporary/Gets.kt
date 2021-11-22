@@ -1,0 +1,201 @@
+package com.slicedwork.slicedwork.util.temporary
+
+import com.slicedwork.slicedwork.R
+import com.slicedwork.slicedwork.data.model.User
+import com.slicedwork.slicedwork.data.model.Vacancy
+
+fun getVacancies(): List<Vacancy> {
+    return listOf(
+        Vacancy(
+            id = "1",
+            urlImage = R.drawable.ic_painting,
+            status = "aaa",
+            creationDate = "aaa",
+            updateDate = "aaa",
+            deletionDate = "aaa",
+            price = "aaa",
+            occupationArea = "aaa",
+            task = "aaa",
+            description = "aaa",
+            postalCode = "aaa",
+            state = "aaa",
+            city = "aaa",
+            district = "aaa",
+            publicPlace = "aaa",
+            number = "aaa",
+            userId = "1"
+        ),
+        Vacancy(
+            id = "2",
+            urlImage = R.drawable.ic_painting,
+            status = "aaa",
+            creationDate = "aaa",
+            updateDate = "aaa",
+            deletionDate = "aaa",
+            price = "aaa",
+            occupationArea = "aaa",
+            task = "aaa",
+            description = "aaa",
+            postalCode = "aaa",
+            state = "aaa",
+            city = "aaa",
+            district = "aaa",
+            publicPlace = "aaa",
+            number = "aaa",
+            userId = "2"
+        ),
+        Vacancy(
+            id = "3",
+            urlImage = R.drawable.ic_painting,
+            status = "aaa",
+            creationDate = "aaa",
+            updateDate = "aaa",
+            deletionDate = "aaa",
+            price = "aaa",
+            occupationArea = "aaa",
+            task = "aaa",
+            description = "aaa",
+            postalCode = "aaa",
+            state = "aaa",
+            city = "aaa",
+            district = "aaa",
+            publicPlace = "aaa",
+            number = "aaa",
+            userId = "3"
+        ),
+        Vacancy(
+            id = "4",
+            urlImage = R.drawable.ic_painting,
+            status = "aaa",
+            creationDate = "aaa",
+            updateDate = "aaa",
+            deletionDate = "aaa",
+            price = "aaa",
+            occupationArea = "aaa",
+            task = "aaa",
+            description = "aaa",
+            postalCode = "aaa",
+            state = "aaa",
+            city = "aaa",
+            district = "aaa",
+            publicPlace = "aaa",
+            number = "aaa",
+            userId = "4"
+        ),
+        Vacancy(
+            id = "5",
+            urlImage = R.drawable.ic_painting,
+            status = "aaa",
+            creationDate = "aaa",
+            updateDate = "aaa",
+            deletionDate = "aaa",
+            price = "aaa",
+            occupationArea = "aaa",
+            task = "aaa",
+            description = "aaa",
+            postalCode = "aaa",
+            state = "aaa",
+            city = "aaa",
+            district = "aaa",
+            publicPlace = "aaa",
+            number = "aaa",
+            userId = "1"
+        ),
+        Vacancy(
+            id = "6",
+            urlImage = R.drawable.ic_painting,
+            status = "aaa",
+            creationDate = "aaa",
+            updateDate = "aaa",
+            deletionDate = "aaa",
+            price = "aaa",
+            occupationArea = "aaa",
+            task = "aaa",
+            description = "aaa",
+            postalCode = "aaa",
+            state = "aaa",
+            city = "aaa",
+            district = "aaa",
+            publicPlace = "aaa",
+            number = "aaa",
+            userId = "2"
+        ),
+    )
+}
+
+fun getUsers(): List<User> {
+    return listOf(
+        User(
+            id = "1",
+            urlImage = R.drawable.ic_profile,
+            status = "aaa",
+            online = true,
+            name = "aaa",
+            username = "aaa",
+            gender = "aaa",
+            birthDate = "aaa",
+            areaCode = "aaa",
+            phoneNumber = "aaa",
+            rating = "3",
+            creationDate = "aaa",
+            updateDate = "aaa",
+            deletionDate = "aaa",
+        ),
+        User(
+            id = "2",
+            urlImage = R.drawable.ic_profile,
+            status = "aaa",
+            online = true,
+            name = "aaa",
+            username = "aaa",
+            gender = "aaa",
+            birthDate = "aaa",
+            areaCode = "aaa",
+            phoneNumber = "aaa",
+            rating = "3",
+            creationDate = "aaa",
+            updateDate = "aaa",
+            deletionDate = "aaa",
+        ),
+        User(
+            id = "3",
+            urlImage = R.drawable.ic_profile,
+            status = "aaa",
+            online = true,
+            name = "aaa",
+            username = "aaa",
+            gender = "aaa",
+            birthDate = "aaa",
+            areaCode = "aaa",
+            phoneNumber = "aaa",
+            rating = "3",
+            creationDate = "aaa",
+            updateDate = "aaa",
+            deletionDate = "aaa",
+        ),
+        User(
+            id = "4",
+            urlImage = R.drawable.ic_profile,
+            status = "aaa",
+            online = true,
+            name = "aaa",
+            username = "aaa",
+            gender = "aaa",
+            birthDate = "aaa",
+            areaCode = "aaa",
+            phoneNumber = "aaa",
+            rating = "3",
+            creationDate = "aaa",
+            updateDate = "aaa",
+            deletionDate = "aaa",
+        ),
+    )}
+
+fun getUserById(users: List<User>, userId: String?): User {
+    var user: User = users[0]
+    for (currentUser: User in users) {
+        if (currentUser.id == userId) user = currentUser
+    }
+
+    return user
+}

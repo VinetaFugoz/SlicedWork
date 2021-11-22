@@ -3,10 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_perfil.xml" value="0.11710526315789474" />
+        <entry key="app/src/main/res/drawable/ic_pintura.xml" value="0.18541666666666667" />
+        <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.11710526315789474" />
         <entry key="app/src/main/res/font/font.xml" value="0.19947916666666668" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16927083333333334" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.16927083333333334" />
-        <entry key="app/src/main/res/layout/item_vacancy.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.1264957264957265" />
+        <entry key="app/src/main/res/layout/fragment_vacancy.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_vacancy.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/layout_advertiser.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/layout_details.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_location.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/nav_header.xml" value="0.27106598984771574" />
+        <entry key="app/src/main/res/menu/nav_header_menu.xml" value="0.1" />
       </map>
     </option>
   </component>
