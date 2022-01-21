@@ -7,7 +7,6 @@
     <string name="announced_vacancies">Vagas Anunciadas</string>
     <string name="applied_vacancies">Vagas Candidatadas</string>
     <string name="logo_image">Imagem da Logo</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="applyfor">Candidatar-se</string>
     <string name="lbl_details">Detalhes:</string>
@@ -30,4 +29,30 @@
     <string name="full_star_image">Imagem de estrela cheia</string>
     <string name="lbl_active_since">No SlicedWork desde</string>
     <string name="lbl_range">Distancia</string>
+    <string name="log_in">Entrar</string>
+    <string name="havent_account">Não tem conta? </string>
+    <string name="username_or_email">Usuário ou email</string>
+    <string name="sign_up">Cadastre-se</string>
+
+    <!--Hint-->
+    <string name="password_hint">Senha</string>
+    <string name="username_hint">Usuário</string>
+    <string name="birth_year_hint">Ano Nascimento</string>
+    <string name="email_hint">Email</string>
+    <string name="first_name_hint">Nome</string>
+    <string name="last_name_hint">Sobrenome</string>
+    <string name="area_code_hint">DDD</string>
+    <string name="phone_number_hint">Telefone</string>
+    <string name="gender_hint">Genero</string>
+
+    <string name="to_see_candidates">Ver Candidatos</string>
+    <string name="register">Cadastrar-se</string>
+    <!--Permissions-->
+    <string name="cameraPermissionNotGranted">A camera não pôde ser acessada porque a permissão não foi concedida</string>
+    <string name="lbl_take_picture">Tirar uma foto</string>
+    <string name="lbl_choose_from_gallery">Escolher da galeria</string>
+    <string name="plus_description">Simbolo de mais</string>
+    <string name="masculine_gender">Masculino</string>
+    <string name="feminine_gender">Feminino</string>
+    <string name="other_gender">Outro</string>
 </resources>

@@ -5,97 +5,90 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/primaryDarkColor">
 
-        <FrameLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/primaryDarkColor">
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            tools:context=".presentation.home.VacancyFragment">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_occupation_area"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                tools:context=".ui.fragment.home.VacancyFragment">
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/occupation_area_image"
+                android:scaleType="centerInside"
+                android:src="@drawable/rakanandxayahpenguin" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_occupation_area_image"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_vacancy_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="@dimen/card_radius"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    tools:layout_editor_absoluteY="1dp">
 
-                    <ImageView
-                        android:id="@+id/iv_occupation_area"
-                        android:layout_width="match_parent"
-                        android:layout_height="175dp"
-                        android:background="@color/primaryColor"
-                        app:srcCompat="@drawable/ic_painting"
-                        app:tint="@color/white"
-                        android:contentDescription="@string/occupation_area_image" />
+                    <TextView
+                        android:id="@+id/tv_lbl_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lbl_details"
+                        android:textSize="@dimen/title" />
 
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_vacancy_info"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:cardCornerRadius="@dimen/card_radius"
-                    app:layout_constraintBottom_toTopOf="@+id/btn_vacancy"
-                    app:layout_constraintTop_toBottomOf="@+id/cv_occupation_area_image">
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
+                    <include
+                        android:id="@+id/inc_details"
+                        layout="@layout/layout_details"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        tools:layout_editor_absoluteY="1dp">
+                        android:layout_marginBottom="16dp" />
 
-                        <include
-                            android:id="@+id/inc_details"
-                            layout="@layout/layout_details"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
-                            app:layout_constraintBottom_toTopOf="@id/inc_location"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/tv_lbl_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lbl_location"
+                        android:textSize="@dimen/title" />
 
-                        <include
-                            android:id="@+id/inc_location"
-                            layout="@layout/layout_location"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
-                            app:layout_constraintBottom_toTopOf="@id/inc_advertiser"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/inc_details" />
+                    <include
+                        android:id="@+id/inc_location"
+                        layout="@layout/layout_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp" />
 
-                        <include
-                            android:id="@+id/inc_advertiser"
-                            layout="@layout/layout_advertiser"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/inc_location" />
+                    <TextView
+                        android:id="@+id/tv_lbl_advertiser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lbl_advertiser"
+                        android:textSize="@dimen/title" />
 
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-                </androidx.cardview.widget.CardView>
+                    <include
+                        android:id="@+id/inc_advertiser"
+                        layout="@layout/layout_advertiser"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-                <Button
-                    android:id="@+id/btn_vacancy"
-                    style="@style/Bottom_Buttons"
-                    android:layout_marginVertical="16dp"
-                    android:text="@string/applyfor"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cv_vacancy_info"
-                    tools:ignore="TextContrastCheck" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.cardview.widget.CardView>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </FrameLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_vacancy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:text="@string/applyfor"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
     </ScrollView>
 </layout>

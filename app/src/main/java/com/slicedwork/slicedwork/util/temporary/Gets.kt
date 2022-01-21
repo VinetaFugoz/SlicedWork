@@ -1,14 +1,16 @@
 package com.slicedwork.slicedwork.util.temporary
 
+import android.content.Context
 import com.slicedwork.slicedwork.R
-import com.slicedwork.slicedwork.data.model.User
-import com.slicedwork.slicedwork.data.model.Vacancy
+import com.slicedwork.slicedwork.domain.model.User
+import com.slicedwork.slicedwork.domain.model.Vacancy
+import java.util.*
 
 fun getVacancies(): List<Vacancy> {
     return listOf(
         Vacancy(
             id = "1",
-            urlImage = R.drawable.ic_painting,
+            urlImage = R.drawable.rakanandxayahpenguin,
             status = "aaa",
             creationDate = "aaa",
             updateDate = "aaa",
@@ -27,7 +29,7 @@ fun getVacancies(): List<Vacancy> {
         ),
         Vacancy(
             id = "2",
-            urlImage = R.drawable.ic_painting,
+            urlImage = R.drawable.rakanandxayahpenguin,
             status = "aaa",
             creationDate = "aaa",
             updateDate = "aaa",
@@ -46,7 +48,7 @@ fun getVacancies(): List<Vacancy> {
         ),
         Vacancy(
             id = "3",
-            urlImage = R.drawable.ic_painting,
+            urlImage = R.drawable.rakanandxayahpenguin,
             status = "aaa",
             creationDate = "aaa",
             updateDate = "aaa",
@@ -65,7 +67,7 @@ fun getVacancies(): List<Vacancy> {
         ),
         Vacancy(
             id = "4",
-            urlImage = R.drawable.ic_painting,
+            urlImage = R.drawable.rakanandxayahpenguin,
             status = "aaa",
             creationDate = "aaa",
             updateDate = "aaa",
@@ -84,7 +86,7 @@ fun getVacancies(): List<Vacancy> {
         ),
         Vacancy(
             id = "5",
-            urlImage = R.drawable.ic_painting,
+            urlImage = R.drawable.rakanandxayahpenguin,
             status = "aaa",
             creationDate = "aaa",
             updateDate = "aaa",
@@ -103,7 +105,7 @@ fun getVacancies(): List<Vacancy> {
         ),
         Vacancy(
             id = "6",
-            urlImage = R.drawable.ic_painting,
+            urlImage = R.drawable.rakanandxayahpenguin,
             status = "aaa",
             creationDate = "aaa",
             updateDate = "aaa",
@@ -127,7 +129,7 @@ fun getUsers(): List<User> {
     return listOf(
         User(
             id = "1",
-            urlImage = R.drawable.ic_profile,
+            urlImage = R.drawable.rakanandxayahpenguin,
             status = "aaa",
             online = true,
             name = "aaa",
@@ -143,7 +145,7 @@ fun getUsers(): List<User> {
         ),
         User(
             id = "2",
-            urlImage = R.drawable.ic_profile,
+            urlImage = R.drawable.rakanandxayahpenguin,
             status = "aaa",
             online = true,
             name = "aaa",
@@ -159,7 +161,7 @@ fun getUsers(): List<User> {
         ),
         User(
             id = "3",
-            urlImage = R.drawable.ic_profile,
+            urlImage = R.drawable.rakanandxayahpenguin,
             status = "aaa",
             online = true,
             name = "aaa",
@@ -175,7 +177,7 @@ fun getUsers(): List<User> {
         ),
         User(
             id = "4",
-            urlImage = R.drawable.ic_profile,
+            urlImage = R.drawable.rakanandxayahpenguin,
             status = "aaa",
             online = true,
             name = "aaa",
@@ -198,4 +200,25 @@ fun getUserById(users: List<User>, userId: String?): User {
     }
 
     return user
+}
+
+fun getYears(): List<String> {
+    val yearlist: MutableList<String> = mutableListOf()
+    for (i in currentYear() downTo 1960) {
+        yearlist.add(i.toString())
+    }
+
+    return yearlist
+}
+
+fun getGenders(context: Context): List<String> {
+    return listOf(
+        context.resources.getString(R.string.masculine_gender),
+        context.resources.getString(R.string.feminine_gender),
+        context.resources.getString(R.string.other_gender)
+    )
+}
+
+fun currentYear(): Int {
+    return Calendar.getInstance().get(Calendar.YEAR)
 }

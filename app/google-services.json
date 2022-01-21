@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "622143377280",
+    "project_id": "slicedwork1997",
+    "storage_bucket": "slicedwork1997.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622143377280:android:2e995222bb5a3ee3e4fb65",
+        "android_client_info": {
+          "package_name": "com.slicedwork.slicedwork"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622143377280-j2v1tf9n1ujroq5rhln3r9annjd0eqhi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCR9WCys7ldO5XcmRM26UOWkFBTQsv2VE4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "622143377280-j2v1tf9n1ujroq5rhln3r9annjd0eqhi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

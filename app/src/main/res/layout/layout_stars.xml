@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_first_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/full_star_image"
+        app:layout_constraintEnd_toStartOf="@+id/iv_second_star"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_full_star"
+        app:tint="@color/primaryLightColor" />
+
+    <ImageView
+        android:id="@+id/iv_second_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/full_star_image"
+        app:layout_constraintEnd_toStartOf="@+id/iv_third_star"
+        app:layout_constraintStart_toEndOf="@id/iv_first_star"
+        app:layout_constraintTop_toTopOf="@id/iv_first_star"
+        app:srcCompat="@drawable/ic_full_star"
+        app:tint="@color/primaryLightColor" />
+
+    <ImageView
+        android:id="@+id/iv_third_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/full_star_image"
+        app:layout_constraintEnd_toStartOf="@+id/iv_fourth_star"
+        app:layout_constraintStart_toEndOf="@id/iv_second_star"
+        app:layout_constraintTop_toTopOf="@id/iv_second_star"
+        app:srcCompat="@drawable/ic_full_star"
+        app:tint="@color/primaryLightColor" />
+
+    <ImageView
+        android:id="@+id/iv_fourth_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/empty_star_image"
+        app:layout_constraintEnd_toStartOf="@+id/iv_fifth_star"
+        app:layout_constraintStart_toEndOf="@id/iv_third_star"
+        app:layout_constraintTop_toTopOf="@id/iv_third_star"
+        app:srcCompat="@drawable/ic_empty_star"
+        app:tint="@color/primaryLightColor" />
+
+    <ImageView
+        android:id="@+id/iv_fifth_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/empty_star_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_fourth_star"
+        app:layout_constraintTop_toTopOf="@id/iv_fourth_star"
+        app:srcCompat="@drawable/ic_empty_star"
+        app:tint="@color/primaryLightColor" />
+</androidx.constraintlayout.widget.ConstraintLayout>

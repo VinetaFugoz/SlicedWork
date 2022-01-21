@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Bottom_Buttons">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/title</item>
+    </style>
+
+    //-----------------|
+    // TextInputLayout |
+    //-----------------|
+
+    <style name="Widget.SlicedWork.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextAppearance">@style/TextAppearance.SlicedWork.TextInputLayout.HintText
+        </item>
+        <item name="hintTextColor">@color/primaryColor</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="boxStrokeColor">@color/primaryColor</item>
+    </style>
+
+    <style name="TextAppearance.SlicedWork.TextInputLayout.HintText" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textColor">@color/primaryColor</item>
+    </style>
+
+    //-------------|
+    // BottomSheet |
+    //-------------|
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="background">@android:color/transparent</item>
+    </style>
+</resources>
