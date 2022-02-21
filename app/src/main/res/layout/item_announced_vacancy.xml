@@ -8,17 +8,16 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:layout_marginBottom="8dp"
-        android:paddingHorizontal="4dp"
         android:orientation="vertical">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:background="@color/white"
             android:id="@+id/iv_occupation_area"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/occupation_area_image"
-            android:scaleType="centerInside"
+            android:scaleType="centerCrop"
             android:src="@drawable/rakanandxayahpenguin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/cardView"
@@ -29,7 +28,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             app:layout_constraintBottom_toBottomOf="@+id/iv_occupation_area"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="3"
@@ -38,7 +37,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/white"
                 android:padding="11dp">
 
@@ -50,7 +49,7 @@
                     app:layout_constraintBottom_toTopOf="@id/tv_task"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_chainStyle="spread_inside"
+                    app:layout_constraintVertical_chainStyle="packed"
                     tools:text="Pintura" />
 
                 <TextView
@@ -68,6 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_task"
                     tools:text="São Paulo" />
@@ -77,10 +77,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
+                    android:text="Aberta"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toStartOf="@id/iv_door"
-                    app:layout_constraintTop_toTopOf="@+id/tv_occupation_area"
-                    android:text="Aberta" />
+                    app:layout_constraintTop_toTopOf="@+id/tv_occupation_area" />
 
                 <ImageView
                     android:id="@+id/iv_door"

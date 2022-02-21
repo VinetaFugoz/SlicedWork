@@ -49,6 +49,9 @@
             android:name="com.slicedwork.slicedwork.presentation.register.RegisterFragment"
             android:label="fragment_register"
             tools:layout="@layout/fragment_register" />
+        <action
+            android:id="@+id/action_global_homeFragment"
+            app:destination="@id/homeFragment" />
     </navigation>
     <!--AnnouncedVacancies-->
     <fragment

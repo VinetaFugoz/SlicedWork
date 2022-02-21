@@ -40,6 +40,7 @@
             style="@style/Widget.SlicedWork.TextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toStartOf="@+id/tv_password"
             app:layout_constraintHorizontal_weight="2.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,6 +60,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_profile"
@@ -69,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email_hint"
-                android:inputType="text" />
+                android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -78,6 +80,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            app:errorEnabled="true"
+
+            app:layout_constraintBottom_toBottomOf="@+id/tv_user"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="2"
             app:layout_constraintStart_toEndOf="@+id/tv_user"
@@ -88,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password_hint"
-                android:inputType="text" />
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -97,6 +102,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/birth_year_hint"
+            app:layout_constraintBottom_toTopOf="@id/tv_area_code"
             app:layout_constraintEnd_toStartOf="@+id/tv_gender"
             app:layout_constraintHorizontal_weight="3"
             app:layout_constraintStart_toStartOf="parent"
@@ -178,10 +184,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="5"
             app:layout_constraintStart_toEndOf="@+id/tv_area_code"
-            app:layout_constraintTop_toTopOf="@+id/tv_area_code">
+            app:layout_constraintTop_toBottomOf="@+id/tv_gender">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_phone_number"
@@ -202,6 +209,7 @@
             android:hint="@string/gender_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintBottom_toTopOf="@+id/tv_phone_number"
             app:layout_constraintStart_toEndOf="@+id/tv_birth_year"
             app:layout_constraintTop_toTopOf="@+id/tv_birth_year">
 

@@ -55,4 +55,7 @@
     <string name="masculine_gender">Masculino</string>
     <string name="feminine_gender">Feminino</string>
     <string name="other_gender">Outro</string>
+    <!--errors-->
+    <string name="obligate_field_empty">Campo obrigatório está vazio</string>
+    <string name="obligate_field_not_valid">Valor digitado não é valido</string>
 </resources>

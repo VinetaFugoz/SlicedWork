@@ -16,13 +16,13 @@
             android:orientation="vertical"
             tools:context=".presentation.home.VacancyFragment">
 
-            <com.google.android.material.imageview.ShapeableImageView
+            <ImageView
                 android:id="@+id/iv_occupation_area"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/occupation_area_image"
-                android:scaleType="centerInside"
+                android:scaleType="centerCrop"
                 android:src="@drawable/rakanandxayahpenguin" />
 
             <androidx.cardview.widget.CardView

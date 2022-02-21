@@ -10,7 +10,6 @@ import com.slicedwork.slicedwork.domain.model.User
 import com.slicedwork.slicedwork.domain.model.Vacancy
 import com.slicedwork.slicedwork.databinding.FragmentVacancyBinding
 import com.slicedwork.slicedwork.util.temporary.getUserById
-import com.slicedwork.slicedwork.util.temporary.getUsers
 
 class VacancyFragment : Fragment() {
 
@@ -25,7 +24,6 @@ class VacancyFragment : Fragment() {
 
         binding = FragmentVacancyBinding.inflate(inflater, container, false)
         vacancy = VacancyFragmentArgs.fromBundle(requireArguments()).vacancy
-        user = getUserById(getUsers(), vacancy.userId)
         setComponents()
         return binding.root
     }
@@ -48,7 +46,6 @@ class VacancyFragment : Fragment() {
                 tvNumber.text = vacancy.number
             }
             incAdvertiser.apply {
-                user.uriImage?.let { ivProfile.setImageResource(it) }
                 tvUsername.text = user.username
                 tvActiveSince.text = getString(R.string.lbl_active_since)
             }
