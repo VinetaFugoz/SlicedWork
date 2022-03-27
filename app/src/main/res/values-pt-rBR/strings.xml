@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SlicedWork</string>
+    <string name="lbl_sign_in">Entrar</string>
+    <string name="lbl_sign_up">Registrar-se</string>
+    <string name="lbl_greetings_title">Bem-vindo ao SlicedWork</string>
+    <string name="lbl_greetings_subtitle">A maneira mais simples de encontrar um trabalho!</string>
+</resources>

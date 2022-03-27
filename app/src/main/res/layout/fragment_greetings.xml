@@ -44,12 +44,9 @@
 
         <TextView
             android:id="@+id/tv_s"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/century_gothic"
+            style="@style/AppNameLetter"
             android:text="@string/lbl_s"
             android:textColor="@color/secondaryColor"
-            android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@id/tv_l"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="@+id/iv_logo"
@@ -57,108 +54,81 @@
 
         <TextView
             android:id="@+id/tv_l"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/century_gothic"
+            style="@style/AppNameLetter"
             android:text="@string/lbl_l"
             android:textColor="@color/white"
-            android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@id/tv_i"
             app:layout_constraintStart_toEndOf="@+id/tv_s"
             app:layout_constraintTop_toTopOf="@+id/tv_s" />
 
         <TextView
             android:id="@+id/tv_i"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/century_gothic"
+            style="@style/AppNameLetter"
             android:text="@string/lbl_i"
             android:textColor="@color/white"
-            android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@id/tv_c"
             app:layout_constraintStart_toEndOf="@+id/tv_l"
             app:layout_constraintTop_toTopOf="@+id/tv_l" />
 
         <TextView
             android:id="@+id/tv_c"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/century_gothic"
+            style="@style/AppNameLetter"
             android:text="@string/lbl_c"
             android:textColor="@color/white"
-            android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@id/tv_e"
             app:layout_constraintStart_toEndOf="@+id/tv_i"
             app:layout_constraintTop_toTopOf="@+id/tv_i" />
 
         <TextView
             android:id="@+id/tv_e"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/century_gothic"
+            style="@style/AppNameLetter"
             android:text="@string/lbl_e"
             android:textColor="@color/white"
-            android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@id/tv_d"
             app:layout_constraintStart_toEndOf="@+id/tv_c"
             app:layout_constraintTop_toTopOf="@+id/tv_c" />
 
         <TextView
             android:id="@+id/tv_d"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/century_gothic"
+            style="@style/AppNameLetter"
             android:text="@string/lbl_d"
             android:textColor="@color/white"
-            android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@id/tv_w"
             app:layout_constraintStart_toEndOf="@+id/tv_e"
             app:layout_constraintTop_toTopOf="@+id/tv_e" />
 
         <TextView
             android:id="@+id/tv_w"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/century_gothic"
+            style="@style/AppNameLetter"
             android:text="@string/lbl_w"
             android:textColor="@color/secondaryColor"
-            android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@id/tv_o"
             app:layout_constraintStart_toEndOf="@+id/tv_d"
             app:layout_constraintTop_toTopOf="@+id/tv_d" />
 
         <TextView
             android:id="@+id/tv_o"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/century_gothic"
+            style="@style/AppNameLetter"
             android:text="@string/lbl_o"
             android:textColor="@color/white"
-            android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@id/tv_r"
             app:layout_constraintStart_toEndOf="@+id/tv_w"
             app:layout_constraintTop_toTopOf="@+id/tv_w" />
 
         <TextView
             android:id="@+id/tv_r"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/century_gothic"
+            style="@style/AppNameLetter"
             android:text="@string/lbl_r"
             android:textColor="@color/white"
-            android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@id/tv_k"
             app:layout_constraintStart_toEndOf="@+id/tv_o"
             app:layout_constraintTop_toTopOf="@+id/tv_o" />
 
         <TextView
             android:id="@+id/tv_k"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/century_gothic"
+            style="@style/AppNameLetter"
             android:text="@string/lbl_k"
             android:textColor="@color/white"
-            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/iv_logo"
             app:layout_constraintStart_toEndOf="@+id/tv_r"
             app:layout_constraintTop_toTopOf="@+id/tv_r" />
@@ -171,7 +141,7 @@
             android:fontFamily="@font/century_gothic"
             android:gravity="center"
             android:paddingHorizontal="50dp"
-            android:text="@string/lbl_welcome_to"
+            android:text="@string/lbl_greetings_title"
             android:textColor="@color/white"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -184,11 +154,10 @@
             android:id="@+id/tv_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:fontFamily="@font/century_gothic"
             android:gravity="center"
             android:paddingHorizontal="30dp"
-            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+            android:text="@string/lbl_greetings_subtitle"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"

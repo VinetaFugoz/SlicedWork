@@ -4,16 +4,17 @@
     <!--Greetings-->
     <string name="lbl_sign_in">Sign In</string>
     <string name="lbl_sign_up">Sign Up</string>
-    <string name="lbl_welcome_to">Welcome to SlicedWork</string>
-    <string name="lbl_s">S</string>
-    <string name="lbl_l">l</string>
-    <string name="lbl_i">i</string>
-    <string name="lbl_c">c</string>
-    <string name="lbl_e">e</string>
-    <string name="lbl_d">d</string>
-    <string name="lbl_w">W</string>
-    <string name="lbl_o">o</string>
-    <string name="lbl_r">r</string>
-    <string name="lbl_k">k</string>
+    <string name="lbl_greetings_title">Welcome to SlicedWork</string>
+    <string name="lbl_s" translatable="false">S</string>
+    <string name="lbl_l" translatable="false">l</string>
+    <string name="lbl_i" translatable="false">i</string>
+    <string name="lbl_c" translatable="false">c</string>
+    <string name="lbl_e" translatable="false">e</string>
+    <string name="lbl_d" translatable="false">d</string>
+    <string name="lbl_w" translatable="false">W</string>
+    <string name="lbl_o" translatable="false">o</string>
+    <string name="lbl_r" translatable="false">r</string>
+    <string name="lbl_k" translatable="false">k</string>
+    <string name="lbl_greetings_subtitle">The simplest way to find a work!</string>
 
 </resources>
