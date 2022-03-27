@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--BottomSheet-->
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="background">@android:color/transparent</item>
+    </style>
 
     <style name="Bottom_Buttons">
         <item name="android:layout_width">match_parent</item>
@@ -7,10 +11,7 @@
         <item name="android:textSize">@dimen/title</item>
     </style>
 
-    //-----------------|
-    // TextInputLayout |
-    //-----------------|
-
+    <!--TextInputLayout-->
     <style name="Widget.SlicedWork.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="hintTextAppearance">@style/TextAppearance.SlicedWork.TextInputLayout.HintText
         </item>
@@ -23,11 +24,11 @@
         <item name="android:textColor">@color/primaryColor</item>
     </style>
 
-    //-------------|
-    // BottomSheet |
-    //-------------|
-
-    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
-        <item name="background">@android:color/transparent</item>
+    <!--Button-->
+    <style name="CommonButton">
+        <item name="android:layout_height">?android:actionBarSize</item>
+        <item name="fontFamily">@font/roboto</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

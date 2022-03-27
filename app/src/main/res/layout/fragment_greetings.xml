@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.slicedwork.slicedwork.presentation.viewmodel.GreetingsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_background_gradient"
+        tools:context=".presentation.fragment.GreetingsFragment">
+
+        <ImageView
+            android:id="@+id/iv_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.2"
+            android:scaleType="centerCrop"
+            android:src="@drawable/tools"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="108dp"
+            android:layout_height="108dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription,UseAppTint" />
+
+        <TextView
+            android:id="@+id/tv_s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/century_gothic"
+            android:text="@string/lbl_s"
+            android:textColor="@color/secondaryColor"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@id/tv_l"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@+id/iv_logo"
+            app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
+
+        <TextView
+            android:id="@+id/tv_l"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/century_gothic"
+            android:text="@string/lbl_l"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@id/tv_i"
+            app:layout_constraintStart_toEndOf="@+id/tv_s"
+            app:layout_constraintTop_toTopOf="@+id/tv_s" />
+
+        <TextView
+            android:id="@+id/tv_i"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/century_gothic"
+            android:text="@string/lbl_i"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@id/tv_c"
+            app:layout_constraintStart_toEndOf="@+id/tv_l"
+            app:layout_constraintTop_toTopOf="@+id/tv_l" />
+
+        <TextView
+            android:id="@+id/tv_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/century_gothic"
+            android:text="@string/lbl_c"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@id/tv_e"
+            app:layout_constraintStart_toEndOf="@+id/tv_i"
+            app:layout_constraintTop_toTopOf="@+id/tv_i" />
+
+        <TextView
+            android:id="@+id/tv_e"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/century_gothic"
+            android:text="@string/lbl_e"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@id/tv_d"
+            app:layout_constraintStart_toEndOf="@+id/tv_c"
+            app:layout_constraintTop_toTopOf="@+id/tv_c" />
+
+        <TextView
+            android:id="@+id/tv_d"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/century_gothic"
+            android:text="@string/lbl_d"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@id/tv_w"
+            app:layout_constraintStart_toEndOf="@+id/tv_e"
+            app:layout_constraintTop_toTopOf="@+id/tv_e" />
+
+        <TextView
+            android:id="@+id/tv_w"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/century_gothic"
+            android:text="@string/lbl_w"
+            android:textColor="@color/secondaryColor"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@id/tv_o"
+            app:layout_constraintStart_toEndOf="@+id/tv_d"
+            app:layout_constraintTop_toTopOf="@+id/tv_d" />
+
+        <TextView
+            android:id="@+id/tv_o"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/century_gothic"
+            android:text="@string/lbl_o"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@id/tv_r"
+            app:layout_constraintStart_toEndOf="@+id/tv_w"
+            app:layout_constraintTop_toTopOf="@+id/tv_w" />
+
+        <TextView
+            android:id="@+id/tv_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/century_gothic"
+            android:text="@string/lbl_r"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@id/tv_k"
+            app:layout_constraintStart_toEndOf="@+id/tv_o"
+            app:layout_constraintTop_toTopOf="@+id/tv_o" />
+
+        <TextView
+            android:id="@+id/tv_k"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/century_gothic"
+            android:text="@string/lbl_k"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/iv_logo"
+            app:layout_constraintStart_toEndOf="@+id/tv_r"
+            app:layout_constraintTop_toTopOf="@+id/tv_r" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:fontFamily="@font/century_gothic"
+            android:gravity="center"
+            android:paddingHorizontal="50dp"
+            android:text="@string/lbl_welcome_to"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/century_gothic"
+            android:gravity="center"
+            android:paddingHorizontal="30dp"
+            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+        <Button
+            android:id="@+id/btn_sign_in"
+            style="@style/CommonButton"
+            android:layout_width="0dp"
+            android:backgroundTint="@color/secondaryColor"
+            android:onClick="@{(it) -> viewmodel.goToSignIn(it)}"
+            android:text="@string/lbl_sign_in"
+            android:textColor="@color/primaryTextColor"
+            app:layout_constraintBottom_toTopOf="@+id/btn_sign_up"
+            app:layout_constraintEnd_toEndOf="@+id/btn_sign_up"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/btn_sign_up" />
+
+        <Button
+            android:id="@+id/btn_sign_up"
+            style="@style/CommonButton"
+            android:layout_width="0dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="84dp"
+            android:backgroundTint="@color/white"
+            android:onClick="@{(it) -> viewmodel.goToSignUp(it)}"
+            android:text="@string/lbl_sign_up"
+            android:textColor="@color/secondaryColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

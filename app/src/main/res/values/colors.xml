@@ -1,12 +1,17 @@
 <!--?xml version="1.0" encoding="UTF-8"?-->
 <resources>
-    <!--Theme-->
-    <color name="primaryColor">#006064</color>
-    <color name="primaryLightColor">#428e92</color>
-    <color name="primaryDarkColor">#00363a</color>
-    <color name="primaryTextColor">#ffffff</color>
-    <color name="textInputOutlineColor">@color/primaryLightColor</color>
-    <!--Commum-->
-    <color name="white">#ffffff</color>
-    <color name="black">#000000</color>
+  <!--Theme Colors-->
+
+  <color name="primaryColor">#1a237e</color>
+  <color name="primaryLightColor">#534bae</color>
+  <color name="primaryDarkColor">#000051</color>
+  <color name="secondaryColor">#d32f2f</color>
+  <color name="secondaryLightColor">#ff6659</color>
+  <color name="secondaryDarkColor">#9a0007</color>
+  <color name="primaryTextColor">#ffffff</color>
+  <color name="secondaryTextColor">#ffffff</color>
+
+  <!--Common Colors-->
+  <color name="white">#ffffff</color>
+  <color name="black">#000000</color>
 </resources>

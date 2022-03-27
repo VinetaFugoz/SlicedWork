@@ -1,31 +1,49 @@
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-kapt'
-    id 'androidx.navigation.safeargs'
-    id 'com.google.gms.google-services'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
-    compileSdk 31
+
     defaultConfig {
         applicationId "com.slicedwork.slicedwork"
-        minSdk 26
+
+        // Version Sdk
+        compileSdk 31
+        minSdk 27
         targetSdk 31
+
+        // Version Apk
         versionCode 1
-        versionName "1.0"
+        versionName MAJOR_VERSION + "." + MINOR_VERSION + "." + PATCH_VERSION
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+
+    signingConfigs {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            storeFile file(RELEASE_STORE_FILE)
+            storePassword RELEASE_STORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
     }
-    buildFeatures {
-        dataBinding true
-        viewBinding true
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -37,43 +55,68 @@ android {
 }
 
 dependencies {
-    //CircleImageView
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
-    //Common
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    //Courotines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.0'
-    //Courotine Lifecycle Scopes
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
-    //EasyPermissions
-    implementation 'pub.devrel:easypermissions:3.0.0'
-    //Glide
-    def glideVersion = '4.12.0'
+
+    // Splash Screen
+    def splashVersion = "1.0.0-beta01"
+    implementation "androidx.core:core-splashscreen:$splashVersion"
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    // Retrofit
+    def retrofitVersion = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+
+    // Gson
+    def gsonVersion = "2.9.0"
+    implementation "com.google.code.gson:gson:$gsonVersion"
+
+    // Dagger Hilt
+    implementation "com.google.dagger:hilt-android:$daggerVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$daggerVersion"
+
+    // Dagger Hilt VM
+    def daggerHiltVMVersion = "1.0.0-alpha03"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$daggerHiltVMVersion"
+
+    // Circle Image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    def liveDataVersion = "2.4.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$liveDataVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$liveDataVersion"
+
+    // Glide
+    def glideVersion = "4.13.0"
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     kapt "com.github.bumptech.glide:compiler:$glideVersion"
-    //Firebase
-    implementation 'com.google.firebase:firebase-database:20.0.3'
-    implementation 'com.google.firebase:firebase-auth:21.0.1'
-    implementation 'com.google.firebase:firebase-analytics:20.0.2'
-    implementation 'com.google.firebase:firebase-firestore:24.0.1'
-    implementation 'com.google.firebase:firebase-storage:20.0.0'
-    //Navigation
-    def navVersion = '2.4.0'
-    implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
-    implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
-    //Tests
+
+    // Coroutines
+    def coroutinesVersion = "1.6.0"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
+
+    // Gms
+    def gmsVersion = "20.1.0"
+    implementation "com.google.android.gms:play-services-auth:$gmsVersion"
+
+    // GmsPhone
+    def gmsPhoneVersion = "18.0.1"
+    implementation "com.google.android.gms:play-services-auth-api-phone:$gmsPhoneVersion"
+
+    // Firebase
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.2'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.0.2'
+    implementation 'com.google.firebase:firebase-storage-ktx:20.0.1'
+
+    // Junit
     testImplementation 'junit:junit:4.13.2'
-    //AndroidTests
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-}
-
-repositories {
-    google()
 }
