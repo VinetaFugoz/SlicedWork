@@ -2,40 +2,25 @@
 <resources>
     <!--BottomSheet-->
     <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
-        <item name="background">@android:color/transparent</item>
-    </style>
-
-    <style name="Bottom_Buttons">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/title</item>
+        <item name="background">@drawable/shape_round_upper_corner</item>
     </style>
 
     <!--TextInputLayout-->
-    <style name="Widget.SlicedWork.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="hintTextAppearance">@style/TextAppearance.SlicedWork.TextInputLayout.HintText
-        </item>
-        <item name="hintTextColor">@color/primaryColor</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="boxStrokeColor">@color/primaryColor</item>
-    </style>
 
-    <style name="TextAppearance.SlicedWork.TextInputLayout.HintText" parent="TextAppearance.MaterialComponents.Subtitle2">
-        <item name="android:textColor">@color/primaryColor</item>
-    </style>
 
     <!--Button-->
     <style name="CommonButton">
-        <item name="android:layout_height">?android:actionBarSize</item>
-        <item name="fontFamily">@font/roboto</item>
-        <item name="textAllCaps">false</item>
+        <item name="android:layout_height">@dimen/common_button_height</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:gravity">center</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <!--TextView-->
     <style name="AppNameLetter">
-        <item name="android:textSize">20sp</item>
-        <item name="fontFamily">@font/century_gothic</item>
+        <item name="android:textSize">@dimen/app_name_letter_size</item>
+        <item name="android:fontFamily">@font/century_gothic</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>

@@ -1,6 +1,8 @@
 package com.slicedwork.slicedwork.presentation.activity
 
+import android.content.Context
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -55,4 +57,5 @@ class MainActivity : AppCompatActivity() {
     fun hideToolbar() = this.supportActionBar?.hide()
 
     fun showToolbar() = this.supportActionBar?.show()
+
 }

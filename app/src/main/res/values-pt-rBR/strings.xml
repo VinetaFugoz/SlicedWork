@@ -5,4 +5,11 @@
     <string name="lbl_sign_up">Registrar-se</string>
     <string name="lbl_greetings_title">Bem-vindo ao SlicedWork</string>
     <string name="lbl_greetings_subtitle">A maneira mais simples de encontrar um trabalho!</string>
+    <string name="lbl_get_name_question">Qual é o seu nome?</string>
+    <string name="lbl_next">Próximo</string>
+    <string name="hint_last_name">Sobrenome</string>
+    <string name="hint_first_name">Nome</string>
+    <string name="lbl_get_name_description">Insira o nome que você usa na vida real.</string>
+    <string name="lbl_get_birthday_question">Quando você nasceu?</string>
+    <string name="lbl_get_birthday_description">Insira sua data de aniversário.</string>
 </resources>

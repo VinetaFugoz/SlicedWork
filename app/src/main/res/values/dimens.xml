@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Text Sizes-->
-    <dimen name="large_title">35sp</dimen>
-    <dimen name="title">28sp</dimen>
-    <dimen name="subtitle">20sp</dimen>
-    <dimen name="subtitle_text">16sp</dimen>
-    <dimen name="small_text">12sp</dimen>
-
-    <dimen name="card_radius">16dp</dimen>
+    <dimen name="common_button_height">45dp</dimen>
+    <dimen name="app_name_letter_size">20dp</dimen>
 </resources>

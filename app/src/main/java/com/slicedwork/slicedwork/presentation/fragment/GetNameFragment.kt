@@ -4,18 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.NavHostFragment
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.slicedwork.slicedwork.R
-import com.slicedwork.slicedwork.databinding.FragmentSignUpBinding
+import com.slicedwork.slicedwork.databinding.FragmentGetNameBinding
 import com.slicedwork.slicedwork.presentation.activity.MainActivity
-import com.slicedwork.slicedwork.presentation.viewmodel.SignUpViewModel
+import com.slicedwork.slicedwork.presentation.extensions.ViewExt.focusAndShowSoftKeyboard
+import com.slicedwork.slicedwork.presentation.viewmodel.GetNameViewModel
+import com.slicedwork.slicedwork.util.enumerator.DestinationsEnum
 
-class SignUpFragment : Fragment() {
+class GetNameFragment : BottomSheetDialogFragment() {
 
-    private lateinit var _binding: FragmentSignUpBinding
+    private lateinit var _binding: FragmentGetNameBinding
     private lateinit var _activity: MainActivity
-    private val _viewModel: SignUpViewModel by viewModels()
+    private val _viewModel: GetNameViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,17 +32,15 @@ class SignUpFragment : Fragment() {
         super.onResume()
         _activity.colorStatusBar(R.color.primaryDarkColor)
         _activity.hideToolbar()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        _activity.showToolbar()
+        _binding.tietFirstName.focusAndShowSoftKeyboard(this.requireContext())
+        _viewModel.fragment = this
     }
 
     private fun setProps(inflater: LayoutInflater) {
-        _binding = FragmentSignUpBinding.inflate(inflater)
-        _binding.viewmodel = _viewModel
+        _binding = FragmentGetNameBinding.inflate(inflater)
+        _binding.viewModel = _viewModel
         _binding.lifecycleOwner = this.viewLifecycleOwner
+        _viewModel.fragment = this
         _activity = this.requireActivity() as MainActivity
     }
 }

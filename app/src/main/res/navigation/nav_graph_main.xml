@@ -5,26 +5,47 @@
     android:id="@+id/nav_graph_main"
     app:startDestination="@id/greetingsFragment">
 
+    <!--Greetings-->
     <fragment
         android:id="@+id/greetingsFragment"
         android:name="com.slicedwork.slicedwork.presentation.fragment.GreetingsFragment"
         android:label=""
-        tools:layout="@layout/fragment_greetings" >
-        <action
-            android:id="@+id/action_greetingsFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+        tools:layout="@layout/fragment_greetings">
         <action
             android:id="@+id/action_greetingsFragment_to_signInFragment"
             app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_greetingsFragment_to_signUp"
+            app:destination="@id/signUp" />
     </fragment>
+
+    <!--Sign In-->
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.slicedwork.slicedwork.presentation.fragment.SignInFragment"
         android:label=""
         tools:layout="@layout/fragment_sign_in" />
-    <fragment
-        android:id="@+id/signUpFragment"
-        android:name="com.slicedwork.slicedwork.presentation.fragment.SignUpFragment"
-        android:label=""
-        tools:layout="@layout/fragment_sign_up" />
+
+    <navigation
+        android:id="@+id/signUp"
+        app:startDestination="@id/getNameFragment">
+        <!--Get Name-->
+        <dialog
+            android:id="@+id/getNameFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.GetNameFragment"
+            android:label=""
+            tools:layout="@layout/fragment_get_name">
+            <action
+                android:id="@+id/action_getNameFragment_to_getBirthdayFragment"
+                app:destination="@id/getBirthdayFragment"
+                app:popUpTo="@id/getNameFragment"
+                app:popUpToInclusive="true" />
+        </dialog>
+        <!--Get Birthday-->
+        <dialog
+            android:id="@+id/getBirthdayFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.GetBirthdayFragment"
+            android:label=""
+            tools:layout="@layout/fragment_get_birthday" />
+    </navigation>
 </navigation>

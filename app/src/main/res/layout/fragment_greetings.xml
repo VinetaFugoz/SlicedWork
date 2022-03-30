@@ -164,11 +164,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_sign_in"
             style="@style/CommonButton"
             android:layout_width="0dp"
-            android:backgroundTint="@color/secondaryColor"
+            android:layout_marginBottom="8dp"
+            android:background="@color/secondaryColor"
             android:onClick="@{(it) -> viewmodel.goToSignIn(it)}"
             android:text="@string/lbl_sign_in"
             android:textColor="@color/primaryTextColor"
@@ -177,13 +178,13 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/btn_sign_up" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_sign_up"
             style="@style/CommonButton"
             android:layout_width="0dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="84dp"
-            android:backgroundTint="@color/white"
+            android:background="@color/white"
             android:onClick="@{(it) -> viewmodel.goToSignUp(it)}"
             android:text="@string/lbl_sign_up"
             android:textColor="@color/secondaryColor"

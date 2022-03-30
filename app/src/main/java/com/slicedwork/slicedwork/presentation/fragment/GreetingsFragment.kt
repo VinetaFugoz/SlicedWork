@@ -36,11 +36,6 @@ class GreetingsFragment : Fragment() {
         _activity.hideToolbar()
     }
 
-    override fun onStop() {
-        super.onStop()
-        _activity.showToolbar()
-    }
-
     private fun setProps(inflater: LayoutInflater) {
         _binding = FragmentGreetingsBinding.inflate(inflater)
         _binding.viewmodel = _viewModel
