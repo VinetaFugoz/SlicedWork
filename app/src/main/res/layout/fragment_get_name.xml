@@ -108,10 +108,9 @@
             android:layout_marginTop="80dp"
             android:background="@drawable/selector_button_color"
             android:enabled="@{viewModel.enabledNext}"
+            android:onClick="@{() -> viewModel.nextEvent()}"
             android:text="@string/lbl_next"
-            android:onClick="@{() -> viewModel.goToGetBirthday()}"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/til_first_name" />

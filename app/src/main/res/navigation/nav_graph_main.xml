@@ -30,7 +30,7 @@
         android:id="@+id/signUp"
         app:startDestination="@id/getNameFragment">
         <!--Get Name-->
-        <dialog
+        <fragment
             android:id="@+id/getNameFragment"
             android:name="com.slicedwork.slicedwork.presentation.fragment.GetNameFragment"
             android:label=""
@@ -40,12 +40,30 @@
                 app:destination="@id/getBirthdayFragment"
                 app:popUpTo="@id/getNameFragment"
                 app:popUpToInclusive="true" />
-        </dialog>
+        </fragment>
         <!--Get Birthday-->
-        <dialog
+        <fragment
             android:id="@+id/getBirthdayFragment"
             android:name="com.slicedwork.slicedwork.presentation.fragment.GetBirthdayFragment"
             android:label=""
-            tools:layout="@layout/fragment_get_birthday" />
+            tools:layout="@layout/fragment_get_birthday" >
+            <argument
+                android:name="user"
+                app:argType="com.slicedwork.slicedwork.domain.model.User" />
+            <action
+                android:id="@+id/action_getBirthdayFragment_to_getGenderFragment"
+                app:destination="@id/getGenderFragment"
+                app:popUpTo="@id/getNameFragment"
+                app:popUpToInclusive="true" />
+        </fragment>
+        <fragment
+            android:id="@+id/getGenderFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.GetGenderFragment"
+            android:label="fragment_get_gender"
+            tools:layout="@layout/fragment_get_gender" >
+            <argument
+                android:name="user"
+                app:argType="com.slicedwork.slicedwork.domain.model.User" />
+        </fragment>
     </navigation>
 </navigation>

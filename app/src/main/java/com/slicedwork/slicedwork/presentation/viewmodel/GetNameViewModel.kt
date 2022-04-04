@@ -1,13 +1,15 @@
 package com.slicedwork.slicedwork.presentation.viewmodel
 
-import androidx.fragment.app.Fragment
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.findNavController
+import com.slicedwork.slicedwork.domain.model.User
 import com.slicedwork.slicedwork.presentation.fragment.GetNameFragment
+import com.slicedwork.slicedwork.presentation.fragment.GetNameFragmentDirections
 import com.slicedwork.slicedwork.util.Validator
-import com.slicedwork.slicedwork.util.enumerator.DestinationsEnum.GET_NAME_GET_BIRTHDAY
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -32,7 +34,19 @@ class GetNameViewModel @Inject constructor() : ViewModel() {
                     Validator.validateLastName(lastName.value.toString())
     }
 
-    fun goToGetBirthday() =
-        NavHostFragment.findNavController(fragment).navigate(GET_NAME_GET_BIRTHDAY.getDirection())
+    fun nextEvent(view: View) {
+        val user = createUser()
+        goToGetBirthday(view, user)
+    }
+
+    private fun createUser() = User(
+        uuid = UUID.randomUUID().toString(),
+        firstName = this.firstName.value.toString(),
+        this.lastName.value.toString()
+    )
+
+    fun goToGetBirthday(view: View, user: User) =
+        view.findNavController()
+            .navigate(GetNameFragmentDirections.actionGetNameFragmentToGetBirthdayFragment(user))
 
 }

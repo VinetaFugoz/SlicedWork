@@ -4,17 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.NavHostFragment
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.slicedwork.slicedwork.R
 import com.slicedwork.slicedwork.databinding.FragmentGetNameBinding
 import com.slicedwork.slicedwork.presentation.activity.MainActivity
 import com.slicedwork.slicedwork.presentation.extensions.ViewExt.focusAndShowSoftKeyboard
 import com.slicedwork.slicedwork.presentation.viewmodel.GetNameViewModel
-import com.slicedwork.slicedwork.util.enumerator.DestinationsEnum
 
-class GetNameFragment : BottomSheetDialogFragment() {
+class GetNameFragment : Fragment() {
 
     private lateinit var _binding: FragmentGetNameBinding
     private lateinit var _activity: MainActivity
