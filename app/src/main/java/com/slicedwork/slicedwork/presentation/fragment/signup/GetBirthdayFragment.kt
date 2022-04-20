@@ -1,4 +1,4 @@
-package com.slicedwork.slicedwork.presentation.fragment
+package com.slicedwork.slicedwork.presentation.fragment.signup
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,25 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.NumberPicker
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.slicedwork.slicedwork.R
 import com.slicedwork.slicedwork.databinding.FragmentGetBirthdayBinding
 import com.slicedwork.slicedwork.domain.model.User
 import com.slicedwork.slicedwork.util.DateUtil
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoField
 
-class GetBirthdayFragment : Fragment(), NumberPicker.OnValueChangeListener, View.OnClickListener {
+class GetBirthdayFragment : Fragment(), NumberPicker.OnValueChangeListener {
 
     private lateinit var _binding: FragmentGetBirthdayBinding
-    private val _user: User = GetBirthdayFragmentArgs.Companion.fromBundle(requireArguments()).user
+    private lateinit var _user: User
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentGetBirthdayBinding.inflate(inflater, container, false)
-        setProps()
+        setProps(inflater)
 
         return _binding.root
     }
@@ -40,12 +40,8 @@ class GetBirthdayFragment : Fragment(), NumberPicker.OnValueChangeListener, View
         }
     }
 
-    override fun onClick(view: View) {
-        setUserProps()
-        goToGetGender(view)
-    }
-
-    private fun setProps() {
+    private fun setProps(inflater: LayoutInflater) {
+        _binding = FragmentGetBirthdayBinding.inflate(inflater)
         setYear()
         setMonth()
         setDay()
@@ -80,22 +76,30 @@ class GetBirthdayFragment : Fragment(), NumberPicker.OnValueChangeListener, View
     }
 
     private fun setListeners() {
-        _binding.npMonth.setOnValueChangedListener(this@GetBirthdayFragment)
-        _binding.npYear.setOnValueChangedListener(this@GetBirthdayFragment)
-        _binding.btnNext.setOnClickListener(this@GetBirthdayFragment)
+        _binding.run {
+            npMonth.setOnValueChangedListener(this@GetBirthdayFragment)
+            npYear.setOnValueChangedListener(this@GetBirthdayFragment)
+            btnNext.setOnClickListener {
+                getUser()
+                setUserProps()
+                goToGetGender()
+            }
+        }
+    }
+
+    private fun getUser() {
+        _user = arguments?.get("user") as User
     }
 
     private fun setUserProps() {
         _binding.run {
-        val format = DateTimeFormatter.ofPattern("dd-MM-yyyy")
-        val date = LocalDate.parse("${npDay.value}-${npMonth.value}-${npYear.value}" , format)
-
-
-            _user.birthDate = date.getLong()
+            _user.birthDate = "${npDay.value}-${npMonth.value}-${npYear.value}"
         }
     }
 
-    private fun goToGetGender(view: View) {
-        view.findNavController().navigate(GetBirthdayFragmentDirections.actionGetBirthdayFragmentToGetGenderFragment(_user))
+    private fun goToGetGender() {
+        findNavController().navigate(
+            GetBirthdayFragmentDirections.actionGetBirthdayFragmentToGetGenderFragment(_user)
+        )
     }
 }

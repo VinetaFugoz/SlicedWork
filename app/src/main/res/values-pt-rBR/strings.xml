@@ -32,4 +32,37 @@
         <item>Novembro</item>
         <item>Dezembro</item>
     </string-array>
+
+    <!--Get Gender-->
+    <string name="lbl_get_gender_question">Qual é o seu gênero?</string>
+    <string name="lbl_get_gender_description">Escolha o gênero que você se identifica.</string>
+    <string name="lbl_male">Masculino</string>
+    <string name="lbl_female">Feminino</string>
+    <string name="lbl_other">Outro</string>
+
+    <!--Get Phone Number-->
+    <string name="lbl_get_phone_number_question">Qual é o seu número de telefone?</string>
+    <string name="lbl_get_phone_number_description">Digite seu número de telefone. Não se esqueça do DDD.</string>
+    <string name="hint_phone_number">Telefone</string>
+
+    <!--Get Nickname-->
+    <string name="lbl_get_nickname_question">Qual é o seu nickname?</string>
+    <string name="lbl_get_nickname_description">Digite um nickname único que você goste.</string>
+
+    <!--Get Email-->
+    <string name="lbl_get_email_question">Qual é o seu email?</string>
+    <string name="lbl_get_email_description">Digite um email que você costuma usar.</string>
+
+    <!--Get Password-->
+    <string name="lbl_get_password_question">Qual é a sua senha?</string>
+    <string name="lbl_get_password_description">Digite uma senha. Não vai esquecer ein.</string>
+    <string name="hint_password">Senha</string>
+
+    <!--GetPicture-->
+    <string name="lbl_get_picture_question">Qual vai ser sua foto de perfil?</string>
+    <string name="lbl_get_picture_description">Tire uma foto ou escolha uma da sua galeria.</string>
+    <string name="lbl_take_a_picture">Tirar uma foto</string>
+    <string name="lbl_choose_from_gallery">Escolher uma foto da galeria</string>
+    <string name="lbl_finished_signup">Registro completo, clique aqui para ir para finalizar!</string>
+    <string name="lbl_home">Finalizar</string>
 </resources>

@@ -1,8 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.fragment.GetGenderFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</FrameLayout>
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.slicedwork.slicedwork.presentation.viewmodel.signup.GetGenderViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        tools:context=".presentation.fragment.GreetingsFragment">
+
+        <TextView
+            android:id="@+id/tv_question"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/century_gothic"
+            android:gravity="center"
+            android:text="@string/lbl_get_gender_question"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tv_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/century_gothic"
+            android:gravity="center"
+            android:text="@string/lbl_get_gender_description"
+            android:textColor="@color/description"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/tiet_male"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_question"
+            tools:ignore="TextContrastCheck" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_male"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primaryColor"
+            android:enabled="false"
+            android:fontFamily="@font/century_gothic"
+            android:text="@string/lbl_male"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/tiet_female"
+            app:layout_constraintEnd_toStartOf="@+id/rb_male"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_description" />
+
+        <RadioButton
+            android:id="@+id/rb_male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="@{viewModel.checkedRadioLiveData == 0? true : false}"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:onClick="@{(it) -> viewModel.radioEvent(it)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tiet_male" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_female"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primaryColor"
+            android:enabled="false"
+            android:fontFamily="@font/century_gothic"
+            android:text="@string/lbl_female"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/tiet_other"
+            app:layout_constraintEnd_toStartOf="@+id/rb_female"
+            app:layout_constraintStart_toStartOf="@+id/tiet_male"
+            app:layout_constraintTop_toBottomOf="@+id/tiet_male" />
+
+        <RadioButton
+            android:id="@+id/rb_female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="@{viewModel.checkedRadioLiveData == 1? true : false}"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:onClick="@{(it) -> viewModel.radioEvent(it)}"
+            app:layout_constraintEnd_toEndOf="@+id/rb_male"
+            app:layout_constraintTop_toTopOf="@+id/tiet_female" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_other"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primaryColor"
+            android:enabled="false"
+            android:fontFamily="@font/century_gothic"
+            android:text="@string/lbl_other"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/btn_next"
+            app:layout_constraintEnd_toStartOf="@+id/rb_other"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="@+id/tiet_female"
+            app:layout_constraintTop_toBottomOf="@id/tiet_female" />
+
+        <RadioButton
+            android:id="@+id/rb_other"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:checked="@{viewModel.checkedRadioLiveData == 2? true : false}"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:onClick="@{(it) -> viewModel.radioEvent(it)}"
+            app:layout_constraintEnd_toEndOf="@+id/rb_female"
+            app:layout_constraintTop_toTopOf="@+id/tiet_other" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_next"
+            style="@style/CommonButton"
+            android:layout_width="match_parent"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/selector_button_color"
+            android:text="@string/lbl_next"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tiet_other" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,4 +1,4 @@
-package com.slicedwork.slicedwork.util
+package com.slicedwork.slicedwork.util.launcher
 
 import android.content.Context
 import android.net.Uri
@@ -12,7 +12,7 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import java.io.File
 
-class MediaUtil(private val registry: ActivityResultRegistry) : DefaultLifecycleObserver {
+class MediaLauncher(private val registry: ActivityResultRegistry) : DefaultLifecycleObserver {
 
     var imageUri: Uri? = null
     var pictureWasTaken: Boolean = false
@@ -21,11 +21,11 @@ class MediaUtil(private val registry: ActivityResultRegistry) : DefaultLifecycle
     lateinit var gallerylauncher: ActivityResultLauncher<String>
 
     override fun onCreate(owner: LifecycleOwner) {
-        gallerylauncher = registry.register("key", owner, GetContent()) {
+        gallerylauncher = registry.register("gallery", owner, GetContent()) {
             imageUri = it
         }
 
-        cameralauncher = registry.register("key", owner, TakePicture()) {
+        cameralauncher = registry.register("camera", owner, TakePicture()) {
             pictureWasTaken = it
         }
     }

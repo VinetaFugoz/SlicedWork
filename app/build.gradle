@@ -44,6 +44,9 @@ android {
         release {
             signingConfig signingConfigs.release
         }
+        debug {
+            pseudoLocalesEnabled true
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -113,8 +116,8 @@ dependencies {
     implementation "com.google.android.gms:play-services-auth-api-phone:$gmsPhoneVersion"
 
     // Firebase
-    implementation 'com.google.firebase:firebase-auth-ktx:21.0.2'
-    implementation 'com.google.firebase:firebase-firestore-ktx:24.0.2'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.1.0'
     implementation 'com.google.firebase:firebase-storage-ktx:20.0.1'
 
     // Junit

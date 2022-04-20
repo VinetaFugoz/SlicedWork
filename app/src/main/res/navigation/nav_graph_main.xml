@@ -19,32 +19,35 @@
             app:destination="@id/signUp" />
     </fragment>
 
-    <!--Sign In-->
+    <!--SignIn-->
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.slicedwork.slicedwork.presentation.fragment.SignInFragment"
         android:label=""
-        tools:layout="@layout/fragment_sign_in" />
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInFragment_to_signUp"
+            app:destination="@id/signUp" />
+    </fragment>
 
     <navigation
         android:id="@+id/signUp"
         app:startDestination="@id/getNameFragment">
-        <!--Get Name-->
+        <!--GetName-->
         <fragment
             android:id="@+id/getNameFragment"
-            android:name="com.slicedwork.slicedwork.presentation.fragment.GetNameFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.signup.GetNameFragment"
             android:label=""
             tools:layout="@layout/fragment_get_name">
             <action
                 android:id="@+id/action_getNameFragment_to_getBirthdayFragment"
                 app:destination="@id/getBirthdayFragment"
-                app:popUpTo="@id/getNameFragment"
-                app:popUpToInclusive="true" />
+                app:popUpToInclusive="false" />
         </fragment>
-        <!--Get Birthday-->
+        <!--GetBirthday-->
         <fragment
             android:id="@+id/getBirthdayFragment"
-            android:name="com.slicedwork.slicedwork.presentation.fragment.GetBirthdayFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.signup.GetBirthdayFragment"
             android:label=""
             tools:layout="@layout/fragment_get_birthday" >
             <argument
@@ -53,17 +56,101 @@
             <action
                 android:id="@+id/action_getBirthdayFragment_to_getGenderFragment"
                 app:destination="@id/getGenderFragment"
-                app:popUpTo="@id/getNameFragment"
-                app:popUpToInclusive="true" />
+                app:popUpToInclusive="false" />
         </fragment>
+        <!--GetGender-->
         <fragment
             android:id="@+id/getGenderFragment"
-            android:name="com.slicedwork.slicedwork.presentation.fragment.GetGenderFragment"
-            android:label="fragment_get_gender"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.signup.GetGenderFragment"
+            android:label=""
             tools:layout="@layout/fragment_get_gender" >
             <argument
                 android:name="user"
                 app:argType="com.slicedwork.slicedwork.domain.model.User" />
+            <action
+                android:id="@+id/action_getGenderFragment_to_getPhoneNumberFragment"
+                app:destination="@id/getPhoneNumberFragment"
+                app:popUpToInclusive="true" />
         </fragment>
+        <!--GetPhoneNumber-->
+        <fragment
+            android:id="@+id/getPhoneNumberFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.signup.GetPhoneNumberFragment"
+            android:label=""
+            tools:layout="@layout/fragment_get_phone_number" >
+            <argument
+                android:name="user"
+                app:argType="com.slicedwork.slicedwork.domain.model.User" />
+            <action
+                android:id="@+id/action_getPhoneNumberFragment_to_getNicknameFragment"
+                app:destination="@id/getNicknameFragment"
+                app:popUpToInclusive="true" />
+        </fragment>
+        <!--GetNickname-->
+        <fragment
+            android:id="@+id/getNicknameFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.signup.GetNicknameFragment"
+            android:label=""
+            tools:layout="@layout/fragment_get_nickname">
+            <action
+                android:id="@+id/action_getNicknameFragment_to_getEmailFragment"
+                app:destination="@id/getEmailFragment"
+                app:popUpToInclusive="true" />
+            <argument
+                android:name="user"
+                app:argType="com.slicedwork.slicedwork.domain.model.User" />
+        </fragment>
+        <!--GetEmail-->
+        <fragment
+            android:id="@+id/getEmailFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.signup.GetEmailFragment"
+            android:label=""
+            tools:layout="@layout/fragment_get_email">
+            <action
+                android:id="@+id/action_getEmailFragment_to_getPasswordFragment"
+                app:destination="@id/getPasswordFragment"
+                app:popUpToInclusive="true" />
+            <argument
+                android:name="user"
+                app:argType="com.slicedwork.slicedwork.domain.model.User" />
+        </fragment>
+        <!--Get Password-->
+        <fragment
+            android:id="@+id/getPasswordFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.signup.GetPasswordFragment"
+            android:label=""
+            tools:layout="@layout/fragment_get_password">
+            <argument
+                android:name="user"
+                app:argType="com.slicedwork.slicedwork.domain.model.User" />
+            <action
+                android:id="@+id/action_getPasswordFragment_to_getPictureFragment"
+                app:destination="@id/getPictureFragment" />
+        </fragment>
+        <!--FinishSignUp-->
+        <fragment
+            android:id="@+id/finishSignUpFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.signup.FinishSignUpFragment"
+            android:label=""
+            tools:layout="@layout/fragment_finish_sign_up" >
+            <argument
+                android:name="user"
+                app:argType="com.slicedwork.slicedwork.domain.model.User" />
+        </fragment>
+        <fragment
+            android:id="@+id/getPictureFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.signup.GetPictureFragment"
+            android:label="GetPictureFragment"
+            tools:layout="@layout/fragment_get_picture">
+            <action
+                android:id="@+id/action_getPictureFragment_to_finishSignUpFragment"
+                app:destination="@id/finishSignUpFragment"
+                app:popUpTo="@id/getNameFragment"
+                app:popUpToInclusive="true" />
+            <argument
+                android:name="user"
+                app:argType="com.slicedwork.slicedwork.domain.model.User" />
+        </fragment>
+        <!--GetPicture-->
     </navigation>
 </navigation>

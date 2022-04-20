@@ -30,17 +30,13 @@ class GreetingsFragment : Fragment() {
         return _binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
-        _activity.colorStatusBar(R.color.primaryDarkColor)
-        _activity.hideToolbar()
-    }
-
     private fun setProps(inflater: LayoutInflater) {
         _binding = FragmentGreetingsBinding.inflate(inflater)
         _binding.viewmodel = _viewModel
         _binding.lifecycleOwner = this.viewLifecycleOwner
         _activity = this.requireActivity() as MainActivity
+        _activity.colorStatusBar(R.color.primaryDarkColor)
+        _activity.hideToolbar()
     }
 
     private fun checkToStartAnimation() {

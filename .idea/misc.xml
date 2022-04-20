@@ -34,7 +34,9 @@
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/drawable/round_upper_corner.xml" value="0.30092592592592593" />
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/drawable/selector_button_color.xml" value="0.242" />
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/drawable/shape_background_gradient.xml" value="0.1725" />
+        <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/drawable/shape_bottom_line.xml" value="0.186" />
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/drawable/shape_circle.xml" value="0.2145" />
+        <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/drawable/shape_cutted_corner.xml" value="0.1485" />
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/drawable/shape_occupation_area.xml" value="0.2145" />
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/drawable/shape_round_corners.xml" value="0.17" />
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/drawable/shape_round_upper_corner.xml" value="0.2145" />
@@ -45,11 +47,20 @@
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/font/roboto_family.xml" value="0.37538461538461537" />
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_announced_vacancies.xml" value="0.5" />
+        <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_blank.xml" value="0.35104166666666664" />
+        <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_choose_camera_gallery_dialog.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_contacts.xml" value="0.346875" />
+        <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_finish_sign_up.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_get_birthday.xml" value="0.2722222222222222" />
-        <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_get_gender.xml" value="0.16354166666666667" />
-        <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_get_name.xml" value="0.25" />
-        <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_greetings.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_get_email.xml" value="0.35104166666666664" />
+        <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_get_gender.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_get_name.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_get_nick_email_password.xml" value="0.35104166666666664" />
+        <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_get_nickname.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_get_password.xml" value="0.35104166666666664" />
+        <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_get_phone_number.xml" value="0.34564102564102567" />
+        <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_get_picture.xml" value="0.35104166666666664" />
+        <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_greetings.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_home.xml" value="0.346875" />
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_login.xml" value="0.30925925925925923" />
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/fragment_register.xml" value="0.33" />
@@ -61,6 +72,7 @@
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/item_vacancy.xml" value="0.44398340248962653" />
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/layout_advertiser.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/layout_camera_gallery_button_sheet.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/layout_choose_camera_gallery_dialog.xml" value="0.17760416666666667" />
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/layout_details.xml" value="0.22" />
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/layout_location.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/VictorQueiroz/Projects/SlicedWork/app/src/main/res/layout/layout_sign_up_step_one.xml" value="0.33" />

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.slicedwork.slicedwork.presentation.viewmodel.signup.GetNameViewModel" />
+            type="com.slicedwork.slicedwork.presentation.viewmodel.signup.GetPhoneNumberViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +24,7 @@
             android:fontFamily="@font/century_gothic"
             android:gravity="center"
             android:paddingHorizontal="50dp"
-            android:text="@string/lbl_get_name_question"
+            android:text="@string/lbl_get_phone_number_question"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -43,60 +43,37 @@
             android:fontFamily="@font/century_gothic"
             android:gravity="center"
             android:paddingHorizontal="30dp"
-            android:text="@string/lbl_get_name_description"
+            android:text="@string/lbl_get_phone_number_description"
             android:textColor="@color/description"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/til_first_name"
+            app:layout_constraintBottom_toTopOf="@+id/til_phone_number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_question"
             tools:ignore="TextContrastCheck" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_first_name"
+            android:id="@+id/til_phone_number"
             android:layout_width="0dp"
             android:layout_height="?android:actionBarSize"
             app:boxBackgroundColor="@android:color/transparent"
             app:layout_constraintBottom_toTopOf="@+id/btn_next"
-            app:layout_constraintEnd_toStartOf="@id/til_last_name"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_description">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tiet_first_name"
+                android:id="@+id/tiet_phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:afterTextChanged="@{viewModel::afterTextChanged}"
                 android:focusedByDefault="true"
                 android:fontFamily="@font/century_gothic"
-                android:hint="@string/hint_first_name"
-                android:inputType="textPersonName"
-                android:text="@={viewModel.firstNameLiveData}" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_last_name"
-            android:layout_width="0dp"
-            android:layout_height="?android:actionBarSize"
-            android:layout_marginStart="8dp"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:layout_constraintBottom_toBottomOf="@+id/til_first_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/til_first_name"
-            app:layout_constraintTop_toTopOf="@+id/til_first_name">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tiet_last_name"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:afterTextChanged="@{viewModel::afterTextChanged}"
-                android:fontFamily="@font/century_gothic"
-                android:hint="@string/hint_last_name"
-                android:inputType="textPersonName"
-                android:text="@={viewModel.lastNameLiveData}"
-                tools:ignore="TextContrastCheck,TextContrastCheck" />
+                android:hint="@string/hint_phone_number"
+                android:inputType="number"
+                android:maxLength="11"
+                android:text="@={viewModel.phoneNumberLiveData}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -111,6 +88,6 @@
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_first_name" />
+            app:layout_constraintTop_toBottomOf="@id/til_phone_number" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
