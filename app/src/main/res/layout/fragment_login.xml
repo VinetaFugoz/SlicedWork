@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.slicedwork.slicedwork.presentation.viewmodel.RegisterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        tools:context=".presentation.fragment.GreetingsFragment">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/century_gothic"
+            android:gravity="center"
+            android:paddingHorizontal="50dp"
+            android:text="@string/sign_in_title"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tv_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/century_gothic"
+            android:gravity="center"
+            android:paddingHorizontal="30dp"
+            android:text="@string/sign_in_description"
+            android:textColor="@color/description"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/til_email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:ignore="TextContrastCheck" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_email"
+            android:layout_width="0dp"
+            android:layout_height="?android:actionBarSize"
+            android:layout_marginBottom="16dp"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:layout_constraintBottom_toTopOf="@id/til_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_description">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:afterTextChanged="@{viewModel::afterTextChanged}"
+                android:focusedByDefault="true"
+                android:fontFamily="@font/century_gothic"
+                android:hint="@string/sign_in_email"
+                android:inputType="textEmailAddress"
+                android:text="@={viewModel.emailLiveData}"
+                app:hintTextColor="@color/secondaryColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_password"
+            android:layout_width="0dp"
+            android:layout_height="?android:actionBarSize"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_sign_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:afterTextChanged="@{viewModel::afterTextChanged}"
+                android:focusedByDefault="true"
+                android:fontFamily="@font/century_gothic"
+                android:hint="@string/sign_in_password"
+                android:inputType="textPassword"
+                android:text="@={viewModel.passwordLiveData}"
+                app:hintTextColor="@color/secondaryColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_sign_in"
+            style="@style/CommonButton"
+            android:layout_width="match_parent"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/selector_button_color"
+            android:enabled="@{viewModel.enabledNextLiveData}"
+            android:text="@string/greetings_sign_in"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_password" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
