@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.slicedwork.slicedwork.presentation.viewmodel.signup.GetPictureViewModel" />
+            type="com.slicedwork.slicedwork.presentation.viewmodel.registeruser.GetPictureViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,17 +17,17 @@
         tools:context=".presentation.fragment.GreetingsFragment">
 
         <TextView
-            android:id="@+id/tv_question"
+            android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/century_gothic"
             android:gravity="center"
             android:paddingHorizontal="50dp"
-            android:text="@string/lbl_get_picture_question"
+            android:text="@string/get_picture_title"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/tv_description"
+            app:layout_constraintBottom_toTopOf="@id/tv_subtitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,20 +35,20 @@
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/tv_description"
+            android:id="@+id/tv_subtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:fontFamily="@font/century_gothic"
             android:gravity="center"
             android:paddingHorizontal="30dp"
-            android:text="@string/lbl_get_picture_description"
+            android:text="@string/get_picture_subtitle"
             android:textColor="@color/description"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/iv_picture"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_question"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
             tools:ignore="TextContrastCheck" />
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -61,7 +61,7 @@
             app:layout_constraintBottom_toTopOf="@+id/btn_next"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_subtitle" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_add"
@@ -83,7 +83,7 @@
             android:layout_width="match_parent"
             android:layout_marginTop="80dp"
             android:background="@drawable/selector_button_color"
-            android:text="@string/lbl_next"
+            android:text="@string/get_picture_next"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

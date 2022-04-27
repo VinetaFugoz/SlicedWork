@@ -1,12 +1,12 @@
-package com.slicedwork.slicedwork.presentation.viewmodel.signup
+package com.slicedwork.slicedwork.presentation.viewmodel.registeruser
 
 import android.text.Editable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.slicedwork.slicedwork.util.validator.validateEmail
+import com.slicedwork.slicedwork.util.validator.UserValidator
 import javax.inject.Inject
 
-class GetEmailViewModel @Inject constructor(): ViewModel() {
+class GetEmailViewModel @Inject constructor() : ViewModel() {
     var enabledNextLiveData: MutableLiveData<Boolean> = MutableLiveData()
     var emailLiveData: MutableLiveData<String> = MutableLiveData()
 
@@ -17,6 +17,6 @@ class GetEmailViewModel @Inject constructor(): ViewModel() {
 
     fun afterTextChanged(editable: Editable) {
         enabledNextLiveData.value =
-            validateEmail(emailLiveData.value.toString())
+            UserValidator().validateEmail(emailLiveData.value.toString())
     }
 }

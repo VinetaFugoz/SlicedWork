@@ -4,21 +4,21 @@ import android.net.Uri
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import com.slicedwork.slicedwork.domain.model.User
 import javax.inject.Inject
 
-class FirebaseUserDataSourceImpl @Inject constructor(
+class FirebaseUserDataSource @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val firebaseFirestore: FirebaseFirestore,
-    private var storageReference: StorageReference,
 ) : UserDataSource {
-    override suspend fun registerUser(user: User): Boolean {
+    override suspend fun registerUser(user: User) {
         authUser(user)
         storagePicture(user)
         createUserCollection(user)
+    }
 
-        return true
+    override suspend fun loginUser(email: String, password: String) {
+        firebaseAuth.signInWithEmailAndPassword(email, password)
     }
 
     private fun authUser(user: User) {
@@ -26,7 +26,7 @@ class FirebaseUserDataSourceImpl @Inject constructor(
     }
 
     private fun storagePicture(user: User) {
-        storageReference = FirebaseStorage.getInstance().getReference("/images/${user.uuid}")
+        val storageReference = FirebaseStorage.getInstance().getReference("/images/${user.uuid}")
         storageReference.putFile(Uri.parse(user.picture))
     }
 

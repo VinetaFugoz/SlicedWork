@@ -1,9 +1,6 @@
-package com.slicedwork.slicedwork.presentation.viewmodel.signup
+package com.slicedwork.slicedwork.presentation.viewmodel.registeruser
 
-import android.net.Uri
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.slicedwork.slicedwork.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

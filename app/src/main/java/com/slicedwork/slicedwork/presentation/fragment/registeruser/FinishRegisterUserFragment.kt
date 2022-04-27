@@ -1,4 +1,4 @@
-package com.slicedwork.slicedwork.presentation.fragment.register
+package com.slicedwork.slicedwork.presentation.fragment.registeruser
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,19 +7,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.slicedwork.slicedwork.databinding.FragmentFinishRegisterBinding
+import com.slicedwork.slicedwork.databinding.FragmentFinishRegisterUserBinding
 import com.slicedwork.slicedwork.domain.model.User
 import com.slicedwork.slicedwork.presentation.activity.MainActivity
-import com.slicedwork.slicedwork.presentation.viewmodel.register.FinishRegisterViewModel
+import com.slicedwork.slicedwork.presentation.viewmodel.registeruser.FinishRegisterUserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FinishRegisterFragment : Fragment() {
+class FinishRegisterUserFragment : Fragment() {
 
-    private lateinit var _binding: FragmentFinishRegisterBinding
+    private lateinit var _binding: FragmentFinishRegisterUserBinding
     private lateinit var _activity: MainActivity
     private lateinit var _user: User
-    private val _viewModel: FinishRegisterViewModel by viewModels()
+    private val _viewModel: FinishRegisterUserViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +38,7 @@ class FinishRegisterFragment : Fragment() {
     private fun getUser() = arguments?.get("user") as User
 
     private fun setProps(inflater: LayoutInflater) {
-        _binding = FragmentFinishRegisterBinding.inflate(inflater)
+        _binding = FragmentFinishRegisterUserBinding.inflate(inflater)
         _activity = requireActivity() as MainActivity
         _activity.hideToolbar()
         _user = getUser()

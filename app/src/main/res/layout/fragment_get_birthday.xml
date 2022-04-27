@@ -10,17 +10,17 @@
     tools:context=".presentation.fragment.GreetingsFragment">
 
     <TextView
-        android:id="@+id/tv_question"
+        android:id="@+id/tv_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/century_gothic"
         android:gravity="center"
         android:paddingHorizontal="50dp"
-        android:text="@string/lbl_get_birthday_question"
+        android:text="@string/get_birthday_title"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/tv_description"
+        app:layout_constraintBottom_toTopOf="@id/tv_subtitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,29 +28,29 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/tv_description"
+        android:id="@+id/tv_subtitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/century_gothic"
         android:gravity="center"
         android:paddingHorizontal="30dp"
-        android:text="@string/lbl_get_birthday_description"
+        android:text="@string/get_birthday_subtitle"
         android:textColor="@color/description"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/llc_datapicker"
+        app:layout_constraintBottom_toTopOf="@+id/llc_data_picker"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_question"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
         tools:ignore="TextContrastCheck" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/llc_datapicker"
+        android:id="@+id/llc_data_picker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/btn_next"
-        app:layout_constraintTop_toBottomOf="@+id/tv_description"
+        app:layout_constraintTop_toBottomOf="@+id/tv_subtitle"
         tools:layout_editor_absoluteX="16dp">
 
         <NumberPicker
@@ -76,9 +76,9 @@
         android:layout_width="match_parent"
         android:layout_marginTop="16dp"
         android:background="@drawable/selector_button_color"
-        android:text="@string/lbl_next"
+        android:text="@string/get_birthday_next"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llc_datapicker" />
+        app:layout_constraintTop_toBottomOf="@+id/llc_data_picker" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.slicedwork.slicedwork.presentation.viewmodel.RegisterViewModel" />
+            type="com.slicedwork.slicedwork.presentation.viewmodel.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,11 +24,11 @@
             android:fontFamily="@font/century_gothic"
             android:gravity="center"
             android:paddingHorizontal="50dp"
-            android:text="@string/sign_in_title"
+            android:text="@string/login_title"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/tv_description"
+            app:layout_constraintBottom_toTopOf="@id/tv_subtitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,33 +36,33 @@
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/tv_description"
+            android:id="@+id/tv_subtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:fontFamily="@font/century_gothic"
             android:gravity="center"
             android:paddingHorizontal="30dp"
-            android:text="@string/sign_in_description"
+            android:text="@string/login_subtitle"
             android:textColor="@color/description"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/til_email"
+            app:layout_constraintBottom_toTopOf="@+id/til_task"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
             tools:ignore="TextContrastCheck" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_email"
+            android:id="@+id/til_task"
             android:layout_width="0dp"
             android:layout_height="?android:actionBarSize"
             android:layout_marginBottom="16dp"
             app:boxBackgroundColor="@android:color/transparent"
-            app:layout_constraintBottom_toTopOf="@id/til_password"
+            app:layout_constraintBottom_toTopOf="@id/til_description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_description">
+            app:layout_constraintTop_toBottomOf="@id/tv_subtitle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tiet_email"
@@ -71,7 +71,7 @@
                 android:afterTextChanged="@{viewModel::afterTextChanged}"
                 android:focusedByDefault="true"
                 android:fontFamily="@font/century_gothic"
-                android:hint="@string/sign_in_email"
+                android:hint="@string/login_email"
                 android:inputType="textEmailAddress"
                 android:text="@={viewModel.emailLiveData}"
                 app:hintTextColor="@color/secondaryColor" />
@@ -79,15 +79,15 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_password"
+            android:id="@+id/til_description"
             android:layout_width="0dp"
             android:layout_height="?android:actionBarSize"
             app:boxBackgroundColor="@android:color/transparent"
-            app:layout_constraintBottom_toTopOf="@+id/btn_sign_in"
+            app:layout_constraintBottom_toTopOf="@+id/btn_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_email">
+            app:layout_constraintTop_toBottomOf="@id/til_task">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tiet_password"
@@ -96,7 +96,7 @@
                 android:afterTextChanged="@{viewModel::afterTextChanged}"
                 android:focusedByDefault="true"
                 android:fontFamily="@font/century_gothic"
-                android:hint="@string/sign_in_password"
+                android:hint="@string/login_password"
                 android:inputType="textPassword"
                 android:text="@={viewModel.passwordLiveData}"
                 app:hintTextColor="@color/secondaryColor" />
@@ -104,16 +104,16 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_sign_in"
+            android:id="@+id/btn_login"
             style="@style/CommonButton"
             android:layout_width="match_parent"
             android:layout_marginTop="80dp"
             android:background="@drawable/selector_button_color"
             android:enabled="@{viewModel.enabledNextLiveData}"
-            android:text="@string/greetings_sign_in"
+            android:text="@string/greetings_login"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_password" />
+            app:layout_constraintTop_toBottomOf="@id/til_description" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -9,9 +9,4 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GreetingsViewModel @Inject constructor() : ViewModel() {
-    fun goToSignIn(view: View) = view.findNavController()
-        .navigate(GreetingsFragmentDirections.actionGreetingsFragmentToSignInFragment())
-
-    fun goToSignUp(view: View) = view.findNavController()
-        .navigate(GreetingsFragmentDirections.actionGreetingsFragmentToSignUp())
 }

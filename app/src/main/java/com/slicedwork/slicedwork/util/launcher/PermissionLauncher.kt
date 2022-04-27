@@ -27,7 +27,7 @@ class PermissionLauncher(private val registry: ActivityResultRegistry): DefaultL
         return true
     }
 
-    fun requestPermission(permissions: Array<String>, context: Context) {
+    fun requestPermissions(permissions: Array<String>, context: Context) {
         if (hasThesePermissions(permissions, context))
             Log.i("Permissions", "$permissions is already granted")
         else

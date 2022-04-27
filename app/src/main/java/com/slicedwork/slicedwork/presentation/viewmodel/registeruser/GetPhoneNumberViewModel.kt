@@ -1,9 +1,9 @@
-package com.slicedwork.slicedwork.presentation.viewmodel.signup
+package com.slicedwork.slicedwork.presentation.viewmodel.registeruser
 
 import android.text.Editable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.slicedwork.slicedwork.util.validator.validatePhoneNumber
+import com.slicedwork.slicedwork.util.validator.UserValidator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -20,6 +20,6 @@ class GetPhoneNumberViewModel @Inject constructor(): ViewModel() {
 
     fun afterTextChanged(editable: Editable) {
         enabledNextLiveData.value =
-            validatePhoneNumber(phoneNumberLiveData.value.toString())
+            UserValidator().validatePhoneNumber(phoneNumberLiveData.value.toString())
     }
 }

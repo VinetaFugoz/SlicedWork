@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="viewmodel"
+            name="viewModel"
             type="com.slicedwork.slicedwork.presentation.viewmodel.GreetingsViewModel" />
     </data>
 
@@ -46,7 +46,7 @@
         <TextView
             android:id="@+id/tv_s"
             style="@style/AppNameLetter"
-            android:text="@string/lbl_s"
+            android:text="@string/greetings_s"
             android:textColor="@color/secondaryColor"
             app:layout_constraintEnd_toStartOf="@id/tv_l"
             app:layout_constraintHorizontal_chainStyle="packed"
@@ -56,7 +56,7 @@
         <TextView
             android:id="@+id/tv_l"
             style="@style/AppNameLetter"
-            android:text="@string/lbl_l"
+            android:text="@string/greetings_l"
             android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@id/tv_i"
             app:layout_constraintStart_toEndOf="@+id/tv_s"
@@ -65,7 +65,7 @@
         <TextView
             android:id="@+id/tv_i"
             style="@style/AppNameLetter"
-            android:text="@string/lbl_i"
+            android:text="@string/greetings_i"
             android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@id/tv_c"
             app:layout_constraintStart_toEndOf="@+id/tv_l"
@@ -74,7 +74,7 @@
         <TextView
             android:id="@+id/tv_c"
             style="@style/AppNameLetter"
-            android:text="@string/lbl_c"
+            android:text="@string/greetings_c"
             android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@id/tv_e"
             app:layout_constraintStart_toEndOf="@+id/tv_i"
@@ -83,7 +83,7 @@
         <TextView
             android:id="@+id/tv_e"
             style="@style/AppNameLetter"
-            android:text="@string/lbl_e"
+            android:text="@string/greetings_e"
             android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@id/tv_d"
             app:layout_constraintStart_toEndOf="@+id/tv_c"
@@ -92,7 +92,7 @@
         <TextView
             android:id="@+id/tv_d"
             style="@style/AppNameLetter"
-            android:text="@string/lbl_d"
+            android:text="@string/greetings_d"
             android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@id/tv_w"
             app:layout_constraintStart_toEndOf="@+id/tv_e"
@@ -101,7 +101,7 @@
         <TextView
             android:id="@+id/tv_w"
             style="@style/AppNameLetter"
-            android:text="@string/lbl_w"
+            android:text="@string/greetings_w"
             android:textColor="@color/secondaryColor"
             app:layout_constraintEnd_toStartOf="@id/tv_o"
             app:layout_constraintStart_toEndOf="@+id/tv_d"
@@ -110,7 +110,7 @@
         <TextView
             android:id="@+id/tv_o"
             style="@style/AppNameLetter"
-            android:text="@string/lbl_o"
+            android:text="@string/greetings_o"
             android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@id/tv_r"
             app:layout_constraintStart_toEndOf="@+id/tv_w"
@@ -119,7 +119,7 @@
         <TextView
             android:id="@+id/tv_r"
             style="@style/AppNameLetter"
-            android:text="@string/lbl_r"
+            android:text="@string/greetings_r"
             android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@id/tv_k"
             app:layout_constraintStart_toEndOf="@+id/tv_o"
@@ -128,7 +128,7 @@
         <TextView
             android:id="@+id/tv_k"
             style="@style/AppNameLetter"
-            android:text="@string/lbl_k"
+            android:text="@string/greetings_k"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/iv_logo"
             app:layout_constraintStart_toEndOf="@+id/tv_r"
@@ -142,7 +142,7 @@
             android:fontFamily="@font/century_gothic"
             android:gravity="center"
             android:paddingHorizontal="50dp"
-            android:text="@string/lbl_greetings_title"
+            android:text="@string/greetings_title"
             android:textColor="@color/white"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -152,13 +152,13 @@
             app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
         <TextView
-            android:id="@+id/tv_description"
+            android:id="@+id/tv_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/century_gothic"
             android:gravity="center"
             android:paddingHorizontal="30dp"
-            android:text="@string/lbl_greetings_subtitle"
+            android:text="@string/greetings_subtitle"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -166,28 +166,26 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_sign_in"
+            android:id="@+id/btn_login"
             style="@style/CommonButton"
             android:layout_width="0dp"
             android:layout_marginBottom="8dp"
             android:background="@color/secondaryColor"
-            android:onClick="@{(it) -> viewmodel.goToSignIn(it)}"
-            android:text="@string/lbl_sign_in"
+            android:text="@string/greetings_login"
             android:textColor="@color/primaryTextColor"
-            app:layout_constraintBottom_toTopOf="@+id/btn_sign_up"
-            app:layout_constraintEnd_toEndOf="@+id/btn_sign_up"
+            app:layout_constraintBottom_toTopOf="@+id/btn_register"
+            app:layout_constraintEnd_toEndOf="@+id/btn_register"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/btn_sign_up" />
+            app:layout_constraintStart_toStartOf="@+id/btn_register" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_sign_up"
+            android:id="@+id/btn_register"
             style="@style/CommonButton"
             android:layout_width="0dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="84dp"
             android:background="@color/white"
-            android:onClick="@{(it) -> viewmodel.goToSignUp(it)}"
-            android:text="@string/lbl_sign_up"
+            android:text="@string/greetings_register"
             android:textColor="@color/secondaryColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

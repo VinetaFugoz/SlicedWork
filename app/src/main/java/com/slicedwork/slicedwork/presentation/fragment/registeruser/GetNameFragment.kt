@@ -1,4 +1,4 @@
-package com.slicedwork.slicedwork.presentation.fragment.register
+package com.slicedwork.slicedwork.presentation.fragment.registeruser
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import com.slicedwork.slicedwork.R
 import com.slicedwork.slicedwork.databinding.FragmentGetNameBinding
 import com.slicedwork.slicedwork.domain.model.User
 import com.slicedwork.slicedwork.presentation.activity.MainActivity
-import com.slicedwork.slicedwork.presentation.viewmodel.register.GetNameViewModel
+import com.slicedwork.slicedwork.presentation.viewmodel.registeruser.GetNameViewModel
 import com.slicedwork.slicedwork.util.extensions.focusAndShowSoftKeyboard
 import com.slicedwork.slicedwork.util.extensions.hideKeyBoard
 import java.util.*

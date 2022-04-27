@@ -1,4 +1,4 @@
-package com.slicedwork.slicedwork.presentation.fragment.register
+package com.slicedwork.slicedwork.presentation.fragment.registeruser
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.slicedwork.slicedwork.databinding.FragmentGetPasswordBinding
 import com.slicedwork.slicedwork.domain.model.User
-import com.slicedwork.slicedwork.presentation.viewmodel.register.GetPasswordViewModel
+import com.slicedwork.slicedwork.presentation.viewmodel.registeruser.GetPasswordViewModel
 import com.slicedwork.slicedwork.util.extensions.focusAndShowSoftKeyboard
 import com.slicedwork.slicedwork.util.extensions.hideKeyBoard
 

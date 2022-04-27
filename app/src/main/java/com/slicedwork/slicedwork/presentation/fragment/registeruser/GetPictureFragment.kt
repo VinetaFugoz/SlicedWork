@@ -1,4 +1,4 @@
-package com.slicedwork.slicedwork.presentation.fragment.register
+package com.slicedwork.slicedwork.presentation.fragment.registeruser
 
 import android.Manifest
 import android.net.Uri

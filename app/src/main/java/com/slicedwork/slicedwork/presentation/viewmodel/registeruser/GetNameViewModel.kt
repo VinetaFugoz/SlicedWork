@@ -1,10 +1,9 @@
-package com.slicedwork.slicedwork.presentation.viewmodel.signup
+package com.slicedwork.slicedwork.presentation.viewmodel.registeruser
 
 import android.text.Editable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.slicedwork.slicedwork.util.validator.validateFirstName
-import com.slicedwork.slicedwork.util.validator.validateLastName
+import com.slicedwork.slicedwork.util.validator.UserValidator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -24,8 +23,10 @@ class GetNameViewModel @Inject constructor() : ViewModel() {
     }
 
     fun afterTextChanged(editable: Editable) {
-        enabledNextLiveData.value =
-            validateFirstName(firstNameLiveData.value.toString()) &&
-                    validateLastName(lastNameLiveData.value.toString())
+        UserValidator().run {
+            enabledNextLiveData.value =
+                validateFirstName(firstNameLiveData.value.toString()) &&
+                        validateLastName(lastNameLiveData.value.toString())
+        }
     }
 }

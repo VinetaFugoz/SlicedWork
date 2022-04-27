@@ -3,22 +3,30 @@
     <string name="app_name">SlicedWork</string>
 
     <!--Greetings-->
-    <string name="lbl_sign_in">Entrar</string>
-    <string name="lbl_sign_up">Registrar-se</string>
+    <string name="greetings_title">Bem-vindo ao SlicedWork</string>
+    <string name="greetings_subtitle">A maneira mais simples de encontrar um trabalho!</string>
+    <string name="greetings_login">Entrar</string>
+    <string name="greetings_register">Registrar-se</string>
 
-    <!--Get Name-->
-    <string name="lbl_greetings_title">Bem-vindo ao SlicedWork</string>
-    <string name="lbl_greetings_subtitle">A maneira mais simples de encontrar um trabalho!</string>
-    <string name="lbl_get_name_question">Qual é o seu nome?</string>
-    <string name="lbl_next">Próximo</string>
-    <string name="hint_last_name">Sobrenome</string>
-    <string name="hint_first_name">Nome</string>
-    <string name="lbl_get_name_description">Insira o nome que você usa na vida real.</string>
+    <!--Login-->
+    <string name="login_title">Entrar no aplicativo</string>
+    <string name="login_subtitle">Insira seu email e senha para acessar o aplicativo.</string>
+    <string name="login_password">Senha</string>
+    <string name="login_sign_in">Entrar</string>
 
-    <!--Get Birthday-->
-    <string name="lbl_get_birthday_question">Quando você nasceu?</string>
-    <string name="lbl_get_birthday_description">Insira sua data de aniversário.</string>
-    <string-array name="months">
+    <!--GetName-->
+    <string name="get_name_title">Qual é o seu nome?</string>
+    <string name="get_name_next">Próximo</string>
+    <string name="get_name_last_name">Sobrenome</string>
+    <string name="get_name_first_name">Nome</string>
+    <string name="get_name_subtitle">Insira o nome que você usa na vida real.</string>
+
+    <!--GetBirthday-->
+    <string name="get_birthday_title">Quando você nasceu?</string>
+    <string name="get_birthday_subtitle">Insira sua data de aniversário.</string>
+    <string name="get_birthday_next">Próximo</string>
+
+    <string-array name="get_birthday_months">
         <item>Janeiro</item>
         <item>Fevereiro</item>
         <item>Março</item>
@@ -33,36 +41,57 @@
         <item>Dezembro</item>
     </string-array>
 
-    <!--Get Gender-->
-    <string name="lbl_get_gender_question">Qual é o seu gênero?</string>
-    <string name="lbl_get_gender_description">Escolha o gênero que você se identifica.</string>
-    <string name="lbl_male">Masculino</string>
-    <string name="lbl_female">Feminino</string>
-    <string name="lbl_other">Outro</string>
+    <!--GetGender-->
+    <string name="get_gender_title">Qual é o seu gênero?</string>
+    <string name="get_gender_subtitle">Escolha o gênero que você se identifica.</string>
+    <string name="get_gender_male">Masculino</string>
+    <string name="get_gender_female">Feminino</string>
+    <string name="get_gender_other">Outro</string>
+    <string name="get_gender_next">Próximo</string>
 
-    <!--Get Phone Number-->
-    <string name="lbl_get_phone_number_question">Qual é o seu número de telefone?</string>
-    <string name="lbl_get_phone_number_description">Digite seu número de telefone. Não se esqueça do DDD.</string>
-    <string name="hint_phone_number">Telefone</string>
+    <!--GetPhoneNumber-->
+    <string name="get_phone_number_title">Qual é o seu número de telefone?</string>
+    <string name="get_phone_number_subtitle">Digite seu número de telefone. Não se esqueça do DDD.</string>
+    <string name="get_phone_number_phone_number">Telefone</string>
+    <string name="get_phone_number_next">Próximo</string>
 
-    <!--Get Nickname-->
-    <string name="lbl_get_nickname_question">Qual é o seu nickname?</string>
-    <string name="lbl_get_nickname_description">Digite um nickname único que você goste.</string>
+    <!--GetUsername-->
+    <string name="get_username_title">Você tem um nome de usuário?</string>
+    <string name="get_username_subtitle">Digite um nome de usuário único que você goste.</string>
+    <string name="get_username_nickname">Nome de usuário</string>
+    <string name="get_username_next">Próximo</string>
 
-    <!--Get Email-->
-    <string name="lbl_get_email_question">Qual é o seu email?</string>
-    <string name="lbl_get_email_description">Digite um email que você costuma usar.</string>
+    <!--GetEmail-->
+    <string name="get_email_title">Qual é o seu email?</string>
+    <string name="get_email_subtitle">Digite um email que você costuma usar.</string>
+    <string name="get_email_next">Próximo</string>
 
-    <!--Get Password-->
-    <string name="lbl_get_password_question">Qual é a sua senha?</string>
-    <string name="lbl_get_password_description">Digite uma senha. Não vai esquecer ein.</string>
-    <string name="hint_password">Senha</string>
+    <!--GetPassword-->
+    <string name="get_password_title">Qual é a sua senha?</string>
+    <string name="get_password_subtitle">Digite uma senha. Não vai esquecer ein.</string>
+    <string name="get_password_password">Senha</string>
+    <string name="get_password_next">Próximo</string>
 
     <!--GetPicture-->
-    <string name="lbl_get_picture_question">Qual vai ser sua foto de perfil?</string>
-    <string name="lbl_get_picture_description">Tire uma foto ou escolha uma da sua galeria.</string>
-    <string name="lbl_take_a_picture">Tirar uma foto</string>
-    <string name="lbl_choose_from_gallery">Escolher uma foto da galeria</string>
-    <string name="lbl_finished_signup">Registro completo, clique aqui para ir para finalizar!</string>
-    <string name="lbl_home">Finalizar</string>
+    <string name="get_picture_title">Qual vai ser sua foto de perfil?</string>
+    <string name="get_picture_subtitle">Tire uma foto ou escolha uma da sua galeria.</string>
+    <string name="get_picture_next">Próximo</string>
+
+    <!--ChooseCameraGallery-->
+    <string name="choose_camera_gallery_take_a_picture">Tirar uma foto</string>
+    <string name="choose_camera_gallery_choose_from_gallery">Escolher uma foto da galeria</string>
+
+    <!--FinishRegister-->
+    <string name="finish_register_title">Registro completo, clique aqui para ir para finalizar!</string>
+    <string name="finish_register_finish">Finalizar</string>
+    <string name="get_details_title">Detalhes da vaga</string>
+    <string name="get_details_subtitle">Insira os detalhes da vaga.</string>
+    <string name="get_details_task">Tarefa</string>
+    <string name="get_details_description">Descrição</string>
+    <string name="get_details_next">Próximo</string>
+    <string name="get_details_task_error">A tarefa não foi inserida.</string>
+    <string name="get_details_occupation_area">Área de atuação</string>
+    <string name="get_details_occupation_area_error">A area de atuação não foi inserida.</string>
+    <string name="get_details_price">Preço</string>
+    <string name="get_details_price_error">O preço não foi inserido.</string>
 </resources>

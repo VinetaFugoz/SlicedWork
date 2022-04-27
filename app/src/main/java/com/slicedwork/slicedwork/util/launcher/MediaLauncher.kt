@@ -23,6 +23,7 @@ class MediaLauncher(private val registry: ActivityResultRegistry) : DefaultLifec
     override fun onCreate(owner: LifecycleOwner) {
         gallerylauncher = registry.register("gallery", owner, GetContent()) {
             imageUri = it
+            pictureWasTaken = true
         }
 
         cameralauncher = registry.register("camera", owner, TakePicture()) {

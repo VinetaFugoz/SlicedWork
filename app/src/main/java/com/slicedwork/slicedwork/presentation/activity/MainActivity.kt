@@ -41,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
     }
 
+    override fun onBackPressed() {}
+
     private fun getNavHostFragment(): NavHostFragment = supportFragmentManager
         .findFragmentById(binding.navHostFragmentContainer.id) as NavHostFragment
 

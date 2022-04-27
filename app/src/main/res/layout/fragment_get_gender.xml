@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.slicedwork.slicedwork.presentation.viewmodel.signup.GetGenderViewModel" />
+            type="com.slicedwork.slicedwork.presentation.viewmodel.registeruser.GetGenderViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,16 +18,16 @@
         tools:context=".presentation.fragment.GreetingsFragment">
 
         <TextView
-            android:id="@+id/tv_question"
+            android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/century_gothic"
             android:gravity="center"
-            android:text="@string/lbl_get_gender_question"
+            android:text="@string/get_gender_title"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/tv_description"
+            app:layout_constraintBottom_toTopOf="@id/tv_subtitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,19 +35,19 @@
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/tv_description"
+            android:id="@+id/tv_subtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:fontFamily="@font/century_gothic"
             android:gravity="center"
-            android:text="@string/lbl_get_gender_description"
+            android:text="@string/get_gender_subtitle"
             android:textColor="@color/description"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@id/tiet_male"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_question"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
             tools:ignore="TextContrastCheck" />
 
 
@@ -58,13 +58,13 @@
             android:backgroundTint="@color/primaryColor"
             android:enabled="false"
             android:fontFamily="@font/century_gothic"
-            android:text="@string/lbl_male"
+            android:text="@string/get_gender_male"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/tiet_female"
             app:layout_constraintEnd_toStartOf="@+id/rb_male"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_description" />
+            app:layout_constraintTop_toBottomOf="@id/tv_subtitle" />
 
         <RadioButton
             android:id="@+id/rb_male"
@@ -84,7 +84,7 @@
             android:backgroundTint="@color/primaryColor"
             android:enabled="false"
             android:fontFamily="@font/century_gothic"
-            android:text="@string/lbl_female"
+            android:text="@string/get_gender_female"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/tiet_other"
@@ -110,7 +110,7 @@
             android:backgroundTint="@color/primaryColor"
             android:enabled="false"
             android:fontFamily="@font/century_gothic"
-            android:text="@string/lbl_other"
+            android:text="@string/get_gender_other"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@id/btn_next"
@@ -136,7 +136,7 @@
             android:layout_width="match_parent"
             android:layout_marginTop="80dp"
             android:background="@drawable/selector_button_color"
-            android:text="@string/lbl_next"
+            android:text="@string/get_gender_next"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

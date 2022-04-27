@@ -1,60 +1,110 @@
 package com.slicedwork.slicedwork.presentation.fragment.registervacancy
 
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.slicedwork.slicedwork.R
+import com.slicedwork.slicedwork.databinding.FragmentGetDetailsBinding
+import com.slicedwork.slicedwork.domain.model.Vacancy
+import com.slicedwork.slicedwork.presentation.viewmodel.registervacancy.GetDetailsViewModel
+import com.slicedwork.slicedwork.util.validator.VacancyValidator
+import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [GetDetailsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class GetDetailsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var _binding: FragmentGetDetailsBinding
+    private val _viewModel: GetDetailsViewModel by viewModels()
+    private lateinit var _vacancy: Vacancy
+    private lateinit var _vacancyValidator: VacancyValidator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_get_details, container, false)
+    ): View {
+        setProps(inflater)
+        return _binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment GetDetailsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            GetDetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onResume() {
+        super.onResume()
+        setListeners()
+    }
+
+    private fun setProps(inflater: LayoutInflater) {
+        _binding = FragmentGetDetailsBinding.inflate(inflater)
+        _binding.viewModel = _viewModel
+        _binding.lifecycleOwner = viewLifecycleOwner
+        val occupationAreas = resources.getStringArray(R.array.get_details_occupation_areas)
+        val occupationAreaAdapter = ArrayAdapter(
+            this.requireContext(),
+            R.layout.support_simple_spinner_dropdown_item,
+            occupationAreas
+        )
+        _binding.actvOccupationArea.setAdapter(occupationAreaAdapter)
+        _vacancyValidator = VacancyValidator()
+    }
+
+    private fun setListeners() {
+        _binding.run {
+            btnNext.setOnClickListener { nextEvent() }
+        }
+    }
+
+    private fun nextEvent() {
+        if (validateFields()) {
+            createVacancy()
+            goToGetAddress()
+        }
+    }
+
+    private fun validateFields(): Boolean {
+        var isValidate = true
+
+        _viewModel.run {
+            _binding.run {
+                if (taskErrorLiveData.value == true) {
+                    tilTask.error = getString(R.string.get_details_task_error)
+                    isValidate = false
+                }
+                if (occupationAreaErrorLiveData.value == true) {
+                    tilOccupationArea.error = getString(R.string.get_details_task_error)
+                    isValidate = false
+                }
+                if (priceErrorLiveData.value == true) {
+                    tilPrice.error = getString(R.string.get_details_task_error)
+                    isValidate = false
                 }
             }
+        }
+
+        return isValidate
+    }
+
+    private fun createVacancy() {
+        _binding.run {
+            if (Firebase.auth.currentUser != null)
+                _vacancy = Vacancy(
+                    id = UUID.randomUUID().toString(),
+                    uuid = Firebase.auth.currentUser!!.uid,
+                    task = tietTask.text.toString(),
+                    description = tietDescription.text.toString(),
+                    occupationArea = actvOccupationArea.text.toString(),
+                    picture = Uri.parse(ivPicture.drawable.toString()).toString()
+                )
+        }
+    }
+
+    private fun goToGetAddress() {
+        findNavController().navigate(
+            GetDetailsFragmentDirections.actionGetDetailsFragmentToGetAddressFragment(_vacancy)
+        )
     }
 }

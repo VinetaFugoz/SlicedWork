@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/shape_background_gradient"
-    tools:context=".presentation.fragment.register.FinishRegisterFragment">
+    tools:context=".presentation.fragment.registeruser.FinishRegisterUserFragment">
 
     <TextView
         android:id="@+id/tv_title"

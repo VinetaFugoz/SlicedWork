@@ -2,7 +2,7 @@ package com.slicedwork.slicedwork.util.validator
 
 import java.util.regex.Pattern
 
-object UserValidator {
+class UserValidator: Validator() {
 
     fun validateFirstName(firstName: String): Boolean {
         if (isEmpty(firstName)) return false
@@ -16,7 +16,6 @@ object UserValidator {
         return true
     }
 
-    private fun isEmpty(field: String) = field.isEmpty()
 
     private fun isEmailValidRegex(email: String): Boolean {
         val emailRegex = Pattern

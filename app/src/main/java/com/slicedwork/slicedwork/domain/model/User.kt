@@ -14,4 +14,4 @@ data class User(
     var email: String = "",
     var password: String = "",
     var picture: String = Uri.parse("R.drawable_ic_profile").toString()
-) : Serializable
+): Serializable

@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Main-->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph_main"
-    app:startDestination="@id/greetingsFragment">
-
+    android:id="@+id/main_graph"
+    app:startDestination="@id/homeFragment">
+    <!--Home-->
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.slicedwork.slicedwork.presentation.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_homeFragment_to_greetingsFragment"
+            app:destination="@id/greetingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_register_vacancy_graph"
+            app:destination="@id/register_vacancy_graph" />
+    </fragment>
     <!--Greetings-->
     <fragment
         android:id="@+id/greetingsFragment"
@@ -12,31 +29,30 @@
         android:label=""
         tools:layout="@layout/fragment_greetings">
         <action
-            android:id="@+id/action_greetingsFragment_to_signInFragment"
-            app:destination="@id/signInFragment" />
+            android:id="@+id/action_greetingsFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
         <action
-            android:id="@+id/action_greetingsFragment_to_signUp"
-            app:destination="@id/signUp" />
+            android:id="@+id/action_greetingsFragment_to_register_graph"
+            app:destination="@id/register_user_graph" />
     </fragment>
-
     <!--SignIn-->
     <fragment
-        android:id="@+id/signInFragment"
-        android:name="com.slicedwork.slicedwork.presentation.fragment.SignInFragment"
+        android:id="@+id/LoginFragment"
+        android:name="com.slicedwork.slicedwork.presentation.fragment.LoginFragment"
         android:label=""
-        tools:layout="@layout/fragment_sign_in" >
+        tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_signInFragment_to_signUp"
-            app:destination="@id/signUp" />
+            android:id="@+id/action_LoginFragment_to_register_graph"
+            app:destination="@id/register_user_graph" />
     </fragment>
-
+    <!--RegisterUser-->
     <navigation
-        android:id="@+id/signUp"
+        android:id="@+id/register_user_graph"
         app:startDestination="@id/getNameFragment">
         <!--GetName-->
         <fragment
             android:id="@+id/getNameFragment"
-            android:name="com.slicedwork.slicedwork.presentation.fragment.signup.GetNameFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.registeruser.GetNameFragment"
             android:label=""
             tools:layout="@layout/fragment_get_name">
             <action
@@ -47,7 +63,7 @@
         <!--GetBirthday-->
         <fragment
             android:id="@+id/getBirthdayFragment"
-            android:name="com.slicedwork.slicedwork.presentation.fragment.signup.GetBirthdayFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.registeruser.GetBirthdayFragment"
             android:label=""
             tools:layout="@layout/fragment_get_birthday" >
             <argument
@@ -61,7 +77,7 @@
         <!--GetGender-->
         <fragment
             android:id="@+id/getGenderFragment"
-            android:name="com.slicedwork.slicedwork.presentation.fragment.signup.GetGenderFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.registeruser.GetGenderFragment"
             android:label=""
             tools:layout="@layout/fragment_get_gender" >
             <argument
@@ -75,7 +91,7 @@
         <!--GetPhoneNumber-->
         <fragment
             android:id="@+id/getPhoneNumberFragment"
-            android:name="com.slicedwork.slicedwork.presentation.fragment.signup.GetPhoneNumberFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.registeruser.GetPhoneNumberFragment"
             android:label=""
             tools:layout="@layout/fragment_get_phone_number" >
             <argument
@@ -83,17 +99,17 @@
                 app:argType="com.slicedwork.slicedwork.domain.model.User" />
             <action
                 android:id="@+id/action_getPhoneNumberFragment_to_getNicknameFragment"
-                app:destination="@id/getNicknameFragment"
+                app:destination="@id/getUsernameFragment"
                 app:popUpToInclusive="true" />
         </fragment>
-        <!--GetNickname-->
+        <!--GetUsername-->
         <fragment
-            android:id="@+id/getNicknameFragment"
-            android:name="com.slicedwork.slicedwork.presentation.fragment.signup.GetNicknameFragment"
+            android:id="@+id/getUsernameFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.registeruser.GetUsernameFragment"
             android:label=""
-            tools:layout="@layout/fragment_get_nickname">
+            tools:layout="@layout/fragment_get_username">
             <action
-                android:id="@+id/action_getNicknameFragment_to_getEmailFragment"
+                android:id="@+id/action_getUsernameFragment_to_getEmailFragment"
                 app:destination="@id/getEmailFragment"
                 app:popUpToInclusive="true" />
             <argument
@@ -103,7 +119,7 @@
         <!--GetEmail-->
         <fragment
             android:id="@+id/getEmailFragment"
-            android:name="com.slicedwork.slicedwork.presentation.fragment.signup.GetEmailFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.registeruser.GetEmailFragment"
             android:label=""
             tools:layout="@layout/fragment_get_email">
             <action
@@ -114,10 +130,10 @@
                 android:name="user"
                 app:argType="com.slicedwork.slicedwork.domain.model.User" />
         </fragment>
-        <!--Get Password-->
+        <!--GetPassword-->
         <fragment
             android:id="@+id/getPasswordFragment"
-            android:name="com.slicedwork.slicedwork.presentation.fragment.signup.GetPasswordFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.registeruser.GetPasswordFragment"
             android:label=""
             tools:layout="@layout/fragment_get_password">
             <argument
@@ -127,30 +143,75 @@
                 android:id="@+id/action_getPasswordFragment_to_getPictureFragment"
                 app:destination="@id/getPictureFragment" />
         </fragment>
-        <!--FinishSignUp-->
-        <fragment
-            android:id="@+id/finishSignUpFragment"
-            android:name="com.slicedwork.slicedwork.presentation.fragment.signup.FinishSignUpFragment"
-            android:label=""
-            tools:layout="@layout/fragment_finish_sign_up" >
-            <argument
-                android:name="user"
-                app:argType="com.slicedwork.slicedwork.domain.model.User" />
-        </fragment>
+        <!--GetPicture-->
         <fragment
             android:id="@+id/getPictureFragment"
-            android:name="com.slicedwork.slicedwork.presentation.fragment.signup.GetPictureFragment"
-            android:label="GetPictureFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.registeruser.GetPictureFragment"
+            android:label=""
             tools:layout="@layout/fragment_get_picture">
             <action
                 android:id="@+id/action_getPictureFragment_to_finishSignUpFragment"
-                app:destination="@id/finishSignUpFragment"
+                app:destination="@id/finishRegisterUserFragment"
                 app:popUpTo="@id/getNameFragment"
                 app:popUpToInclusive="true" />
             <argument
                 android:name="user"
                 app:argType="com.slicedwork.slicedwork.domain.model.User" />
         </fragment>
-        <!--GetPicture-->
+        <!--FinishRegisterUser-->
+        <fragment
+            android:id="@+id/finishRegisterUserFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.registeruser.FinishRegisterUserFragment"
+            android:label=""
+            tools:layout="@layout/fragment_finish_register_user" >
+            <argument
+                android:name="user"
+                app:argType="com.slicedwork.slicedwork.domain.model.User" />
+        </fragment>
+    </navigation>
+    <!--Profile-->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.slicedwork.slicedwork.presentation.fragment.ProfileFragment"
+        tools:layout="@layout/fragment_profile"
+        android:label="ProfileFragment" />
+    <!--RegisterVacancy-->
+    <navigation android:id="@+id/register_vacancy_graph"
+        app:startDestination="@id/getDetailsFragment">
+        <!--GetDetails-->
+        <fragment
+            android:id="@+id/getDetailsFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.registervacancy.GetDetailsFragment"
+            android:label="fragment_get_details"
+            tools:layout="@layout/fragment_get_details">
+            <action
+                android:id="@+id/action_getDetailsFragment_to_getAddressFragment"
+                app:destination="@id/getAddressFragment" />
+        </fragment>
+        <!--GetAddress-->
+        <fragment
+            android:id="@+id/getAddressFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.registervacancy.GetAddressFragment"
+            android:label="fragment_get_address"
+            tools:layout="@layout/fragment_get_address">
+            <action
+                android:id="@+id/action_getAddressFragment_to_finishRegisterVacancyFragment"
+                app:destination="@id/finishRegisterVacancyFragment"
+                app:popUpTo="@id/getDetailsFragment"
+                app:popUpToInclusive="true" />
+            <argument
+                android:name="Vacancy"
+                app:argType="com.slicedwork.slicedwork.domain.model.Vacancy" />
+        </fragment>
+        <!--FinishRegisterVacancy-->
+        <fragment
+            android:id="@+id/finishRegisterVacancyFragment"
+            android:name="com.slicedwork.slicedwork.presentation.fragment.registervacancy.FinishRegisterVacancyFragment"
+            android:label="fragment_finish_register_vacancy"
+            tools:layout="@layout/fragment_finish_register_vacancy" >
+            <argument
+                android:name="Vacancy"
+                app:argType="com.slicedwork.slicedwork.domain.model.Vacancy" />
+        </fragment>
     </navigation>
 </navigation>

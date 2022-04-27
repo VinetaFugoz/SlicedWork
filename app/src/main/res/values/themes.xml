@@ -20,6 +20,9 @@
         <item name="statusBarForeground">@color/primaryTextColor</item>
     </style>
 
+    <!--TextInputLayout-->
+    <style name="TextInputLayoutOutLinedBox" parent="ThemeOverlay.Material3.TextInputEditText.OutlinedBox" />
+
     <!--Button-->
     <style name="CommonButton">
         <item name="android:layout_height">@dimen/common_button_height</item>

@@ -1,4 +1,4 @@
-package com.slicedwork.slicedwork.presentation.fragment.register
+package com.slicedwork.slicedwork.presentation.fragment.registeruser
 
 import android.os.Bundle
 import android.view.LayoutInflater

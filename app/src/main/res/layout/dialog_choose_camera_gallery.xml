@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:padding="16dp"
-    tools:context=".presentation.fragment.signup.ChooseCameraGalleryDialogFragment">
+    tools:context=".presentation.fragment.registeruser.ChooseCameraGalleryDialogFragment">
 
     <View
         android:id="@+id/view"
@@ -32,7 +32,7 @@
         android:gravity="start"
         android:padding="16dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/lbl_take_a_picture"
+        android:text="@string/choose_camera_gallery_take_a_picture"
         android:textAllCaps="false"
         android:textColor="@color/secondaryColor"
         android:textSize="16sp"
@@ -55,7 +55,7 @@
         android:gravity="start"
         android:padding="16dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/lbl_choose_from_gallery"
+        android:text="@string/choose_camera_gallery_choose_from_gallery"
         android:textAllCaps="false"
         android:textColor="@color/secondaryColor"
         android:textSize="16sp"

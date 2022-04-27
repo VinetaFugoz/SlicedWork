@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.slicedwork.slicedwork.presentation.viewmodel.signup.GetEmailViewModel" />
+            type="com.slicedwork.slicedwork.presentation.viewmodel.registeruser.GetEmailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,17 +17,17 @@
         tools:context=".presentation.fragment.GreetingsFragment">
 
         <TextView
-            android:id="@+id/tv_question"
+            android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/century_gothic"
             android:gravity="center"
             android:paddingHorizontal="50dp"
-            android:text="@string/lbl_get_email_question"
+            android:text="@string/get_email_title"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/tv_description"
+            app:layout_constraintBottom_toTopOf="@id/tv_subtitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,24 +35,24 @@
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/tv_description"
+            android:id="@+id/tv_subtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:fontFamily="@font/century_gothic"
             android:gravity="center"
             android:paddingHorizontal="30dp"
-            android:text="@string/lbl_get_email_description"
+            android:text="@string/get_email_subtitle"
             android:textColor="@color/description"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/til_email"
+            app:layout_constraintBottom_toTopOf="@+id/til_task"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_question"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
             tools:ignore="TextContrastCheck" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_email"
+            android:id="@+id/til_task"
             android:layout_width="0dp"
             android:layout_height="?android:actionBarSize"
             app:boxBackgroundColor="@android:color/transparent"
@@ -60,7 +60,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_description">
+            app:layout_constraintTop_toBottomOf="@id/tv_subtitle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tiet_email"
@@ -68,7 +68,7 @@
                 android:layout_height="match_parent"
                 android:focusedByDefault="true"
                 android:fontFamily="@font/century_gothic"
-                android:hint="@string/hint_email"
+                android:hint="@string/get_email_email"
                 android:text="@={viewModel.emailLiveData}"
                 android:afterTextChanged="@{viewModel::afterTextChanged}"
                 android:inputType="textEmailAddress" />
@@ -82,10 +82,10 @@
             android:layout_marginTop="80dp"
             android:background="@drawable/selector_button_color"
             android:enabled="@{viewModel.enabledNextLiveData}"
-            android:text="@string/lbl_next"
+            android:text="@string/get_email_next"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_email" />
+            app:layout_constraintTop_toBottomOf="@id/til_task" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

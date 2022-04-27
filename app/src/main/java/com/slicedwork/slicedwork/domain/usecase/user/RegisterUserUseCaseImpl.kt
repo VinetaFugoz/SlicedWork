@@ -1,4 +1,10 @@
-package com.slicedwork.slicedwork.domain.usecase
+package com.slicedwork.slicedwork.domain.usecase.user
 
-class RegisterUserUseCaseImpl {
+import com.slicedwork.slicedwork.data.repository.UserRepository
+import com.slicedwork.slicedwork.domain.model.User
+import javax.inject.Inject
+
+class RegisterUserUseCaseImpl @Inject constructor(private val userRepository: UserRepository) :
+    RegisterUserUseCase {
+    override suspend fun invoke(user: User) = userRepository.registerUser(user)
 }

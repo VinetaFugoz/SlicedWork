@@ -2,33 +2,41 @@
     <string name="app_name">SlicedWork</string>
 
     <!--Greetings-->
-    <string name="lbl_sign_in">Sign In</string>
-    <string name="lbl_sign_up">Sign Up</string>
-    <string name="lbl_s" translatable="false">S</string>
-    <string name="lbl_l" translatable="false">l</string>
-    <string name="lbl_i" translatable="false">i</string>
-    <string name="lbl_c" translatable="false">c</string>
-    <string name="lbl_e" translatable="false">e</string>
-    <string name="lbl_d" translatable="false">d</string>
-    <string name="lbl_w" translatable="false">W</string>
-    <string name="lbl_o" translatable="false">o</string>
-    <string name="lbl_r" translatable="false">r</string>
-    <string name="lbl_k" translatable="false">k</string>
-    <string name="lbl_greetings_title">Welcome to SlicedWork</string>
-    <string name="lbl_greetings_subtitle">The simplest way to find a work!</string>
+    <string name="greetings_login">Log In</string>
+    <string name="greetings_register">Register</string>
+    <string name="greetings_s" translatable="false">S</string>
+    <string name="greetings_l" translatable="false">l</string>
+    <string name="greetings_i" translatable="false">i</string>
+    <string name="greetings_c" translatable="false">c</string>
+    <string name="greetings_e" translatable="false">e</string>
+    <string name="greetings_d" translatable="false">d</string>
+    <string name="greetings_w" translatable="false">W</string>
+    <string name="greetings_o" translatable="false">o</string>
+    <string name="greetings_r" translatable="false">r</string>
+    <string name="greetings_k" translatable="false">k</string>
+    <string name="greetings_title">Welcome to SlicedWork</string>
+    <string name="greetings_subtitle">The simplest way to find a work!</string>
+
+    <!--Login-->
+    <string name="login_title">Log In the app</string>
+    <string name="login_subtitle">Enter your email and password to access the app.</string>
+    <string name="login_email" translatable="false">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_sign_in">Log In</string>
 
     <!--Get Name-->
-    <string name="lbl_get_name_question">What is your name?</string>
-    <string name="lbl_get_name_description">Enter the name that you use in real life.</string>
-    <string name="hint_first_name">First Name</string>
-    <string name="hint_last_name">Last Name</string>
-    <string name="lbl_next">Next</string>
+    <string name="get_name_title">What is your name?</string>
+    <string name="get_name_subtitle">Enter the name that you use in real life.</string>
+    <string name="get_name_first_name">First Name</string>
+    <string name="get_name_last_name">Last Name</string>
+    <string name="get_name_next">Next</string>
 
     <!--Get Birthday-->
-    <string name="lbl_get_birthday_question">When were you born?</string>
-    <string name="lbl_get_birthday_description">Enter your date of birth.</string>
+    <string name="get_birthday_title">When were you born?</string>
+    <string name="get_birthday_subtitle">Enter your date of birth.</string>
+    <string name="get_birthday_next">Next</string>
 
-    <string-array name="months">
+    <string-array name="get_birthday_months">
         <item>January</item>
         <item>February</item>
         <item>March</item>
@@ -44,42 +52,67 @@
     </string-array>
 
     <!--Get Gender-->
-    <string name="lbl_get_gender_question">What is your gender?</string>
-    <string name="lbl_get_gender_description">Choose the gender you identify with.</string>
-    <string name="lbl_male">Male</string>
-    <string name="lbl_female">Female</string>
-    <string name="lbl_other">Other</string>
+    <string name="get_gender_title">What is your gender?</string>
+    <string name="get_gender_subtitle">Choose the gender you identify with.</string>
+    <string name="get_gender_male">Male</string>
+    <string name="get_gender_female">Female</string>
+    <string name="get_gender_other">Other</string>
+    <string name="get_gender_next">Next</string>
 
     <!--GetPhoneNumber-->
-    <string name="lbl_get_phone_number_question">What is your phone number?</string>
-    <string name="lbl_get_phone_number_description">Enter your phone number. Make sure to include the DDD.</string>
-    <string name="hint_phone_number">Phone Number</string>
+    <string name="get_phone_number_title">What is your phone number?</string>
+    <string name="get_phone_number_subtitle">Enter your phone number. Make sure to include the DDD.</string>
+    <string name="get_phone_number_phone_number">Phone Number</string>
+    <string name="get_phone_number_next">Next</string>
 
-    <!--GetNickname-->
-    <string name="lbl_get_nickname_question">What is your nickname?</string>
-    <string name="lbl_get_nickname_description">Enter a unique nickname that you like.</string>
-    <string name="hint_nickname" translatable="false">Nickname</string>
+    <!--GetUsername-->
+    <string name="get_username_title">Do you have a username?</string>
+    <string name="get_username_subtitle">Enter a unique username that you like.</string>
+    <string name="get_username_nickname">Username</string>
+    <string name="get_username_next">Next</string>
 
     <!--GetEmail-->
-    <string name="lbl_get_email_question">What is your email?</string>
-    <string name="lbl_get_email_description">Enter an email you usually use.</string>
-    <string name="hint_email" translatable="false">Email</string>
+    <string name="get_email_title">What is your email?</string>
+    <string name="get_email_subtitle">Enter an email you usually use.</string>
+    <string name="get_email_email" translatable="false">Email</string>
+    <string name="get_email_next">Next</string>
 
     <!--GetPassword-->
-    <string name="lbl_get_password_question">What is your password?</string>
-    <string name="lbl_get_password_description">Enter a password. Don\'t forget it huh</string>
-    <string name="hint_password">Password</string>
+    <string name="get_password_title">What is your password?</string>
+    <string name="get_password_subtitle">Enter a password. Don\'t forget it huh.</string>
+    <string name="get_password_password">Password</string>
+    <string name="get_password_next">Next</string>
 
     <!--GetPicture-->
-    <string name="lbl_get_picture_question">What will be your profile picture?</string>
-    <string name="lbl_get_picture_description">Take a picture or choose one from your gallery.</string>
+    <string name="get_picture_title">What will be your profile picture?</string>
+    <string name="get_picture_subtitle">Take a picture or choose one from your gallery.</string>
+    <string name="get_picture_next">Next</string>
 
-    <!--GetPicture-->
-    <string name="lbl_take_a_picture">Take a picture</string>
-    <string name="lbl_choose_from_gallery">Choose from gallery</string>
+    <!--ChooseCameraGallery-->
+    <string name="choose_camera_gallery_take_a_picture">Take a picture</string>
+    <string name="choose_camera_gallery_choose_from_gallery">Choose from gallery</string>
 
-    <!--FinishSignUp-->
-    <string name="lbl_finished_signup">Sign up completed, click here to finish!</string>
-    <string name="lbl_home">Finish</string>
+    <!--FinishRegisterUser-->
+    <string name="finish_register_title">Register completed, click here to finish!</string>
+    <string name="finish_register_finish">Finish</string>
 
+    <!--GetDetails-->
+    <string name="get_details_title">Vacancy details</string>
+    <string name="get_details_subtitle">Enter the vacancy details.</string>
+    <string name="get_details_task">Task</string>
+    <string name="get_details_task_error">The task was not entered.</string>
+    <string name="get_details_description">Description</string>
+    <string name="get_details_occupation_area">Occupation Area</string>
+    <string name="get_details_occupation_area_error">The occupation area was not entered</string>
+    <string-array name="get_details_occupation_areas">
+        <item>Painting</item>
+        <item>Cleaning</item>
+        <item>Gardening</item>
+        <item>Construction</item>
+        <item>Electric</item>
+        <item>Plumbing</item>
+    </string-array>
+    <string name="get_details_price">Price</string>
+    <string name="get_details_price_error">The price has not been entered</string>
+    <string name="get_details_next">Next</string>
 </resources>

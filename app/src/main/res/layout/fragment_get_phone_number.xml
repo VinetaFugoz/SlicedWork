@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.slicedwork.slicedwork.presentation.viewmodel.signup.GetPhoneNumberViewModel" />
+            type="com.slicedwork.slicedwork.presentation.viewmodel.registeruser.GetPhoneNumberViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,17 +18,17 @@
         tools:context=".presentation.fragment.GreetingsFragment">
 
         <TextView
-            android:id="@+id/tv_question"
+            android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/century_gothic"
             android:gravity="center"
             android:paddingHorizontal="50dp"
-            android:text="@string/lbl_get_phone_number_question"
+            android:text="@string/get_phone_number_title"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/tv_description"
+            app:layout_constraintBottom_toTopOf="@id/tv_subtitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,20 +36,20 @@
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/tv_description"
+            android:id="@+id/tv_subtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:fontFamily="@font/century_gothic"
             android:gravity="center"
             android:paddingHorizontal="30dp"
-            android:text="@string/lbl_get_phone_number_description"
+            android:text="@string/get_phone_number_subtitle"
             android:textColor="@color/description"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/til_phone_number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_question"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
             tools:ignore="TextContrastCheck" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -61,7 +61,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_description">
+            app:layout_constraintTop_toBottomOf="@id/tv_subtitle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tiet_phone_number"
@@ -70,7 +70,7 @@
                 android:afterTextChanged="@{viewModel::afterTextChanged}"
                 android:focusedByDefault="true"
                 android:fontFamily="@font/century_gothic"
-                android:hint="@string/hint_phone_number"
+                android:hint="@string/get_phone_number_phone_number"
                 android:inputType="number"
                 android:maxLength="11"
                 android:text="@={viewModel.phoneNumberLiveData}" />
@@ -84,7 +84,7 @@
             android:layout_marginTop="80dp"
             android:background="@drawable/selector_button_color"
             android:enabled="@{viewModel.enabledNextLiveData}"
-            android:text="@string/lbl_next"
+            android:text="@string/get_phone_number_next"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

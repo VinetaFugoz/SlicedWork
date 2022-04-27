@@ -1,10 +1,9 @@
-package com.slicedwork.slicedwork.presentation.viewmodel.signup
+package com.slicedwork.slicedwork.presentation.viewmodel.registeruser
 
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.slicedwork.slicedwork.R
-import com.slicedwork.slicedwork.presentation.fragment.signup.GetGenderFragment
 import com.slicedwork.slicedwork.util.enumerator.GenderEnum.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

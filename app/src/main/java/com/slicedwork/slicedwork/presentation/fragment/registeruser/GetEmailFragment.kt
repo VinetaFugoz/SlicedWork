@@ -1,4 +1,4 @@
-package com.slicedwork.slicedwork.presentation.fragment.register
+package com.slicedwork.slicedwork.presentation.fragment.registeruser
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.slicedwork.slicedwork.databinding.FragmentGetEmailBinding
 import com.slicedwork.slicedwork.domain.model.User
-import com.slicedwork.slicedwork.presentation.viewmodel.register.GetEmailViewModel
+import com.slicedwork.slicedwork.presentation.viewmodel.registeruser.GetEmailViewModel
 import com.slicedwork.slicedwork.util.extensions.focusAndShowSoftKeyboard
 import com.slicedwork.slicedwork.util.extensions.hideKeyBoard
 
