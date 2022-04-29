@@ -1,28 +1,20 @@
 package com.slicedwork.slicedwork.presentation.fragment.registeruser
 
-import android.Manifest
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.slicedwork.slicedwork.databinding.DialogChooseCameraGalleryBinding
 import com.slicedwork.slicedwork.databinding.FragmentGetPictureBinding
 import com.slicedwork.slicedwork.domain.model.User
-import com.slicedwork.slicedwork.util.enumerator.MediaEnum
-import com.slicedwork.slicedwork.util.launcher.MediaLauncher
-import com.slicedwork.slicedwork.util.launcher.PermissionLauncher
+import com.slicedwork.slicedwork.presentation.fragment.registervacancy.GetDetailsFragmentDirections
+import com.slicedwork.slicedwork.util.extensions.navigate
 
 class GetPictureFragment : Fragment() {
     private lateinit var _binding: FragmentGetPictureBinding
-    private lateinit var _bottomSheetDialogBinding: DialogChooseCameraGalleryBinding
-    private lateinit var _bottomSheetDialog: BottomSheetDialog
-    private lateinit var mediaLauncher: MediaLauncher
-    private lateinit var permissionLauncher: PermissionLauncher
-    private lateinit var permissions: Array<String>
     private lateinit var _user: User
     private var imageUriDefault: Uri? = null
     private var imageUri: Uri? = null
@@ -31,10 +23,7 @@ class GetPictureFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        setLaunchers()
-        addLifecycleObservers()
         setProps(inflater)
-        requestMediaPermissions()
 
         return _binding.root
     }
@@ -42,75 +31,36 @@ class GetPictureFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         setListeners()
-
+        getDialogBackArgs()
     }
 
-    private fun setLaunchers() {
-        mediaLauncher = MediaLauncher(requireActivity().activityResultRegistry)
-        permissionLauncher = PermissionLauncher(requireActivity().activityResultRegistry)
+    private fun getDialogBackArgs() {
+        findNavController()
+            .currentBackStackEntry
+            ?.savedStateHandle
+            ?.getLiveData<String>("imageUri")
+            ?.observe(viewLifecycleOwner) { imageUri ->
+                if (imageUri != null) {
+                    this.imageUri = Uri.parse(imageUri)
+                    _binding.ivPicture.scaleType = ImageView.ScaleType.CENTER_CROP
+                    _binding.ivPicture.setImageURI(this.imageUri)
+                }
+            }
     }
 
-    private fun addLifecycleObservers() {
-        lifecycle.addObserver(mediaLauncher)
-        lifecycle.addObserver(permissionLauncher)
+    private fun goToChooseCameraGallery() {
+        navigate(GetPictureFragmentDirections.actionGetPictureFragmentToChooseCameraGalleryDialog())
     }
 
     private fun setProps(inflater: LayoutInflater) {
         _binding = FragmentGetPictureBinding.inflate(inflater)
-        _bottomSheetDialogBinding = DialogChooseCameraGalleryBinding.inflate(inflater)
-        _bottomSheetDialog = BottomSheetDialog(requireContext())
         imageUriDefault = Uri.parse("R.drawable.image")
-        permissions = arrayOf(
-            Manifest.permission.CAMERA,
-            Manifest.permission.READ_EXTERNAL_STORAGE
-        )
     }
-
-    private fun requestMediaPermissions() =
-        permissionLauncher.requestPermissions(permissions, requireContext())
 
     private fun setListeners() {
         _binding.run {
-            btnAdd.setOnClickListener { onStartBottomSheetDialog() }
+            btnAdd.setOnClickListener { goToChooseCameraGallery() }
             btnNext.setOnClickListener { onNextEvent() }
-        }
-        _bottomSheetDialogBinding.run {
-            btnCamera.setOnClickListener { onBottomSheetEvent(MediaEnum.CAMERA) }
-            btnGallery.setOnClickListener { onBottomSheetEvent(MediaEnum.GALLERY) }
-            checkAndSetIfImageWasReallyTaken()
-        }
-    }
-
-    private fun onStartBottomSheetDialog() {
-        _bottomSheetDialog.setContentView(_bottomSheetDialogBinding.layoutRoot)
-        _bottomSheetDialog.show()
-    }
-
-    private fun onBottomSheetEvent(mediaEnum: MediaEnum) {
-        setMediaProps(mediaEnum)
-
-        openMedia(mediaEnum)
-
-        _bottomSheetDialog.dismiss()
-    }
-
-    private fun openMedia(mediaEnum: MediaEnum) {
-        mediaEnum.open(requireContext(), mediaLauncher)
-    }
-
-    private fun setMediaProps(mediaEnum: MediaEnum) {
-        mediaLauncher.run {
-            if (mediaEnum == MediaEnum.GALLERY) imageUri = null
-            pictureWasTaken = false
-        }
-    }
-
-    private fun checkAndSetIfImageWasReallyTaken() {
-        mediaLauncher.run {
-            if (imageUri != null && pictureWasTaken) {
-                this@GetPictureFragment.imageUri = imageUri
-                _binding.ivPicture.setImageURI(imageUri)
-            }
         }
     }
 

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -15,11 +16,13 @@ import com.slicedwork.slicedwork.R
 import com.slicedwork.slicedwork.databinding.FragmentGetDetailsBinding
 import com.slicedwork.slicedwork.domain.model.Vacancy
 import com.slicedwork.slicedwork.presentation.viewmodel.registervacancy.GetDetailsViewModel
+import com.slicedwork.slicedwork.util.extensions.navigate
 import com.slicedwork.slicedwork.util.validator.VacancyValidator
 import java.util.*
 
 class GetDetailsFragment : Fragment() {
 
+    private lateinit var imageUri: String
     private lateinit var _binding: FragmentGetDetailsBinding
     private val _viewModel: GetDetailsViewModel by viewModels()
     private lateinit var _vacancy: Vacancy
@@ -36,6 +39,7 @@ class GetDetailsFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         setListeners()
+        getDialogBackArgs()
     }
 
     private fun setProps(inflater: LayoutInflater) {
@@ -54,8 +58,27 @@ class GetDetailsFragment : Fragment() {
 
     private fun setListeners() {
         _binding.run {
+            ivPicture.setOnClickListener { goToChooseCameraGallery() }
             btnNext.setOnClickListener { nextEvent() }
         }
+    }
+
+    private fun goToChooseCameraGallery() {
+        navigate(GetDetailsFragmentDirections.actionGetDetailsFragmentToChooseCameraGalleryDialog())
+    }
+
+    private fun getDialogBackArgs() {
+        findNavController()
+            .currentBackStackEntry
+            ?.savedStateHandle
+            ?.getLiveData<String>("imageUri")
+            ?.observe(viewLifecycleOwner) { imageUri ->
+                if (imageUri != null) {
+                    this.imageUri = imageUri
+                    _binding.ivPicture.scaleType = ImageView.ScaleType.CENTER_CROP
+                    _binding.ivPicture.setImageURI(Uri.parse(imageUri))
+                }
+            }
     }
 
     private fun nextEvent() {

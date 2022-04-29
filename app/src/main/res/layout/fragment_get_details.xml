@@ -30,7 +30,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -100,9 +100,8 @@
             android:id="@+id/til_description"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
-            android:layout_height="?android:actionBarSize"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="16dp"
             app:boxBackgroundColor="@android:color/transparent"
             app:errorEnabled="true"
             app:layout_constraintBottom_toTopOf="@+id/til_occupation_area"
@@ -114,11 +113,12 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tiet_description"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:focusedByDefault="true"
                 android:fontFamily="@font/century_gothic"
                 android:hint="@string/get_details_description"
-                android:inputType="text"
+                android:scrollbars="vertical"
+                android:inputType="textMultiLine"
                 app:hintTextColor="@color/secondaryColor" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -146,7 +146,8 @@
                 android:fontFamily="@font/century_gothic"
                 android:hint="@string/get_details_occupation_area"
                 android:inputType="none"
-                android:text="@={viewModel.occupationAreaLiveData}" />
+                android:text="@={viewModel.occupationAreaLiveData}"
+                tools:ignore="TextContrastCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -172,7 +173,9 @@
                 android:fontFamily="@font/century_gothic"
                 android:hint="@string/get_details_price"
                 android:inputType="numberDecimal"
-                android:text="@={viewModel.priceLiveData}" />
+                android:maxLength="9"
+                android:text="@={viewModel.priceLiveData}"
+                tools:ignore="TextContrastCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

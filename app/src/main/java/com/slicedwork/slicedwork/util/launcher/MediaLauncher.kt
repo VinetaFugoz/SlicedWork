@@ -10,9 +10,15 @@ import androidx.activity.result.contract.ActivityResultContracts.TakePicture
 import androidx.core.content.FileProvider
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
+import com.slicedwork.slicedwork.presentation.dialog.ChooseCameraGalleryDialog
 import java.io.File
 
-class MediaLauncher(private val registry: ActivityResultRegistry) : DefaultLifecycleObserver {
+class MediaLauncher(
+    private val registry: ActivityResultRegistry,
+    private val ChooseCameraGalleryDialog: ChooseCameraGalleryDialog
+) : DefaultLifecycleObserver {
 
     var imageUri: Uri? = null
     var pictureWasTaken: Boolean = false
@@ -23,11 +29,23 @@ class MediaLauncher(private val registry: ActivityResultRegistry) : DefaultLifec
     override fun onCreate(owner: LifecycleOwner) {
         gallerylauncher = registry.register("gallery", owner, GetContent()) {
             imageUri = it
-            pictureWasTaken = true
+            pictureWasTaken = (imageUri != null)
+            goBack()
         }
 
         cameralauncher = registry.register("camera", owner, TakePicture()) {
             pictureWasTaken = it
+            goBack()
+        }
+    }
+
+    private fun goBack() {
+        ChooseCameraGalleryDialog.findNavController().run {
+            previousBackStackEntry?.savedStateHandle?.set(
+                "imageUri",
+                if (pictureWasTaken) imageUri.toString() else null
+            )
+            navigateUp()
         }
     }
 

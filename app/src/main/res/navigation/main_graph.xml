@@ -157,6 +157,9 @@
             <argument
                 android:name="user"
                 app:argType="com.slicedwork.slicedwork.domain.model.User" />
+            <action
+                android:id="@+id/action_getPictureFragment_to_chooseCameraGalleryDialog"
+                app:destination="@id/chooseCameraGalleryDialog" />
         </fragment>
         <!--FinishRegisterUser-->
         <fragment
@@ -187,6 +190,9 @@
             <action
                 android:id="@+id/action_getDetailsFragment_to_getAddressFragment"
                 app:destination="@id/getAddressFragment" />
+            <action
+                android:id="@+id/action_getDetailsFragment_to_chooseCameraGalleryDialog"
+                app:destination="@id/chooseCameraGalleryDialog" />
         </fragment>
         <!--GetAddress-->
         <fragment
@@ -214,4 +220,9 @@
                 app:argType="com.slicedwork.slicedwork.domain.model.Vacancy" />
         </fragment>
     </navigation>
+    <dialog
+        android:id="@+id/chooseCameraGalleryDialog"
+        android:name="com.slicedwork.slicedwork.presentation.dialog.ChooseCameraGalleryDialog"
+        android:label=""
+        tools:layout="@layout/dialog_choose_camera_gallery"/>
 </navigation>
