@@ -1,60 +1,116 @@
 package com.slicedwork.slicedwork.presentation.fragment.registervacancy
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.slicedwork.slicedwork.R
+import com.slicedwork.slicedwork.databinding.FragmentGetAddressBinding
+import com.slicedwork.slicedwork.domain.model.Vacancy
+import com.slicedwork.slicedwork.presentation.viewmodel.registervacancy.GetAddressViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [GetAddressFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class GetAddressFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var _binding: FragmentGetAddressBinding
+    private lateinit var _vacancy: Vacancy
+    private val _viewModel: GetAddressViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_get_address, container, false)
+    ): View {
+        setProps(inflater)
+        return _binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment GetAddressFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            GetAddressFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onResume() {
+        super.onResume()
+        setListeners()
+    }
+
+    private fun setProps(inflater: LayoutInflater) {
+        _binding = FragmentGetAddressBinding.inflate(inflater)
+        _binding.viewModel = _viewModel
+        _binding.lifecycleOwner = viewLifecycleOwner
+    }
+
+    private fun setListeners() {
+        _binding.run {
+            btnNext.setOnClickListener { nextEvent() }
+        }
+    }
+
+    private fun nextEvent() {
+        if (validateFields()) {
+            getVacancy()
+            setVacancyProps()
+            goToGetFinishRegisterVacancy()
+        }
+    }
+
+    private fun validateFields(): Boolean {
+        var isValidate = true
+
+        _viewModel.run {
+            _binding.run {
+                if (countryErrorLiveData.value == true) {
+                    tilCountry.error = getString(R.string.get_details_task_error)
+                    isValidate = false
+                }
+                if (stateErrorLiveData.value == true) {
+                    tilState.error = getString(R.string.get_details_task_error)
+                    isValidate = false
+                }
+                if (cityErrorLiveData.value == true) {
+                    tilCity.error = getString(R.string.get_details_task_error)
+                    isValidate = false
+                }
+                if (neighborhoodErrorLiveData.value == true) {
+                    tilNeighborhood.error = getString(R.string.get_details_task_error)
+                    isValidate = false
+                }
+                if (postalCodeErrorLiveData.value == true) {
+                    tilPostalCode.error = getString(R.string.get_details_task_error)
+                    isValidate = false
+                }
+                if (streetErrorLiveData.value == true) {
+                    tilStreet.error = getString(R.string.get_details_task_error)
+                    isValidate = false
+                }
+                if (numberErrorLiveData.value == true) {
+                    tilNumber.error = getString(R.string.get_details_task_error)
+                    isValidate = false
                 }
             }
+        }
+
+        return isValidate
+    }
+
+    private fun getVacancy() {
+        _vacancy = arguments?.get("vacancy") as Vacancy
+    }
+
+    private fun setVacancyProps() {
+        _binding.run {
+            _vacancy.country = tietCountry.text.toString()
+            _vacancy.state = tietState.text.toString()
+            _vacancy.city = tietCity.text.toString()
+            _vacancy.neighborhood = tietNeighborhood.text.toString()
+            _vacancy.postalCode = tietPostalCode.text.toString()
+            _vacancy.street = tietStreet.text.toString()
+            _vacancy.number = tietNumber.text.toString()
+        }
+    }
+
+    private fun goToGetFinishRegisterVacancy() {
+        findNavController().navigate(
+            GetAddressFragmentDirections.actionGetAddressFragmentToFinishRegisterVacancyFragment(
+                _vacancy
+            )
+        )
     }
 }

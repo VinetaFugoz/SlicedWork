@@ -90,7 +90,6 @@
     <string name="get_details_subtitle">Insira os detalhes da vaga.</string>
     <string name="get_details_task">Tarefa</string>
     <string name="get_details_description">Descrição</string>
-    <string name="get_details_next">Próximo</string>
     <string name="get_details_task_error">A tarefa não foi inserida.</string>
     <string name="get_details_occupation_area">Área de atuação</string>
     <string-array name="get_details_occupation_areas">
@@ -104,4 +103,17 @@
     <string name="get_details_occupation_area_error">A area de atuação não foi inserida.</string>
     <string name="get_details_price">Preço</string>
     <string name="get_details_price_error">O preço não foi inserido.</string>
+    <string name="get_details_next">Próximo</string>
+
+    <!--GetAddress-->
+    <string name="get_address_title">Endereço da vaga</string>
+    <string name="get_address_subtitle">Insira o endereço da vaga.</string>
+    <string name="get_address_country">País</string>
+    <string name="get_address_state">UF</string>
+    <string name="get_address_city">Cidade</string>
+    <string name="get_address_neighborhood">Bairro</string>
+    <string name="get_address_postal_code">CEP</string>
+    <string name="get_address_street">Rua</string>
+    <string name="get_address_number">Número</string>
+    <string name="get_address_next">Próximo</string>
 </resources>

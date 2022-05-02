@@ -115,4 +115,16 @@
     <string name="get_details_price">Price</string>
     <string name="get_details_price_error">The price has not been entered</string>
     <string name="get_details_next">Next</string>
+
+    <!--GetAddress-->
+    <string name="get_address_title">Vacancy address</string>
+    <string name="get_address_subtitle">Enter your vacancy address.</string>
+    <string name="get_address_country">Country</string>
+    <string name="get_address_state">State</string>
+    <string name="get_address_city">City</string>
+    <string name="get_address_neighborhood">Neighborhood</string>
+    <string name="get_address_postal_code">Postal Code</string>
+    <string name="get_address_street">Street</string>
+    <string name="get_address_number">Number</string>
+    <string name="get_address_next">Next</string>
 </resources>

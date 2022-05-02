@@ -10,10 +10,11 @@ data class Vacancy(
     var occupationArea: String = "",
     var price: String = "",
     var picture: String = "",
-    var number: String = "",
-    var street: String = "",
-    var neighborhood: String = "",
-    var city: String = "",
     var country: String = "",
-    var postalCode: String = ""
+    var state: String = "",
+    var city: String = "",
+    var neighborhood: String = "",
+    var postalCode: String = "",
+    var street: String = "",
+    var number: String = ""
 ): Serializable

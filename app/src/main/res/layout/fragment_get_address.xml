@@ -1,8 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.fragment.registervacancy.GetAddressFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</FrameLayout>
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.slicedwork.slicedwork.presentation.viewmodel.registervacancy.GetAddressViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        tools:context=".presentation.fragment.GreetingsFragment">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/century_gothic"
+            android:gravity="center"
+            android:paddingHorizontal="50dp"
+            android:text="@string/get_address_title"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tv_subtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tv_subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/century_gothic"
+            android:gravity="center"
+            android:paddingHorizontal="30dp"
+            android:text="@string/get_address_subtitle"
+            android:textColor="@color/description"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/til_country"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:ignore="TextContrastCheck" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_country"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="?android:actionBarSize"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:errorEnabled="@{viewModel.countryErrorLiveData}"
+            app:layout_constraintBottom_toTopOf="@id/til_city"
+            app:layout_constraintEnd_toStartOf="@id/til_state"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintHorizontal_weight="3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_subtitle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_country"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:afterTextChanged="@{viewModel::afterTextChanged}"
+                android:focusedByDefault="true"
+                android:fontFamily="@font/century_gothic"
+                android:hint="@string/get_address_country"
+                android:inputType="text"
+                android:text="@={viewModel.countryLiveData}"
+                app:hintTextColor="@color/secondaryColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_state"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="?android:actionBarSize"
+            android:layout_marginEnd="16dp"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:errorEnabled="@{viewModel.stateErrorLiveData}"
+            app:layout_constraintBottom_toBottomOf="@+id/til_country"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/til_country"
+            app:layout_constraintTop_toTopOf="@+id/til_country">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_state"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:afterTextChanged="@{viewModel::afterTextChanged}"
+                android:focusedByDefault="true"
+                android:fontFamily="@font/century_gothic"
+                android:hint="@string/get_address_state"
+                android:inputType="text"
+                android:maxLength="2"
+                android:text="@={viewModel.stateLiveData}"
+                app:hintTextColor="@color/secondaryColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_city"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="?android:actionBarSize"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:errorEnabled="true"
+            app:layout_constraintBottom_toTopOf="@+id/til_neighborhood"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_country">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/century_gothic"
+                android:text="@={viewModel.cityLiveData}"
+                android:hint="@string/get_address_city" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_neighborhood"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="?android:actionBarSize"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:errorEnabled="@{viewModel.neighborhoodErrorLiveData}"
+            app:layout_constraintBottom_toTopOf="@id/til_street"
+            app:layout_constraintEnd_toStartOf="@+id/til_postal_code"
+            app:layout_constraintHorizontal_weight="1.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_city">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_neighborhood"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:afterTextChanged="@{viewModel::afterTextChanged}"
+                android:fontFamily="@font/century_gothic"
+                android:hint="@string/get_address_neighborhood"
+                android:inputType="text"
+                android:text="@={viewModel.neighborhoodLiveData}"
+                tools:ignore="TextContrastCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_postal_code"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="?android:actionBarSize"
+            android:layout_marginEnd="16dp"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:errorEnabled="@{viewModel.numberErrorLiveData}"
+            app:layout_constraintBottom_toBottomOf="@+id/til_neighborhood"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/til_neighborhood"
+            app:layout_constraintTop_toTopOf="@+id/til_neighborhood">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_postal_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:afterTextChanged="@{viewModel::afterTextChanged}"
+                android:fontFamily="@font/century_gothic"
+                android:hint="@string/get_address_postal_code"
+                android:inputType="number"
+                android:maxLength="8"
+                android:text="@={viewModel.postalCodeLiveData}"
+                tools:ignore="TextContrastCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_street"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="?android:actionBarSize"
+            android:layout_marginHorizontal="16dp"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:errorEnabled="@{viewModel.streetErrorLiveData}"
+            app:layout_constraintBottom_toTopOf="@id/btn_next"
+            app:layout_constraintEnd_toStartOf="@+id/til_number"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_neighborhood">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_street"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:afterTextChanged="@{viewModel::afterTextChanged}"
+                android:fontFamily="@font/century_gothic"
+                android:hint="@string/get_address_street"
+                android:inputType="text"
+                android:text="@={viewModel.streetLiveData}"
+                tools:ignore="TextContrastCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_number"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="?android:actionBarSize"
+            android:layout_marginEnd="16dp"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:errorEnabled="@{viewModel.numberErrorLiveData}"
+            app:layout_constraintBottom_toBottomOf="@+id/til_street"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/til_street"
+            app:layout_constraintTop_toTopOf="@+id/til_street">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_number"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:afterTextChanged="@{viewModel::afterTextChanged}"
+                android:fontFamily="@font/century_gothic"
+                android:hint="@string/get_address_number"
+                android:inputType="number"
+                android:maxLength="4"
+                android:text="@={viewModel.numberLiveData}"
+                tools:ignore="TextContrastCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_next"
+            style="@style/CommonButton"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/selector_button_color"
+            android:text="@string/get_address_next"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_street" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

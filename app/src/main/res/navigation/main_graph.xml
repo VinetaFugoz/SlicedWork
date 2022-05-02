@@ -206,7 +206,7 @@
                 app:popUpTo="@id/getDetailsFragment"
                 app:popUpToInclusive="true" />
             <argument
-                android:name="Vacancy"
+                android:name="vacancy"
                 app:argType="com.slicedwork.slicedwork.domain.model.Vacancy" />
         </fragment>
         <!--FinishRegisterVacancy-->
@@ -216,7 +216,7 @@
             android:label="fragment_finish_register_vacancy"
             tools:layout="@layout/fragment_finish_register_vacancy" >
             <argument
-                android:name="Vacancy"
+                android:name="vacancy"
                 app:argType="com.slicedwork.slicedwork.domain.model.Vacancy" />
         </fragment>
     </navigation>
