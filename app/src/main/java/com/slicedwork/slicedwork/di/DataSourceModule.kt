@@ -1,7 +1,9 @@
 package com.slicedwork.slicedwork.di
 
-import com.slicedwork.slicedwork.data.datasource.FirebaseUserDataSource
 import com.slicedwork.slicedwork.data.datasource.UserDataSource
+import com.slicedwork.slicedwork.data.datasource.UserDataSourceImpl
+import com.slicedwork.slicedwork.data.datasource.VacancyDataSource
+import com.slicedwork.slicedwork.data.datasource.VacancyDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -14,5 +16,9 @@ interface DataSourceModule {
 
     @Singleton
     @Binds
-    fun bindUserDataSource(userDataSource: FirebaseUserDataSource): UserDataSource
+    fun bindUserDataSource(userDataSourceImpl: UserDataSourceImpl): UserDataSource
+
+    @Singleton
+    @Binds
+    fun bindVacancyDataSource(vacancyDataSource: VacancyDataSourceImpl): VacancyDataSource
 }

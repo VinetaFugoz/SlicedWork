@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -16,13 +17,14 @@ import com.slicedwork.slicedwork.R
 import com.slicedwork.slicedwork.databinding.FragmentGetDetailsBinding
 import com.slicedwork.slicedwork.domain.model.Vacancy
 import com.slicedwork.slicedwork.presentation.viewmodel.registervacancy.GetDetailsViewModel
+import com.slicedwork.slicedwork.util.enumerator.OccupationAreaEnum.*
 import com.slicedwork.slicedwork.util.extensions.navigate
 import com.slicedwork.slicedwork.util.validator.VacancyValidator
 import java.util.*
 
 class GetDetailsFragment : Fragment() {
 
-    private lateinit var imageUri: String
+    private var imageUri: String? = null
     private lateinit var _binding: FragmentGetDetailsBinding
     private val _viewModel: GetDetailsViewModel by viewModels()
     private lateinit var _vacancy: Vacancy
@@ -58,7 +60,10 @@ class GetDetailsFragment : Fragment() {
 
     private fun setListeners() {
         _binding.run {
-            ivPicture.setOnClickListener { goToChooseCameraGallery() }
+            btnAdd.setOnClickListener { goToChooseCameraGallery() }
+            actvOccupationArea.setOnItemClickListener { _, _, position, _ ->
+                if (imageUri == null) occupationAreaEvent(position)
+            }
             btnNext.setOnClickListener { nextEvent() }
         }
     }
@@ -79,6 +84,24 @@ class GetDetailsFragment : Fragment() {
                     _binding.ivPicture.setImageURI(Uri.parse(imageUri))
                 }
             }
+    }
+
+    private fun occupationAreaEvent(position: Int) {
+        _binding.run {
+            ivPicture.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    when (position) {
+                        0 -> PAINTING.getImage()
+                        1 -> CLEANING.getImage()
+                        2 -> GARDENING.getImage()
+                        3 -> CONSTRUCTION.getImage()
+                        4 -> ELECTRIC.getImage()
+                        else -> PLUMBING.getImage()
+                    }
+                )
+            )
+        }
     }
 
     private fun nextEvent() {
@@ -120,7 +143,7 @@ class GetDetailsFragment : Fragment() {
                     task = tietTask.text.toString(),
                     description = tietDescription.text.toString(),
                     occupationArea = actvOccupationArea.text.toString(),
-                    picture = Uri.parse(ivPicture.drawable.toString()).toString()
+                    picture = imageUri.toString()
                 )
         }
     }

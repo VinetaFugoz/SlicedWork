@@ -93,8 +93,8 @@
     <string name="choose_camera_gallery_choose_from_gallery">Choose from gallery</string>
 
     <!--FinishRegisterUser-->
-    <string name="finish_register_title">Register completed, click here to finish!</string>
-    <string name="finish_register_finish">Finish</string>
+    <string name="finish_register_user_title">Register completed, click here to finish!</string>
+    <string name="finish_register_user_finish">Finish</string>
 
     <!--GetDetails-->
     <string name="get_details_title">Vacancy details</string>
@@ -127,4 +127,6 @@
     <string name="get_address_street">Street</string>
     <string name="get_address_number">Number</string>
     <string name="get_address_next">Next</string>
+    <string name="finish_register_vacancy_finish">Finish</string>
+    <string name="finish_register_vacancy_title">Register completed, click here to finish!</string>
 </resources>

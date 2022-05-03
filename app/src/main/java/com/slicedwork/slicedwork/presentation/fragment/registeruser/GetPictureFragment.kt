@@ -10,13 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.slicedwork.slicedwork.databinding.FragmentGetPictureBinding
 import com.slicedwork.slicedwork.domain.model.User
-import com.slicedwork.slicedwork.presentation.fragment.registervacancy.GetDetailsFragmentDirections
 import com.slicedwork.slicedwork.util.extensions.navigate
 
 class GetPictureFragment : Fragment() {
     private lateinit var _binding: FragmentGetPictureBinding
     private lateinit var _user: User
-    private var imageUriDefault: Uri? = null
     private var imageUri: Uri? = null
 
     override fun onCreateView(
@@ -54,7 +52,6 @@ class GetPictureFragment : Fragment() {
 
     private fun setProps(inflater: LayoutInflater) {
         _binding = FragmentGetPictureBinding.inflate(inflater)
-        imageUriDefault = Uri.parse("R.drawable.image")
     }
 
     private fun setListeners() {
@@ -75,8 +72,7 @@ class GetPictureFragment : Fragment() {
     }
 
     private fun setUserProps() {
-        _user.picture =
-            (if (imageUri != null) imageUri!! else imageUriDefault!!).toString()
+        _user.picture = imageUri.toString()
     }
 
     private fun goToGetEmail() =

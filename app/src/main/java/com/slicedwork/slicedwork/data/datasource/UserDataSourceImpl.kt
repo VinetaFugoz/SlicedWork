@@ -7,7 +7,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.slicedwork.slicedwork.domain.model.User
 import javax.inject.Inject
 
-class FirebaseUserDataSource @Inject constructor(
+class UserDataSourceImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val firebaseFirestore: FirebaseFirestore,
 ) : UserDataSource {
@@ -26,7 +26,7 @@ class FirebaseUserDataSource @Inject constructor(
     }
 
     private fun storagePicture(user: User) {
-        val storageReference = FirebaseStorage.getInstance().getReference("/images/${user.uuid}")
+        val storageReference = FirebaseStorage.getInstance().getReference("/images/user_pictures/${user.uuid}")
         storageReference.putFile(Uri.parse(user.picture))
     }
 

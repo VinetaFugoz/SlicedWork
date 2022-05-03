@@ -82,8 +82,8 @@
     <string name="choose_camera_gallery_choose_from_gallery">Escolher uma foto da galeria</string>
 
     <!--FinishRegister-->
-    <string name="finish_register_title">Registro completo, clique aqui para ir para finalizar!</string>
-    <string name="finish_register_finish">Finalizar</string>
+    <string name="finish_register_user_title">Registro completo, clique aqui para ir para finalizar!</string>
+    <string name="finish_register_user_finish">Finalizar</string>
 
     <!--GetDetails-->
     <string name="get_details_title">Detalhes da vaga</string>
