@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.slicedwork.slicedwork.presentation.fragment.HomeFragment"
-        android:label="fragment_home"
+        android:label=""
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
@@ -177,7 +177,7 @@
         android:id="@+id/profileFragment"
         android:name="com.slicedwork.slicedwork.presentation.fragment.ProfileFragment"
         tools:layout="@layout/fragment_profile"
-        android:label="ProfileFragment" />
+        android:label="" />
     <!--RegisterVacancy-->
     <navigation android:id="@+id/register_vacancy_graph"
         app:startDestination="@id/getDetailsFragment">
@@ -185,7 +185,7 @@
         <fragment
             android:id="@+id/getDetailsFragment"
             android:name="com.slicedwork.slicedwork.presentation.fragment.registervacancy.GetDetailsFragment"
-            android:label="fragment_get_details"
+            android:label=""
             tools:layout="@layout/fragment_get_details">
             <action
                 android:id="@+id/action_getDetailsFragment_to_getAddressFragment"
@@ -198,7 +198,7 @@
         <fragment
             android:id="@+id/getAddressFragment"
             android:name="com.slicedwork.slicedwork.presentation.fragment.registervacancy.GetAddressFragment"
-            android:label="fragment_get_address"
+            android:label=""
             tools:layout="@layout/fragment_get_address">
             <action
                 android:id="@+id/action_getAddressFragment_to_finishRegisterVacancyFragment"

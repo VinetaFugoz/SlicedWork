@@ -16,6 +16,7 @@ import com.google.firebase.ktx.Firebase
 import com.slicedwork.slicedwork.R
 import com.slicedwork.slicedwork.databinding.FragmentGetDetailsBinding
 import com.slicedwork.slicedwork.domain.model.Vacancy
+import com.slicedwork.slicedwork.presentation.activity.MainActivity
 import com.slicedwork.slicedwork.presentation.viewmodel.registervacancy.GetDetailsViewModel
 import com.slicedwork.slicedwork.util.enumerator.OccupationAreaEnum.*
 import com.slicedwork.slicedwork.util.extensions.navigate
@@ -24,6 +25,7 @@ import java.util.*
 
 class GetDetailsFragment : Fragment() {
 
+    private lateinit var _activity: MainActivity
     private var imageUri: String? = null
     private lateinit var _binding: FragmentGetDetailsBinding
     private val _viewModel: GetDetailsViewModel by viewModels()
@@ -42,6 +44,7 @@ class GetDetailsFragment : Fragment() {
         super.onResume()
         setListeners()
         getDialogBackArgs()
+        _activity.showToolbar()
     }
 
     private fun setProps(inflater: LayoutInflater) {
@@ -54,6 +57,7 @@ class GetDetailsFragment : Fragment() {
             R.layout.support_simple_spinner_dropdown_item,
             occupationAreas
         )
+        _activity = this.requireActivity() as MainActivity
         _binding.actvOccupationArea.setAdapter(occupationAreaAdapter)
         _vacancyValidator = VacancyValidator()
     }

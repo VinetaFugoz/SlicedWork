@@ -129,4 +129,7 @@
     <string name="get_address_next">Next</string>
     <string name="finish_register_vacancy_finish">Finish</string>
     <string name="finish_register_vacancy_title">Register completed, click here to finish!</string>
+    <string name="home_applied_vacancies">Applied vacancies</string>
+    <string name="home_announced_vacancies">Announced vacancies</string>
+    <string name="home_profile">Profile</string>
 </resources>

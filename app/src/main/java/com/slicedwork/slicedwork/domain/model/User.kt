@@ -4,7 +4,7 @@ import android.net.Uri
 import java.io.Serializable
 
 data class User(
-    val uuid: String = "",
+    var uuid: String = "",
     var firstName: String = "",
     var lastName: String = "",
     var birthDate: String = "",

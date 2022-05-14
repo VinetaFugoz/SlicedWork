@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.slicedwork.slicedwork.R
 import com.slicedwork.slicedwork.databinding.FragmentLoginBinding
 import com.slicedwork.slicedwork.presentation.activity.MainActivity
 import com.slicedwork.slicedwork.presentation.viewmodel.LoginViewModel

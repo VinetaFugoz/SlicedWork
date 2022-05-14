@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_profile"
+        android:iconTint="@color/black"
+        android:title="@string/home_profile"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/announcedVacanciesFragment"
+        android:icon="@drawable/ic_announced_vacancies"
+        android:title="@string/home_announced_vacancies"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/appliedVacanciesFragment"
+        android:icon="@drawable/ic_applied_vacancies"
+        android:title="@string/home_applied_vacancies"
+        app:showAsAction="ifRoom" />
+
+</menu>

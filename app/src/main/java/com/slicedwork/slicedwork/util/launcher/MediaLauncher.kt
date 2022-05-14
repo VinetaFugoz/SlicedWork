@@ -42,9 +42,7 @@ class MediaLauncher(
     private fun goBack() {
         ChooseCameraGalleryDialog.findNavController().run {
             previousBackStackEntry?.savedStateHandle?.set(
-                "imageUri",
-                if (pictureWasTaken) imageUri.toString() else null
-            )
+                "imageUri", if (pictureWasTaken) imageUri.toString() else null)
             navigateUp()
         }
     }

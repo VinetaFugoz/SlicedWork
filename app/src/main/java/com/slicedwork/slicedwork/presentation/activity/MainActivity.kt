@@ -1,16 +1,21 @@
 package com.slicedwork.slicedwork.presentation.activity
 
 import android.content.Context
+import android.graphics.ColorFilter
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.slicedwork.slicedwork.R
 import com.slicedwork.slicedwork.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         setProps()
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
+        binding.navigationView.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
@@ -34,11 +40,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         navHostFragment = getNavHostFragment()
         navController = getNavController()
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+        appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp(appBarConfiguration)
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
     override fun onBackPressed() {}
@@ -54,6 +60,11 @@ class MainActivity : AppCompatActivity() {
 
     fun colorToolBar(color: Int) {
         binding.toolbar.background = ContextCompat.getDrawable(this, color)
+        if (color != R.color.white)
+            binding.toolbar.navigationIcon?.setColorFilter(
+                resources.getColor(R.color.white),
+                PorterDuff.Mode.SRC_ATOP
+            )
     }
 
     fun hideToolbar() = this.supportActionBar?.hide()

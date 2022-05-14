@@ -32,6 +32,7 @@ class HomeFragment : Fragment() {
         super.onResume()
         goToGreetings()
         setListeners()
+        _activity.showToolbar()
     }
 
     private fun setListeners() {

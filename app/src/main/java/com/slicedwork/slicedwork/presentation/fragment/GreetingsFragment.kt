@@ -39,6 +39,12 @@ class GreetingsFragment : Fragment() {
         super.onResume()
         goBackToHome()
         setListeners()
+        _activity.hideToolbar()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        _activity.showToolbar()
     }
 
     private fun goBackToHome() {
@@ -58,7 +64,6 @@ class GreetingsFragment : Fragment() {
         _binding.lifecycleOwner = this.viewLifecycleOwner
         _activity = this.requireActivity() as MainActivity
         _activity.colorStatusBar(R.color.primaryDarkColor)
-        _activity.hideToolbar()
     }
 
     private fun checkToStartAnimation() {
@@ -75,6 +80,4 @@ class GreetingsFragment : Fragment() {
 
     private fun goToRegister() = findNavController()
         .navigate(GreetingsFragmentDirections.actionGreetingsFragmentToRegisterGraph())
-
-
 }

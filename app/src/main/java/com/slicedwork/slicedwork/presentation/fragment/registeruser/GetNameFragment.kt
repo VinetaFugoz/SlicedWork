@@ -61,7 +61,7 @@ class GetNameFragment : Fragment() {
     }
 
     private fun createUser() {
-        _user = User(uuid = UUID.randomUUID().toString())
+        _user = User()
     }
 
     private fun setUserProps() {
