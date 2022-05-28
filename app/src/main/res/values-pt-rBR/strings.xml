@@ -2,6 +2,22 @@
 <resources>
     <string name="app_name">SlicedWork</string>
 
+    <string name="painting">Pintura</string>
+    <string name="cleaning">Limpeza</string>
+    <string name="gardening">Jardinagem</string>
+    <string name="construction">Construção</string>
+    <string name="electric">Elétrica</string>
+    <string name="plumbing">Encanamento</string>
+
+    <string-array name="occupation_areas">
+        <item>@string/painting</item>
+        <item>@string/cleaning</item>
+        <item>@string/gardening</item>
+        <item>@string/construction</item>
+        <item>@string/electric</item>
+        <item>@string/plumbing</item>
+    </string-array>
+
     <!--Greetings-->
     <string name="greetings_title">Bem-vindo ao SlicedWork</string>
     <string name="greetings_subtitle">A maneira mais simples de encontrar um trabalho!</string>
@@ -92,14 +108,6 @@
     <string name="get_details_description">Descrição</string>
     <string name="get_details_task_error">A tarefa não foi inserida.</string>
     <string name="get_details_occupation_area">Área de atuação</string>
-    <string-array name="get_details_occupation_areas">
-        <item>Pintura</item>
-        <item>Limpeza</item>
-        <item>Jardinagem</item>
-        <item>Construção</item>
-        <item>Elétrica</item>
-        <item>Encanamento</item>
-    </string-array>
     <string name="get_details_occupation_area_error">A area de atuação não foi inserida.</string>
     <string name="get_details_price">Preço</string>
     <string name="get_details_price_error">O preço não foi inserido.</string>
@@ -116,4 +124,9 @@
     <string name="get_address_street">Rua</string>
     <string name="get_address_number">Número</string>
     <string name="get_address_next">Próximo</string>
+    <string name="finish_register_vacancy_finish">Finalizar</string>
+    <string name="finish_register_vacancy_title">Registro completo, clique aqui para finalizar!</string>
+    <string name="home_applied_vacancies">Vagas aplicadas</string>
+    <string name="home_announced_vacancies">Vagas anunciadas</string>
+    <string name="home_profile">Perfil</string>
 </resources>

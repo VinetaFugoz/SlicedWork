@@ -1,6 +1,22 @@
 <resources>
     <string name="app_name">SlicedWork</string>
 
+    <string name="painting">Painting</string>
+    <string name="cleaning">Cleaning</string>
+    <string name="gardening">Gardening</string>
+    <string name="construction">Construction</string>
+    <string name="electric">Electric</string>
+    <string name="plumbing">Plumbing</string>
+
+    <string-array name="occupation_areas">
+        <item>@string/painting</item>
+        <item>@string/cleaning</item>
+        <item>@string/gardening</item>
+        <item>@string/construction</item>
+        <item>@string/electric</item>
+        <item>@string/plumbing</item>
+    </string-array>
+
     <!--Greetings-->
     <string name="greetings_login">Log In</string>
     <string name="greetings_register">Register</string>
@@ -104,14 +120,6 @@
     <string name="get_details_description">Description</string>
     <string name="get_details_occupation_area">Occupation Area</string>
     <string name="get_details_occupation_area_error">The occupation area was not entered</string>
-    <string-array name="get_details_occupation_areas">
-        <item>Painting</item>
-        <item>Cleaning</item>
-        <item>Gardening</item>
-        <item>Construction</item>
-        <item>Electric</item>
-        <item>Plumbing</item>
-    </string-array>
     <string name="get_details_price">Price</string>
     <string name="get_details_price_error">The price has not been entered</string>
     <string name="get_details_next">Next</string>
@@ -127,8 +135,12 @@
     <string name="get_address_street">Street</string>
     <string name="get_address_number">Number</string>
     <string name="get_address_next">Next</string>
+
+    <!--FinishRegisterVacancy-->
     <string name="finish_register_vacancy_finish">Finish</string>
     <string name="finish_register_vacancy_title">Register completed, click here to finish!</string>
+
+    <!--Home-->
     <string name="home_applied_vacancies">Applied vacancies</string>
     <string name="home_announced_vacancies">Announced vacancies</string>
     <string name="home_profile">Profile</string>

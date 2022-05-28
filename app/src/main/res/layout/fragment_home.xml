@@ -6,15 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".presentation.fragment.HomeFragment">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_profile"
-        style="@style/CommonButton"
-        android:layout_width="100dp"
-        android:background="@color/secondaryColor"
-        android:text="perfil"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="16dp"
+        android:id="@+id/rv_vacancies"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_vacancy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,14 +22,14 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/ic_announcement"
         android:background="@drawable/shape_circle"
-        android:tint="@color/white"
         android:padding="16dp"
         android:scaleType="fitCenter"
+        android:src="@drawable/ic_announcement"
+        android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

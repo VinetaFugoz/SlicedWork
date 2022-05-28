@@ -4,6 +4,8 @@ import com.slicedwork.slicedwork.domain.usecase.user.LoginUserUseCase
 import com.slicedwork.slicedwork.domain.usecase.user.LoginUserUseCaseImpl
 import com.slicedwork.slicedwork.domain.usecase.user.RegisterUserUseCase
 import com.slicedwork.slicedwork.domain.usecase.user.RegisterUserUseCaseImpl
+import com.slicedwork.slicedwork.domain.usecase.vacancy.GetVacanciesUseCase
+import com.slicedwork.slicedwork.domain.usecase.vacancy.GetVacanciesUseCaseImpl
 import com.slicedwork.slicedwork.domain.usecase.vacancy.RegisterVacancyUseCase
 import com.slicedwork.slicedwork.domain.usecase.vacancy.RegisterVacancyUseCaseImpl
 import dagger.Binds
@@ -23,4 +25,7 @@ interface UseCaseModule {
 
     @Binds
     fun bindRegisterVacancyUseCase(registerVacancyUseCase: RegisterVacancyUseCaseImpl): RegisterVacancyUseCase
+
+    @Binds
+    fun bindGetVacanciesUseCase(getVacanciesUseCase: GetVacanciesUseCaseImpl): GetVacanciesUseCase
 }

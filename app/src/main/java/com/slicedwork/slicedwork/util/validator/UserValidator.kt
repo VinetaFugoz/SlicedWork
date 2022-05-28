@@ -45,7 +45,7 @@ class UserValidator: Validator() {
     }
 
     fun validatePassword(password: String): Boolean {
-        if (isEmpty(password)) return false
+        if (isEmpty(password) || password.length < 6) return false
 
         return true
     }

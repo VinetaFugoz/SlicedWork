@@ -31,6 +31,7 @@ class GetDetailsFragment : Fragment() {
     private val _viewModel: GetDetailsViewModel by viewModels()
     private lateinit var _vacancy: Vacancy
     private lateinit var _vacancyValidator: VacancyValidator
+    private var chosenOccupationArea: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,7 +52,7 @@ class GetDetailsFragment : Fragment() {
         _binding = FragmentGetDetailsBinding.inflate(inflater)
         _binding.viewModel = _viewModel
         _binding.lifecycleOwner = viewLifecycleOwner
-        val occupationAreas = resources.getStringArray(R.array.get_details_occupation_areas)
+        val occupationAreas = resources.getStringArray(R.array.occupation_areas)
         val occupationAreaAdapter = ArrayAdapter(
             this.requireContext(),
             R.layout.support_simple_spinner_dropdown_item,
@@ -91,6 +92,7 @@ class GetDetailsFragment : Fragment() {
     }
 
     private fun occupationAreaEvent(position: Int) {
+        chosenOccupationArea = position
         _binding.run {
             ivPicture.setImageDrawable(
                 ContextCompat.getDrawable(
@@ -146,8 +148,9 @@ class GetDetailsFragment : Fragment() {
                     uuid = Firebase.auth.currentUser!!.uid,
                     task = tietTask.text.toString(),
                     description = tietDescription.text.toString(),
-                    occupationArea = actvOccupationArea.text.toString(),
-                    picture = imageUri.toString()
+                    occupationArea = chosenOccupationArea.toString(),
+                    picture = imageUri.toString(),
+                    price = tietPrice.text.toString()
                 )
         }
     }

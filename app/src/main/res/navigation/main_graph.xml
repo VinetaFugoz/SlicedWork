@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_homeFragment_to_register_vacancy_graph"
             app:destination="@id/register_vacancy_graph" />
+        <action
+            android:id="@+id/action_homeFragment_to_vacancyDetailsFragment"
+            app:destination="@id/vacancyDetailsFragment" />
     </fragment>
     <!--Greetings-->
     <fragment
@@ -40,10 +43,16 @@
         android:id="@+id/LoginFragment"
         android:name="com.slicedwork.slicedwork.presentation.fragment.LoginFragment"
         android:label=""
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_LoginFragment_to_register_graph"
-            app:destination="@id/register_user_graph" />
+        tools:layout="@layout/fragment_login" />
+    <!--VacancyDetails-->
+    <fragment
+        android:id="@+id/vacancyDetailsFragment"
+        android:name="com.slicedwork.slicedwork.presentation.fragment.VacancyDetailsFragment"
+        android:label=""
+        tools:layout="@layout/fragment_vacancy_details" >
+        <argument
+            android:name="vacancy"
+            app:argType="com.slicedwork.slicedwork.domain.model.Vacancy" />
     </fragment>
     <!--RegisterUser-->
     <navigation
@@ -220,6 +229,7 @@
                 app:argType="com.slicedwork.slicedwork.domain.model.Vacancy" />
         </fragment>
     </navigation>
+    <!--ChooseCameraGallery-->
     <dialog
         android:id="@+id/chooseCameraGalleryDialog"
         android:name="com.slicedwork.slicedwork.presentation.dialog.ChooseCameraGalleryDialog"

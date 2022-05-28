@@ -5,15 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.slicedwork.slicedwork.databinding.DialogChooseCameraGalleryBinding
 import com.slicedwork.slicedwork.util.enumerator.MediaEnum
 import com.slicedwork.slicedwork.util.launcher.MediaLauncher
 import com.slicedwork.slicedwork.util.launcher.PermissionLauncher
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class ChooseCameraGalleryDialog : BottomSheetDialogFragment(), View.OnClickListener {
 
