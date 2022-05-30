@@ -9,14 +9,9 @@
     <string name="electric">Elétrica</string>
     <string name="plumbing">Encanamento</string>
 
-    <string-array name="occupation_areas">
-        <item>@string/painting</item>
-        <item>@string/cleaning</item>
-        <item>@string/gardening</item>
-        <item>@string/construction</item>
-        <item>@string/electric</item>
-        <item>@string/plumbing</item>
-    </string-array>
+    <string name="in_waiting">Em aguardo</string>
+    <string name="approved">Aprovado</string>
+    <string name="disapproved">Reprovado</string>
 
     <!--Greetings-->
     <string name="greetings_title">Bem-vindo ao SlicedWork</string>
@@ -74,7 +69,7 @@
     <!--GetUsername-->
     <string name="get_username_title">Você tem um nome de usuário?</string>
     <string name="get_username_subtitle">Digite um nome de usuário único que você goste.</string>
-    <string name="get_username_nickname">Nome de usuário</string>
+    <string name="get_username_username">Nome de usuário</string>
     <string name="get_username_next">Próximo</string>
 
     <!--GetEmail-->
@@ -124,9 +119,22 @@
     <string name="get_address_street">Rua</string>
     <string name="get_address_number">Número</string>
     <string name="get_address_next">Próximo</string>
+
+    <!--FinishRegisterVacancy-->
     <string name="finish_register_vacancy_finish">Finalizar</string>
     <string name="finish_register_vacancy_title">Registro completo, clique aqui para finalizar!</string>
+
+    <!--Home-->
     <string name="home_applied_vacancies">Vagas aplicadas</string>
     <string name="home_announced_vacancies">Vagas anunciadas</string>
     <string name="home_profile">Perfil</string>
+
+    <!--VacancyDetails-->
+    <string name="vacancy_details_occupation_area_label">Area de atuação</string>
+    <string name="vacancy_details_task_label">Tarefa</string>
+    <string name="vacancy_details_description_label">Descrição</string>
+    <string name="vacancy_details_price_label">Preço</string>
+    <string name="vacancy_details_localization_label">Localização</string>
+    <string name="vacancy_details_contractor_label">Contratante</string>
+    <string name="vacancy_details_apply_label">Candidatar-se</string>
 </resources>

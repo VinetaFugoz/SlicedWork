@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.slicedwork.slicedwork.databinding.FragmentGetUsernameBinding
 import com.slicedwork.slicedwork.domain.model.User
-import com.slicedwork.slicedwork.presentation.viewmodel.registeruser.GetNicknameViewModel
+import com.slicedwork.slicedwork.presentation.viewmodel.registeruser.GetUsernameViewModel
 import com.slicedwork.slicedwork.util.extensions.focusAndShowSoftKeyboard
 import com.slicedwork.slicedwork.util.extensions.hideKeyBoard
 
@@ -17,7 +17,7 @@ class GetUsernameFragment : Fragment() {
 
     private lateinit var _binding: FragmentGetUsernameBinding
     private lateinit var _user: User
-    private val _viewModel: GetNicknameViewModel by viewModels()
+    private val _viewModel: GetUsernameViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,7 +55,7 @@ class GetUsernameFragment : Fragment() {
     }
 
     private fun setUserProps() {
-        _user.nickname = _viewModel.nicknameLiveData.value.toString()
+        _user.username = _viewModel.usernameLiveData.value.toString()
     }
 
     private fun goToGetEmail() =

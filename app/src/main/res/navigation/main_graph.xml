@@ -222,7 +222,7 @@
         <fragment
             android:id="@+id/finishRegisterVacancyFragment"
             android:name="com.slicedwork.slicedwork.presentation.fragment.registervacancy.FinishRegisterVacancyFragment"
-            android:label="fragment_finish_register_vacancy"
+            android:label=""
             tools:layout="@layout/fragment_finish_register_vacancy" >
             <argument
                 android:name="vacancy"

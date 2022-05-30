@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.slicedwork.slicedwork.R
@@ -85,8 +86,9 @@ class GetDetailsFragment : Fragment() {
             ?.observe(viewLifecycleOwner) { imageUri ->
                 if (imageUri != null) {
                     this.imageUri = imageUri
-                    _binding.ivPicture.scaleType = ImageView.ScaleType.CENTER_CROP
-                    _binding.ivPicture.setImageURI(Uri.parse(imageUri))
+
+                    Glide.with(requireContext()).load(imageUri).centerCrop()
+                        .into(_binding.ivPicture)
                 }
             }
     }
@@ -145,12 +147,12 @@ class GetDetailsFragment : Fragment() {
             if (Firebase.auth.currentUser != null)
                 _vacancy = Vacancy(
                     id = UUID.randomUUID().toString(),
-                    uuid = Firebase.auth.currentUser!!.uid,
+                    userId = Firebase.auth.currentUser!!.uid,
                     task = tietTask.text.toString(),
                     description = tietDescription.text.toString(),
                     occupationArea = chosenOccupationArea.toString(),
                     picture = imageUri.toString(),
-                    price = tietPrice.text.toString()
+                    price = tietPrice.text.toString(),
                 )
         }
     }

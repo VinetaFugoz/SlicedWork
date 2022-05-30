@@ -17,6 +17,16 @@
         <item>@string/plumbing</item>
     </string-array>
 
+    <string name="in_waiting">In Waiting</string>
+    <string name="approved">Approved</string>
+    <string name="disapproved">Disapproved</string>
+
+    <string-array name="candidate_status">
+        <item>@string/in_waiting</item>
+        <item>@string/approved</item>
+        <item>@string/disapproved</item>
+    </string-array>
+
     <!--Greetings-->
     <string name="greetings_login">Log In</string>
     <string name="greetings_register">Register</string>
@@ -84,7 +94,7 @@
     <!--GetUsername-->
     <string name="get_username_title">Do you have a username?</string>
     <string name="get_username_subtitle">Enter a unique username that you like.</string>
-    <string name="get_username_nickname">Username</string>
+    <string name="get_username_username">Username</string>
     <string name="get_username_next">Next</string>
 
     <!--GetEmail-->
@@ -144,4 +154,13 @@
     <string name="home_applied_vacancies">Applied vacancies</string>
     <string name="home_announced_vacancies">Announced vacancies</string>
     <string name="home_profile">Profile</string>
+
+    <!--VacancyDetails-->
+    <string name="vacancy_details_occupation_area_label">Occupation Area</string>
+    <string name="vacancy_details_task_label">Task</string>
+    <string name="vacancy_details_description_label">Description</string>
+    <string name="vacancy_details_price_label">Price</string>
+    <string name="vacancy_details_localization_label">Localization</string>
+    <string name="vacancy_details_contractor_label">Contractor</string>
+    <string name="vacancy_details_apply_label">Apply</string>
 </resources>

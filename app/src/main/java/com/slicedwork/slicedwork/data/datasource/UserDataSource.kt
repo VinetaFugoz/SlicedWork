@@ -6,4 +6,6 @@ interface UserDataSource {
     suspend fun registerUser(user: User)
 
     suspend fun loginUser(email: String, password: String)
+
+    suspend fun getUser(userId: String, userCallBack: (User) -> Unit)
 }

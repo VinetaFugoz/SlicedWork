@@ -4,7 +4,7 @@ import java.io.Serializable
 
 data class Vacancy(
     val id: String = "",
-    val uuid: String = "",
+    val userId: String = "",
     var task: String = "",
     var description: String = "",
     var occupationArea: String = "",

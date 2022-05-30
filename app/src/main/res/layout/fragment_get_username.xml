@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.slicedwork.slicedwork.presentation.viewmodel.registeruser.GetNicknameViewModel" />
+            type="com.slicedwork.slicedwork.presentation.viewmodel.registeruser.GetUsernameViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -68,9 +68,9 @@
                 android:layout_height="match_parent"
                 android:focusedByDefault="true"
                 android:fontFamily="@font/century_gothic"
-                android:hint="@string/get_username_nickname"
+                android:hint="@string/get_username_username"
                 android:afterTextChanged="@{viewModel::afterTextChanged}"
-                android:text="@={viewModel.nicknameLiveData}"
+                android:text="@={viewModel.usernameLiveData}"
                 android:inputType="textPersonName" />
 
         </com.google.android.material.textfield.TextInputLayout>

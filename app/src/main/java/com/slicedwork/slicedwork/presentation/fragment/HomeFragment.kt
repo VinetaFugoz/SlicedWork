@@ -48,7 +48,6 @@ class HomeFragment : Fragment() {
     private fun setProps(inflater: LayoutInflater) {
         _binding = FragmentHomeBinding.inflate(inflater)
         _activity = this.requireActivity() as MainActivity
-
     }
 
     private fun setVacancies(vacancies: List<Vacancy>) {

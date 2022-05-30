@@ -32,8 +32,8 @@ class UserValidator: Validator() {
         return true
     }
 
-    fun validateNickname(nickname: String): Boolean {
-        if (isEmpty(nickname)) return false
+    fun validateUsername(username: String): Boolean {
+        if (isEmpty(username)) return false
 
         return true
     }

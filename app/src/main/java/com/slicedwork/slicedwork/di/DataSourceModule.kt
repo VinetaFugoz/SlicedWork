@@ -1,9 +1,6 @@
 package com.slicedwork.slicedwork.di
 
-import com.slicedwork.slicedwork.data.datasource.UserDataSource
-import com.slicedwork.slicedwork.data.datasource.UserDataSourceImpl
-import com.slicedwork.slicedwork.data.datasource.VacancyDataSource
-import com.slicedwork.slicedwork.data.datasource.VacancyDataSourceImpl
+import com.slicedwork.slicedwork.data.datasource.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -21,4 +18,8 @@ interface DataSourceModule {
     @Singleton
     @Binds
     fun bindVacancyDataSource(vacancyDataSource: VacancyDataSourceImpl): VacancyDataSource
+
+    @Singleton
+    @Binds
+    fun bindCandidateDataSource(candidateDataSource: CandidateDataSourceImpl): CandidateDataSource
 }

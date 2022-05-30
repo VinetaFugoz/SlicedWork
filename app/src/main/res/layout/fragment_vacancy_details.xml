@@ -1,7 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.fragment.VacancyDetailsFragment">
-</FrameLayout>
+    android:paddingBottom="16dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cd_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.781"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/primaryDarkColor"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_painting"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_task_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/tv_task_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/century_gothic"
+                    android:text="@string/vacancy_details_task_label"
+                    android:textColor="@color/primaryLightColor"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_task"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_picture"
+                    tools:layout_editor_absoluteX="0dp" />
+
+                <TextView
+                    android:id="@+id/tv_task"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/century_gothic"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_description_label"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_task_label"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:text="Painting" />
+
+                <TextView
+                    android:id="@+id/tv_price_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/century_gothic"
+                    android:text="@string/vacancy_details_price_label"
+                    android:textColor="@color/primaryLightColor"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_price"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_task_label" />
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/century_gothic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_price_label"
+                    tools:text="R$ 200.00" />
+
+                <TextView
+                    android:id="@+id/tv_description_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/century_gothic"
+                    android:text="@string/vacancy_details_description_label"
+                    android:textColor="@color/primaryLightColor"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_description"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_task"
+                    tools:layout_editor_absoluteX="0dp" />
+
+                <TextView
+                    android:id="@+id/tv_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/century_gothic"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_occupation_area_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_description_label"
+                    tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec urna et massa interdum laoreet. Nam pulvinar quis eros a laoreet. Vivamus fermentum risus nisi, in consectetur mauris hendrerit et. Aliquam varius, orci a euismod pellentesque, quam massa tempor dui, ac pellentesque augue neque vitae sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus orci sem, bibendum sed euismod id, fermentum ut nibh." />
+
+                <TextView
+                    android:id="@+id/tv_occupation_area_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/century_gothic"
+                    android:text="@string/vacancy_details_occupation_area_label"
+                    android:textColor="@color/primaryLightColor"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_occupation_area"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_description"
+                    tools:layout_editor_absoluteX="0dp" />
+
+                <TextView
+                    android:id="@+id/tv_occupation_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/century_gothic"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_localization_label"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_occupation_area_label"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:text="Painting" />
+
+                <TextView
+                    android:id="@+id/tv_localization_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/century_gothic"
+                    android:text="@string/vacancy_details_localization_label"
+                    android:textColor="@color/primaryLightColor"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_localization"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_occupation_area"
+                    tools:layout_editor_absoluteX="0dp" />
+
+                <TextView
+                    android:id="@+id/tv_localization"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/century_gothic"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_contractor_label"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_localization_label"
+                    tools:text="Rua Tiziu 53, Parque Pretória, Franco da Rocha - SP" />
+
+                <TextView
+                    android:id="@+id/tv_contractor_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/century_gothic"
+                    android:text="@string/vacancy_details_contractor_label"
+                    android:textColor="@color/primaryLightColor"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/iv_user_picture"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_localization" />
+
+                <ImageView
+                    android:id="@+id/iv_user_picture"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/ic_profile"
+                    app:civ_border_color="@color/primaryColor"
+                    app:civ_border_width="5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_contractor_label"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/century_gothic"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/iv_user_picture"
+                    app:layout_constraintTop_toTopOf="@+id/iv_user_picture"
+                    tools:text="Victor Queiroz" />
+
+                <TextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/century_gothic"
+                    android:textColor="@color/primaryLightColor"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                    tools:text="Refluenchai" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_apply"
+        style="@style/CommonButton"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/selector_button_color"
+        android:text="@string/vacancy_details_apply_label"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cd_details" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

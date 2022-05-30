@@ -8,17 +8,17 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class GetNicknameViewModel @Inject constructor(): ViewModel() {
+class GetUsernameViewModel @Inject constructor(): ViewModel() {
     var enabledNextLiveData: MutableLiveData<Boolean> = MutableLiveData()
-    var nicknameLiveData: MutableLiveData<String> = MutableLiveData()
+    var usernameLiveData: MutableLiveData<String> = MutableLiveData()
 
     init {
         enabledNextLiveData.value = false
-        nicknameLiveData.value = ""
+        usernameLiveData.value = ""
     }
 
     fun afterTextChanged(editable: Editable) {
         enabledNextLiveData.value =
-            UserValidator().validateNickname(nicknameLiveData.value.toString())
+            UserValidator().validateUsername(usernameLiveData.value.toString())
     }
 }

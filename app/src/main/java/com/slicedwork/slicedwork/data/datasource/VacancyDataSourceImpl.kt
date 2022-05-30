@@ -1,15 +1,13 @@
 package com.slicedwork.slicedwork.data.datasource
 
 import android.net.Uri
-import androidx.lifecycle.MutableLiveData
+import android.util.Log
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.storage.FirebaseStorage
 import com.slicedwork.slicedwork.domain.model.Vacancy
 import javax.inject.Inject
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
 class VacancyDataSourceImpl @Inject constructor(
     private val firebaseFirestore: FirebaseFirestore
@@ -21,28 +19,32 @@ class VacancyDataSourceImpl @Inject constructor(
         storagePicture()
     }
 
-    override suspend fun getVacancies(vacancyCallBack: (List<Vacancy>) -> Unit) {
-            var vacancies: MutableList<Vacancy> = mutableListOf()
+    override suspend fun getVacancies(vacancyCallback: (List<Vacancy>) -> Unit) {
+            var vacancies: MutableList<Vacancy>
 
-            firebaseFirestore.collection("/vacancy").addSnapshotListener { snapshot, _ ->
+            firebaseFirestore.collection("/vacancy")
+                .addSnapshotListener { snapshot, _ ->
                 vacancies = mutableListOf()
                 val documents: List<DocumentChange> = snapshot!!.documentChanges
                 for (document in documents) {
                     val vacancy = document.document.toObject<Vacancy>()
                     vacancies.add(vacancy)
                 }
-                vacancyCallBack(vacancies)
+                vacancyCallback(vacancies)
             }
-
     }
 
     private fun storagePicture() {
         val storageReference =
             FirebaseStorage.getInstance().getReference("/images/vacancy_pictures/${vacancy.id}")
-        storageReference.putFile(Uri.parse(vacancy.picture))
-        storageReference.downloadUrl.addOnSuccessListener {
-            vacancy.picture = it.toString()
-            createVacancyCollection()
+        storageReference.putFile(Uri.parse(vacancy.picture)).addOnSuccessListener {
+            storageReference.downloadUrl.addOnSuccessListener { uri ->
+                vacancy.picture = uri.toString()
+                createVacancyCollection()
+            }.addOnFailureListener { exception ->
+                val message = exception.message.toString()
+                Log.i("VacancyData", message)
+            }
         }
     }
 
