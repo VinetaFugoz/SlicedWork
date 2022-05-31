@@ -26,6 +26,11 @@ class FinishRegisterUserFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         setProps(inflater)
+
+        _viewModel.registeredLiveData.observe(viewLifecycleOwner) { registered ->
+            if (registered == true) _binding.btnFinish.visibility = View.VISIBLE
+        }
+
         return _binding.root
     }
 
@@ -33,6 +38,7 @@ class FinishRegisterUserFragment : Fragment() {
         super.onResume()
         _binding.btnFinish.setOnClickListener { findNavController().navigateUp() }
         _viewModel.registerUser(_user)
+
     }
 
     private fun getUser() = arguments?.get("user") as User

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -48,6 +49,13 @@ class VacancyDetailsFragment : Fragment() {
 
     private fun setListeners() {
         _binding.btnApply.setOnClickListener { applyEvent() }
+        _binding.tvGoToProfile.setOnClickListener { goToProfile() }
+    }
+
+    private fun goToProfile() {
+        findNavController().navigate(
+            VacancyDetailsFragmentDirections.actionVacancyDetailsFragmentToProfileFragment(_user)
+        )
     }
 
     private fun applyEvent() {

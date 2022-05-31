@@ -25,6 +25,11 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         setProps(inflater)
+
+        _viewModel.loggedLiveData.observe(viewLifecycleOwner) { logged ->
+            if (logged == true) goBackToGreetings()
+        }
+
         return _binding.root
     }
 
@@ -43,8 +48,6 @@ class LoginFragment : Fragment() {
         _viewModel.run {
             loginUser(emailLiveData.value.toString(), passwordLiveData.value.toString())
         }
-
-        goBackToGreetings()
     }
 
     private fun goBackToGreetings() {

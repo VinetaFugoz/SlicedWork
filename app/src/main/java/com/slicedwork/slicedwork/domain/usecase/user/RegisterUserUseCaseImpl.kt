@@ -6,5 +6,8 @@ import javax.inject.Inject
 
 class RegisterUserUseCaseImpl @Inject constructor(private val userRepository: UserRepository) :
     RegisterUserUseCase {
-    override suspend fun invoke(user: User) = userRepository.registerUser(user)
+    override suspend fun invoke(user: User, userCallBack: (Boolean) -> Unit) =
+        userRepository.registerUser(user) { registered ->
+            userCallBack(registered)
+        }
 }

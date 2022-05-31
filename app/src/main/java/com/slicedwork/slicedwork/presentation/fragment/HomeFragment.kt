@@ -36,13 +36,6 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         goToGreetings()
-        setListeners()
-        _activity.showToolbar()
-        _activity.colorStatusBar(R.color.primaryDarkColor)
-        viewModel.getVacancies()
-        viewModel.vacanciesLiveData.observe(viewLifecycleOwner) { vacancies ->
-            setVacancies(vacancies)
-        }
     }
 
     private fun setProps(inflater: LayoutInflater) {
@@ -66,6 +59,15 @@ class HomeFragment : Fragment() {
     private fun goToGreetings() {
         if (Firebase.auth.uid.isNullOrEmpty()) findNavController()
             .navigate(HomeFragmentDirections.actionHomeFragmentToGreetingsFragment())
+        else {
+            setListeners()
+            _activity.showToolbar()
+            _activity.colorStatusBar(R.color.primaryDarkColor)
+            viewModel.getVacancies()
+            viewModel.vacanciesLiveData.observe(viewLifecycleOwner) { vacancies ->
+                setVacancies(vacancies)
+            }
+        }
     }
 
     private fun goToVacancyDetails(vacancy: Vacancy) {

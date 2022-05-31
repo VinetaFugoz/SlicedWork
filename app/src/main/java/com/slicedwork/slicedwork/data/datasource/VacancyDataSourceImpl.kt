@@ -2,9 +2,11 @@ package com.slicedwork.slicedwork.data.datasource
 
 import android.net.Uri
 import android.util.Log
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.slicedwork.slicedwork.domain.model.Vacancy
 import javax.inject.Inject
@@ -20,10 +22,11 @@ class VacancyDataSourceImpl @Inject constructor(
     }
 
     override suspend fun getVacancies(vacancyCallback: (List<Vacancy>) -> Unit) {
-            var vacancies: MutableList<Vacancy>
+        var vacancies: MutableList<Vacancy>
 
-            firebaseFirestore.collection("/vacancy")
-                .addSnapshotListener { snapshot, _ ->
+        firebaseFirestore.collection("/vacancy")
+            .whereNotEqualTo("userId", Firebase.auth.currentUser!!.uid)
+            .addSnapshotListener { snapshot, _ ->
                 vacancies = mutableListOf()
                 val documents: List<DocumentChange> = snapshot!!.documentChanges
                 for (document in documents) {

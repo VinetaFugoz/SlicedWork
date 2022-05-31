@@ -21,17 +21,12 @@ class VacancyViewHolder(
         vacancy.run {
             val cityState = "$city - $state"
             val signPrice = "R$ $price"
+            val idWithHashtag = "#$id"
 
             binding.run {
 
                 setOccupationAreaProps(occupationArea.toInt(), context)
-
-                if (picture == "") {
-                    ivPicture.scaleType = ImageView.ScaleType.FIT_CENTER
-                    ivPicture.setImageDrawable(occupationAreaImage)
-                } else {
-                    Glide.with(itemView.context).load(picture).centerCrop().into(ivPicture)
-                }
+                tvId.text = idWithHashtag
                 tvOccupationArea.text = occupationAreaText
                 tvTask.text = task
                 tvCityState.text = cityState

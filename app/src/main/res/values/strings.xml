@@ -163,4 +163,10 @@
     <string name="vacancy_details_localization_label">Localization</string>
     <string name="vacancy_details_contractor_label">Contractor</string>
     <string name="vacancy_details_apply_label">Apply</string>
+    <string name="vacancy_details_go_to_profile">(Go to profile)</string>
+
+    <!--Profile-->
+    <string name="profile_completed_works">Completed Works</string>
+    <string name="profile_completed_works_subtitle">(Announced/Applied)</string>
+    <string name="profile_log_out">Log Out</string>
 </resources>

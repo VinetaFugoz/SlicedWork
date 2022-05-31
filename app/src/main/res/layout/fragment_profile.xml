@@ -6,16 +6,169 @@
     android:layout_height="match_parent"
     tools:context=".presentation.fragment.HomeFragment">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_logout"
-        style="@style/CommonButton"
-        android:layout_width="100dp"
-        android:background="@color/secondaryColor"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_picture"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_profile"
+        app:civ_border_color="@color/primaryColor"
+        app:civ_border_width="3dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="sair"/>
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_wpp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="-10dp"
+        android:layout_marginEnd="-10dp"
+        android:background="@drawable/shape_circle"
+        android:drawableStart="@drawable/ic_wpp_foreground"
+        android:drawableTint="@color/white"
+        android:paddingStart="-35dp"
+        android:paddingEnd="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_picture"
+        app:layout_constraintTop_toTopOf="@+id/iv_picture" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cd_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_picture">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="8dp"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/century_gothic"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_username"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Victor Queiroz" />
+
+            <TextView
+                android:id="@+id/tv_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/century_gothic"
+                android:gravity="center"
+                app:layout_constraintBottom_toTopOf="@+id/tv_completed_works"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                tools:text="Refluenchai" />
+
+
+            <TextView
+                android:id="@+id/tv_completed_works"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/century_gothic"
+                android:gravity="center"
+                android:text="@string/profile_completed_works"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_completed_works_subtitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+
+            <TextView
+                android:id="@+id/tv_completed_works_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/century_gothic"
+                android:gravity="center"
+                android:text="@string/profile_completed_works_subtitle"
+                android:textColor="@color/primaryColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_completed_works" />
+
+            <include
+                android:id="@+id/inc_painting"
+                layout="@layout/item_completed_works"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_completed_works_subtitle" />
+
+            <include
+                android:id="@+id/inc_cleaning"
+                layout="@layout/item_completed_works"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inc_painting" />
+
+            <include
+                android:id="@+id/inc_gardening"
+                layout="@layout/item_completed_works"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inc_cleaning" />
+
+            <include
+                android:id="@+id/inc_construction"
+                layout="@layout/item_completed_works"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inc_gardening" />
+
+            <include
+                android:id="@+id/inc_electric"
+                layout="@layout/item_completed_works"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inc_construction" />
+
+            <include
+                android:id="@+id/inc_plumbing"
+                layout="@layout/item_completed_works"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inc_electric" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

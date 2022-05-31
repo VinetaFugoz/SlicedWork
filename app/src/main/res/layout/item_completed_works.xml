@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/view_horizontal"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@+id/iv_occupation_area"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_occupation_area"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_occupation_area"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@color/primaryColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_horizontal"
+        tools:src="@drawable/ic_painting" />
+
+
+    <TextView
+        android:id="@+id/tv_occupation_area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/century_gothic"
+        android:textColor="@color/primaryColor"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_occupation_area"
+        app:layout_constraintStart_toEndOf="@+id/iv_occupation_area"
+        app:layout_constraintTop_toTopOf="@+id/iv_occupation_area"
+        tools:text="Painting" />
+
+    <TextView
+        android:id="@+id/tv_announced_qtt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/century_gothic"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@id/view_vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_occupation_area"
+        app:layout_constraintTop_toTopOf="@+id/tv_occupation_area"
+        tools:layout_editor_absoluteX="347dp"
+        tools:text="18" />
+
+    <View
+        android:id="@+id/view_vertical"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_occupation_area"
+        app:layout_constraintEnd_toStartOf="@+id/tv_applied_qtt"
+        app:layout_constraintTop_toTopOf="@+id/iv_occupation_area"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_applied_qtt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/century_gothic"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_announced_qtt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_announced_qtt"
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="18" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

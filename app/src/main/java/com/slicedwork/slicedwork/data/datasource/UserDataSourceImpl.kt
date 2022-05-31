@@ -1,6 +1,7 @@
 package com.slicedwork.slicedwork.data.datasource
 
 import android.net.Uri
+import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
@@ -14,14 +15,32 @@ class UserDataSourceImpl @Inject constructor(
 ) : UserDataSource {
     private lateinit var user: User
 
-    override suspend fun registerUser(user: User) {
+    override suspend fun registerUser(user: User, userCallBack: (Boolean) -> Unit) {
         this.user = user
-        authUser()
+        firebaseAuth.createUserWithEmailAndPassword(user.email, user.password).addOnSuccessListener { result ->
+                result.user?.uid
+                val storageReference = FirebaseStorage.getInstance().getReference("/images/user_pictures/${user.id}")
+                    storageReference.putFile(Uri.parse(user.picture)).addOnSuccessListener {
+                    storageReference.downloadUrl.addOnSuccessListener { uri ->
+                        user.picture = uri.toString()
+                        user.id = firebaseAuth.currentUser!!.uid
+                        firebaseFirestore.collection("user").document(user.id).set(user)
+                            .addOnSuccessListener { userCallBack(true) }
+
+                    }.addOnFailureListener { exception ->
+                        val message = exception.message.toString()
+                        Log.i("UserData", message)
+                    }
+                }
+            }.addOnFailureListener {
+                it.message.toString()
+            }
     }
 
-    override suspend fun loginUser(email: String, password: String) {
+    override suspend fun loginUser(email: String, password: String, userCallBack: (Boolean) -> Unit) {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener { result ->
             result.user?.uid
+            userCallBack(true)
         }.addOnFailureListener { exception ->
             exception.message.toString()
         }
@@ -37,30 +56,5 @@ class UserDataSourceImpl @Inject constructor(
             }.addOnFailureListener { exception ->
                 exception.message.toString()
             }
-    }
-
-    private fun authUser() {
-        firebaseAuth.createUserWithEmailAndPassword(user.email, user.password)
-            .addOnSuccessListener { result ->
-                result.user?.uid
-                createUserCollection()
-            }.addOnFailureListener {
-                it.message.toString()
-            }
-    }
-
-    private fun createUserCollection() {
-        user.id = firebaseAuth.currentUser!!.uid
-        firebaseFirestore.collection("user")
-            .document(user.id)
-            .set(user).addOnSuccessListener {
-                storagePicture()
-            }
-    }
-
-    private fun storagePicture() {
-        val storageReference =
-            FirebaseStorage.getInstance().getReference("/images/user_pictures/${user.id}")
-        storageReference.putFile(Uri.parse(user.picture))
     }
 }

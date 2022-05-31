@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
         binding.navigationView.setupWithNavController(navController)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 
     private fun setProps() {

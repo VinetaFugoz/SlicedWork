@@ -53,6 +53,9 @@
         <argument
             android:name="vacancy"
             app:argType="com.slicedwork.slicedwork.domain.model.Vacancy" />
+        <action
+            android:id="@+id/action_vacancyDetailsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <!--RegisterUser-->
     <navigation
@@ -186,7 +189,12 @@
         android:id="@+id/profileFragment"
         android:name="com.slicedwork.slicedwork.presentation.fragment.ProfileFragment"
         tools:layout="@layout/fragment_profile"
-        android:label="" />
+        android:label="" >
+        <argument
+            android:name="user"
+            app:argType="com.slicedwork.slicedwork.domain.model.User"
+            app:nullable="true" />
+    </fragment>
     <!--RegisterVacancy-->
     <navigation android:id="@+id/register_vacancy_graph"
         app:startDestination="@id/getDetailsFragment">

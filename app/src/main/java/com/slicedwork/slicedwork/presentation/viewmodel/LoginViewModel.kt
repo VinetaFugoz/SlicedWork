@@ -16,11 +16,13 @@ class LoginViewModel @Inject constructor(private val loginUserUseCase: LoginUser
     var enabledNextLiveData: MutableLiveData<Boolean> = MutableLiveData()
     var emailLiveData: MutableLiveData<String> = MutableLiveData()
     var passwordLiveData: MutableLiveData<String> = MutableLiveData()
+    var loggedLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
     init {
         enabledNextLiveData.value = false
         emailLiveData.value = ""
         passwordLiveData.value = ""
+        loggedLiveData.value = false
     }
 
     fun afterTextChanged(editable: Editable) {
@@ -32,6 +34,8 @@ class LoginViewModel @Inject constructor(private val loginUserUseCase: LoginUser
     }
 
     fun loginUser(email: String, password: String) = viewModelScope.launch {
-        loginUserUseCase.invoke(email, password)
+        loginUserUseCase.invoke(email, password) { logged ->
+            loggedLiveData.value = logged
+        }
     }
 }

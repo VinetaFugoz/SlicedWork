@@ -137,4 +137,10 @@
     <string name="vacancy_details_localization_label">Localização</string>
     <string name="vacancy_details_contractor_label">Contratante</string>
     <string name="vacancy_details_apply_label">Candidatar-se</string>
+    <string name="vacancy_details_go_to_profile">(Ir para o perfil)</string>
+
+    <!--Profile-->
+    <string name="profile_completed_works">Trabalhos concluídos</string>
+    <string name="profile_completed_works_subtitle">(Anunciados/Aplicados)</string>
+    <string name="profile_log_out">Sair</string>
 </resources>
