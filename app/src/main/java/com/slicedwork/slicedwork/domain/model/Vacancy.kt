@@ -16,5 +16,6 @@ data class Vacancy(
     var neighborhood: String = "",
     var postalCode: String = "",
     var street: String = "",
-    var number: String = ""
+    var number: String = "",
+    var status: Int = 0
 ): Serializable

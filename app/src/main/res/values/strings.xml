@@ -166,7 +166,9 @@
     <string name="vacancy_details_go_to_profile">(Go to profile)</string>
 
     <!--Profile-->
+    <string name="profile">Profile</string>
     <string name="profile_completed_works">Completed Works</string>
-    <string name="profile_completed_works_subtitle">(Announced/Applied)</string>
     <string name="profile_log_out">Log Out</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

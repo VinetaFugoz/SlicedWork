@@ -5,5 +5,5 @@ import com.slicedwork.slicedwork.domain.model.Vacancy
 interface VacancyDataSource {
     suspend fun registerVacancy(vacancy: Vacancy)
 
-    suspend fun getVacancies(vacancyCallback: (List<Vacancy>) -> Unit)
+    suspend fun getVacancies(isInHome: Boolean = false, status: Int? = null, vacancyCallback: (List<Vacancy>) -> Unit)
 }

@@ -10,7 +10,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val getVacanciesUseCase: GetVacanciesUseCase): ViewModel() {
+class AnnouncedViewModel @Inject constructor(private val getVacanciesUseCase: GetVacanciesUseCase) :
+    ViewModel() {
 
     val vacanciesLiveData: MutableLiveData<List<Vacancy>> = MutableLiveData()
 
@@ -19,8 +20,9 @@ class HomeViewModel @Inject constructor(private val getVacanciesUseCase: GetVaca
     }
 
     fun getVacancies() = viewModelScope.launch {
-        getVacanciesUseCase.invoke(isInHome = true) { vacancies ->
+        getVacanciesUseCase.invoke { vacancies ->
             vacanciesLiveData.value = vacancies
         }
     }
+
 }

@@ -3,8 +3,7 @@ package com.slicedwork.slicedwork.data.datasource
 import android.net.Uri
 import android.util.Log
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.DocumentChange
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.*
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -21,20 +20,34 @@ class VacancyDataSourceImpl @Inject constructor(
         storagePicture()
     }
 
-    override suspend fun getVacancies(vacancyCallback: (List<Vacancy>) -> Unit) {
-        var vacancies: MutableList<Vacancy>
-
-        firebaseFirestore.collection("/vacancy")
-            .whereNotEqualTo("userId", Firebase.auth.currentUser!!.uid)
-            .addSnapshotListener { snapshot, _ ->
-                vacancies = mutableListOf()
-                val documents: List<DocumentChange> = snapshot!!.documentChanges
-                for (document in documents) {
-                    val vacancy = document.document.toObject<Vacancy>()
-                    vacancies.add(vacancy)
+    override suspend fun getVacancies(
+        isInHome: Boolean,
+        status: Int?,
+        vacancyCallback: (List<Vacancy>) -> Unit
+    ) {
+        val query = firebaseFirestore.collection("/vacancy")
+        if (isInHome) {
+            query.whereNotEqualTo("userId", Firebase.auth.currentUser!!.uid)
+                .addSnapshotListener { snapshot, _ ->
+                    vacancyCallback(convertSnapshot(snapshot))
                 }
-                vacancyCallback(vacancies)
-            }
+        } else {
+            firebaseFirestore.collection("/vacancy")
+                .whereEqualTo("userId", Firebase.auth.currentUser!!.uid)
+                .addSnapshotListener { snapshot, _ ->
+                    vacancyCallback(convertSnapshot(snapshot))
+                }
+        }
+    }
+
+    private fun convertSnapshot(snapshot: QuerySnapshot?): List<Vacancy> {
+        val vacancies: MutableList<Vacancy> = mutableListOf()
+        val documents: List<DocumentChange> = snapshot!!.documentChanges
+        for (document in documents) {
+            val vacancy = document.document.toObject<Vacancy>()
+            vacancies.add(vacancy)
+        }
+        return vacancies
     }
 
     private fun storagePicture() {

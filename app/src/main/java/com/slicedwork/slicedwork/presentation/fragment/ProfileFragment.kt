@@ -32,7 +32,7 @@ class ProfileFragment : Fragment() {
         setProps(inflater)
         initializeIncludes()
 
-        viewModel.userViewModel.observe(viewLifecycleOwner) { user ->
+        viewModel.userLiveData.observe(viewLifecycleOwner) { user ->
             _user = user
             setUserViews()
         }
@@ -68,12 +68,14 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater)
         val userArgs = arguments?.get("user")
         if (userArgs == null) {
-            _user = userArgs
+            viewModel.getUser(Firebase.auth.currentUser!!.uid)
             setHasOptionsMenu(true)
-        } else _user = userArgs as User
+        } else {
+            _user = userArgs as User
+            setUserViews()
+        }
 
-        if (_user == null) viewModel.getUser(Firebase.auth.currentUser!!.uid)
-        else (setUserViews())
+
     }
 
     private fun initializeIncludes() {

@@ -1,7 +1,5 @@
 package com.slicedwork.slicedwork.di
 
-import com.slicedwork.slicedwork.domain.usecase.candidate.RegisterCandidateUseCase
-import com.slicedwork.slicedwork.domain.usecase.candidate.RegisterCandidateUseCaseImpl
 import com.slicedwork.slicedwork.domain.usecase.user.*
 import com.slicedwork.slicedwork.domain.usecase.vacancy.GetVacanciesUseCase
 import com.slicedwork.slicedwork.domain.usecase.vacancy.GetVacanciesUseCaseImpl
@@ -32,8 +30,4 @@ interface UseCaseModule {
 
     @Binds
     fun bindGetVacanciesUseCase(getVacanciesUseCase: GetVacanciesUseCaseImpl): GetVacanciesUseCase
-
-    // Candidate
-    @Binds
-    fun bindRegisterCandidateUseCase(registerCandidateUseCase: RegisterCandidateUseCaseImpl): RegisterCandidateUseCase
 }

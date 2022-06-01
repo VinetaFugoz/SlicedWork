@@ -89,22 +89,10 @@
                 android:text="@string/profile_completed_works"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/tv_completed_works_subtitle"
+                app:layout_constraintBottom_toTopOf="@+id/inc_painting"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_username" />
-
-            <TextView
-                android:id="@+id/tv_completed_works_subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/century_gothic"
-                android:gravity="center"
-                android:text="@string/profile_completed_works_subtitle"
-                android:textColor="@color/primaryColor"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_completed_works" />
 
             <include
                 android:id="@+id/inc_painting"
@@ -112,11 +100,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_completed_works_subtitle" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_completed_works" />
 
             <include
                 android:id="@+id/inc_cleaning"

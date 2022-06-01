@@ -12,11 +12,11 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor(private val getUserUseCase: GetUserUseCase): ViewModel() {
 
-    var userViewModel: MutableLiveData<User> = MutableLiveData()
+    var userLiveData: MutableLiveData<User> = MutableLiveData()
 
     fun getUser(userId: String) = viewModelScope.launch {
         getUserUseCase.invoke(userId) { user ->
-            userViewModel.value = user
+            userLiveData.value = user
         }
     }
 }

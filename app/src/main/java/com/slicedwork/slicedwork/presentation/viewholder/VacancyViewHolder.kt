@@ -2,12 +2,15 @@ package com.slicedwork.slicedwork.presentation.viewholder
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.widget.ImageView
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.slicedwork.slicedwork.R
 import com.slicedwork.slicedwork.databinding.ItemVacancyBinding
 import com.slicedwork.slicedwork.domain.model.Vacancy
 import com.slicedwork.slicedwork.util.enumerator.OccupationAreaEnum.*
+import com.slicedwork.slicedwork.util.enumerator.VacancyStatusEnum.*
 
 class VacancyViewHolder(
     private val binding: ItemVacancyBinding,
@@ -20,7 +23,6 @@ class VacancyViewHolder(
     fun bind(vacancy: Vacancy, context: Context) {
         vacancy.run {
             val cityState = "$city - $state"
-            val signPrice = "R$ $price"
             val idWithHashtag = "#$id"
 
             binding.run {
@@ -30,7 +32,21 @@ class VacancyViewHolder(
                 tvOccupationArea.text = occupationAreaText
                 tvTask.text = task
                 tvCityState.text = cityState
-                tvPrice.text = signPrice
+                if (Firebase.auth.uid == userId) {
+                    tvPrice.visibility = View.GONE
+                    val statusDrawable = when (status) {
+                        OPENED.ordinal -> context.getDrawable(R.drawable.ic_opened_door)
+                        CLOSED.ordinal -> context.getDrawable(R.drawable.ic_closed_door)
+                        else -> context.getDrawable(R.drawable.ic_correct)
+                    }
+
+                    ivStatus.setImageDrawable(statusDrawable)
+
+                } else {
+                    ivStatus.visibility = View.GONE
+                    val signPrice = "R$ $price"
+                    tvPrice.text = signPrice
+                }
 
                 root.setOnClickListener {
                     onItemClickListener.invoke(vacancy)

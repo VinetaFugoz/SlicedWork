@@ -140,7 +140,7 @@
     <string name="vacancy_details_go_to_profile">(Ir para o perfil)</string>
 
     <!--Profile-->
+    <string name="profile">Perfil</string>
     <string name="profile_completed_works">Trabalhos concluídos</string>
-    <string name="profile_completed_works_subtitle">(Anunciados/Aplicados)</string>
     <string name="profile_log_out">Sair</string>
 </resources>

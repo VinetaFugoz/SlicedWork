@@ -14,10 +14,5 @@
         android:icon="@drawable/ic_announced_vacancies"
         android:title="@string/home_announced_vacancies"
         app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/appliedVacanciesFragment"
-        android:icon="@drawable/ic_applied_vacancies"
-        android:title="@string/home_applied_vacancies"
-        app:showAsAction="ifRoom" />
 
 </menu>
