@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.slicedwork.slicedwork.presentation.viewmodel.EditFieldViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".presentation.dialog.EditFieldDialog">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_field"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="?android:actionBarSize"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_finish"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_field"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusedByDefault="true"
+                android:fontFamily="@font/century_gothic"
+                android:inputType="text"
+                app:hintTextColor="@color/secondaryColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_field_menu"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="?android:actionBarSize"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="32dp"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_finish"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <AutoCompleteTextView
+                android:id="@+id/actv_field"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/century_gothic"
+                android:inputType="none"
+                tools:ignore="TextContrastCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_finish"
+            style="@style/CommonButton"
+            android:layout_width="wrap_content"
+            android:enabled="false"
+            android:background="@drawable/selector_button_color"
+            android:paddingHorizontal="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/edit_field_finish"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_cancel"
+            style="@style/CommonButton"
+            android:layout_width="wrap_content"
+            android:background="@color/transparent"
+            android:paddingHorizontal="16dp"
+            android:text="@string/edit_field_cancel"
+            android:textColor="@color/secondaryColor"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_finish"
+            app:layout_constraintEnd_toStartOf="@+id/btn_finish"
+            app:layout_constraintTop_toTopOf="@+id/btn_finish" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

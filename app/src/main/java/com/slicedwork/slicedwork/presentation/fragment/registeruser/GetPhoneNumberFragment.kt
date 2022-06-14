@@ -11,55 +11,53 @@ import com.slicedwork.slicedwork.databinding.FragmentGetPhoneNumberBinding
 import com.slicedwork.slicedwork.domain.model.User
 import com.slicedwork.slicedwork.presentation.viewmodel.registeruser.GetPhoneNumberViewModel
 import com.slicedwork.slicedwork.util.extensions.focusAndShowSoftKeyboard
-import com.slicedwork.slicedwork.util.extensions.hideKeyBoard
+import com.slicedwork.slicedwork.util.extensions.hideKeyboard
 
 class GetPhoneNumberFragment : Fragment() {
 
-    private lateinit var _binding: FragmentGetPhoneNumberBinding
-    private lateinit var _user: User
-    private val _viewModel: GetPhoneNumberViewModel by viewModels()
+    private lateinit var binding: FragmentGetPhoneNumberBinding
+    private lateinit var user: User
+    private val viewModel: GetPhoneNumberViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        setProps(inflater)
+        binding = FragmentGetPhoneNumberBinding.inflate(inflater)
 
-        return _binding.root
+        return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        _binding.btnNext.setOnClickListener { onNextView(it) }
+        setBindingProps()
+        binding.btnNext.setOnClickListener { nextView() }
     }
 
-    private fun setProps(inflater: LayoutInflater) {
-        _binding = FragmentGetPhoneNumberBinding.inflate(inflater)
-
-        _binding.run {
-            viewModel = _viewModel
+    private fun setBindingProps() {
+        binding.run {
+            viewModel = viewModel
             lifecycleOwner = viewLifecycleOwner
             tietPhoneNumber.focusAndShowSoftKeyboard(requireContext())
         }
     }
 
-    private fun onNextView(view: View) {
-        view.hideKeyBoard(requireContext())
-        getUser()
-        setUserProps()
+    private fun nextView() {
+        hideKeyboard()
+
+        user = getUser()
+        user.phoneNumber = getUserPhoneNumber()
         goToGetNickEmailPassword()
     }
 
-    private fun getUser() {
-        _user = arguments?.get("user") as User
-    }
+    private fun hideKeyboard() = binding.root.hideKeyboard(requireContext())
 
-    private fun setUserProps() {
-        _user.phoneNumber = _viewModel.phoneNumberLiveData.value.toString()
-    }
+    private fun getUser() = arguments?.get("user") as User
+
+    private fun getUserPhoneNumber() = viewModel.phoneNumberLiveData.value.toString()
 
     private fun goToGetNickEmailPassword() =
         findNavController().navigate(
-            GetPhoneNumberFragmentDirections.actionGetPhoneNumberFragmentToGetNicknameFragment(_user)
+            GetPhoneNumberFragmentDirections.actionGetPhoneNumberFragmentToGetNicknameFragment(user)
         )
 }

@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.slicedwork.slicedwork.presentation.fragment.HomeFragment"
-        android:label=""
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
@@ -58,6 +58,9 @@
         <action
             android:id="@+id/action_vacancyDetailsFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_vacancyDetailsFragment_to_editFieldDialog"
+            app:destination="@id/editFieldDialog" />
     </fragment>
     <!--RegisterUser-->
     <navigation
@@ -256,4 +259,23 @@
             android:id="@+id/action_announcedVacanciesFragment_to_vacancyDetailsFragment"
             app:destination="@id/vacancyDetailsFragment" />
     </fragment>
+    <!--EditField-->
+    <dialog
+        android:id="@+id/editFieldDialog"
+        android:name="com.slicedwork.slicedwork.presentation.dialog.EditFieldDialog"
+        android:label=""
+        tools:layout="@layout/dialog_edit_field" >
+        <argument
+            android:name="collection"
+            app:argType="com.slicedwork.slicedwork.util.enumerator.CollectionEnum" />
+        <argument
+            android:name="document"
+            app:argType="string" />
+        <argument
+            android:name="field"
+            app:argType="com.slicedwork.slicedwork.util.enumerator.FieldEnum" />
+        <argument
+            android:name="initialValue"
+            app:argType="string" />
+    </dialog>
 </navigation>

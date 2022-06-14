@@ -9,10 +9,6 @@
     <string name="electric">Elétrica</string>
     <string name="plumbing">Encanamento</string>
 
-    <string name="in_waiting">Em aguardo</string>
-    <string name="approved">Aprovado</string>
-    <string name="disapproved">Reprovado</string>
-
     <!--Greetings-->
     <string name="greetings_title">Bem-vindo ao SlicedWork</string>
     <string name="greetings_subtitle">A maneira mais simples de encontrar um trabalho!</string>
@@ -138,9 +134,24 @@
     <string name="vacancy_details_contractor_label">Contratante</string>
     <string name="vacancy_details_apply_label">Candidatar-se</string>
     <string name="vacancy_details_go_to_profile">(Ir para o perfil)</string>
+    <string name="vacancy_details_opened">Aberta</string>
+    <string name="vacancy_details_closed">Fechada</string>
+    <string name="vacancy_details_finished">Concluída</string>
+    <string name="vacancy_details_delete">Deletar</string>
 
     <!--Profile-->
     <string name="profile">Perfil</string>
     <string name="profile_completed_works">Trabalhos concluídos</string>
     <string name="profile_log_out">Sair</string>
+
+    <!--EditField-->
+    <string name="edit_field_cancel">Cancelar</string>
+    <string name="edit_field_finish">Concluír</string>
+
+    <!--AnnouncedVacancies-->
+    <string name="announced_vacancies_opened">Abertas</string>
+    <string name="announced_vacancies_closed">Fechadas</string>
+    <string name="announced_vacancies_finished">Concluídas</string>
+    <string name="announced_vacancies_all">Todas</string>
+    <string name="announced_vacancies">Vagas Anunciadas</string>
 </resources>

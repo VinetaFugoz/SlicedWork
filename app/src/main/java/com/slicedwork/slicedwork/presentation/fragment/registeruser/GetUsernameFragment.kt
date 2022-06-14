@@ -11,55 +11,53 @@ import com.slicedwork.slicedwork.databinding.FragmentGetUsernameBinding
 import com.slicedwork.slicedwork.domain.model.User
 import com.slicedwork.slicedwork.presentation.viewmodel.registeruser.GetUsernameViewModel
 import com.slicedwork.slicedwork.util.extensions.focusAndShowSoftKeyboard
-import com.slicedwork.slicedwork.util.extensions.hideKeyBoard
+import com.slicedwork.slicedwork.util.extensions.hideKeyboard
 
 class GetUsernameFragment : Fragment() {
 
-    private lateinit var _binding: FragmentGetUsernameBinding
-    private lateinit var _user: User
-    private val _viewModel: GetUsernameViewModel by viewModels()
+    private lateinit var binding: FragmentGetUsernameBinding
+    private lateinit var user: User
+    private val viewModel: GetUsernameViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        setProps(inflater)
+        binding = FragmentGetUsernameBinding.inflate(inflater)
 
-        return _binding.root
+        return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        _binding.btnNext.setOnClickListener { onNextEvent(it) }
+        setBindingProps()
+        binding.btnNext.setOnClickListener { btnNext -> nextEvent(btnNext) }
     }
 
-    private fun onNextEvent(view: View) {
-        view.hideKeyBoard(requireContext())
-        getUser()
-        setUserProps()
-        goToGetEmail()
-    }
-
-    private fun setProps(inflater: LayoutInflater) {
-        _binding = FragmentGetUsernameBinding.inflate(inflater)
-
-        _binding.run {
-            viewModel = _viewModel
+    private fun setBindingProps() {
+        binding.run {
+            viewModel = viewModel
             lifecycleOwner = viewLifecycleOwner
             tietNickname.focusAndShowSoftKeyboard(requireContext())
         }
     }
 
-    private fun getUser() {
-        _user = arguments?.get("user") as User
+    private fun nextEvent(btnNext: View) {
+        hideKeyboard()
+
+        user = getUser()
+        user.username = getUserUsername()
+        goToGetEmail()
     }
 
-    private fun setUserProps() {
-        _user.username = _viewModel.usernameLiveData.value.toString()
-    }
+    private fun hideKeyboard() = binding.root.hideKeyboard(requireContext())
+
+    private fun getUser() = arguments?.get("user") as User
+
+    private fun getUserUsername() = viewModel.usernameLiveData.value.toString()
 
     private fun goToGetEmail() =
         findNavController().navigate(
-            GetUsernameFragmentDirections.actionGetUsernameFragmentToGetEmailFragment(_user)
+            GetUsernameFragmentDirections.actionGetUsernameFragmentToGetEmailFragment(user)
         )
 }

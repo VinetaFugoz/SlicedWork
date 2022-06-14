@@ -10,110 +10,125 @@
             type="com.slicedwork.slicedwork.presentation.viewmodel.LoginViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_root"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        tools:context=".presentation.fragment.GreetingsFragment">
-
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/century_gothic"
-            android:gravity="center"
-            android:paddingHorizontal="50dp"
-            android:text="@string/login_title"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/tv_subtitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <TextView
-            android:id="@+id/tv_subtitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:fontFamily="@font/century_gothic"
-            android:gravity="center"
-            android:paddingHorizontal="30dp"
-            android:text="@string/login_subtitle"
-            android:textColor="@color/description"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/til_task"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title"
-            tools:ignore="TextContrastCheck" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_task"
-            android:layout_width="0dp"
-            android:layout_height="?android:actionBarSize"
-            android:layout_marginBottom="16dp"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:layout_constraintBottom_toTopOf="@id/til_description"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_subtitle">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tiet_email"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:afterTextChanged="@{viewModel::afterTextChanged}"
-                android:focusedByDefault="true"
-                android:fontFamily="@font/century_gothic"
-                android:hint="@string/login_email"
-                android:inputType="textEmailAddress"
-                android:text="@={viewModel.emailLiveData}"
-                app:hintTextColor="@color/secondaryColor" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_description"
-            android:layout_width="0dp"
-            android:layout_height="?android:actionBarSize"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:layout_constraintBottom_toTopOf="@+id/btn_login"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_task">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tiet_password"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:afterTextChanged="@{viewModel::afterTextChanged}"
-                android:focusedByDefault="true"
-                android:fontFamily="@font/century_gothic"
-                android:hint="@string/login_password"
-                android:inputType="textPassword"
-                android:text="@={viewModel.passwordLiveData}"
-                app:hintTextColor="@color/secondaryColor" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_login"
-            style="@style/CommonButton"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_root"
             android:layout_width="match_parent"
-            android:layout_marginTop="80dp"
-            android:background="@drawable/selector_button_color"
-            android:enabled="@{viewModel.enabledNextLiveData}"
-            android:text="@string/greetings_login"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_description" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="wrap_content"
+            tools:context=".presentation.fragment.GreetingsFragment">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/century_gothic"
+                android:gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:paddingHorizontal="50dp"
+                android:text="@string/login_title"
+                android:textColor="@color/black"
+                android:layout_marginTop="16dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/tv_subtitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/tv_subtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/century_gothic"
+                android:gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:paddingHorizontal="30dp"
+                android:text="@string/login_subtitle"
+                android:textColor="@color/description"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/til_task"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title"
+                tools:ignore="TextContrastCheck" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_task"
+                android:layout_width="0dp"
+                android:layout_height="?android:actionBarSize"
+                android:layout_marginBottom="16dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                android:layout_marginHorizontal="16dp"
+                app:layout_constraintBottom_toTopOf="@id/til_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_subtitle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiet_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:afterTextChanged="@{viewModel::afterTextChanged}"
+                    android:focusedByDefault="true"
+                    android:fontFamily="@font/century_gothic"
+                    android:hint="@string/login_email"
+                    android:inputType="textEmailAddress"
+                    android:text="@={viewModel.emailLiveData}"
+                    app:hintTextColor="@color/secondaryColor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_description"
+                android:layout_width="0dp"
+                android:layout_height="?android:actionBarSize"
+                android:layout_marginHorizontal="16dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:layout_constraintBottom_toTopOf="@+id/btn_login"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_task">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiet_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:afterTextChanged="@{viewModel::afterTextChanged}"
+                    android:focusedByDefault="true"
+                    android:fontFamily="@font/century_gothic"
+                    android:hint="@string/login_password"
+                    android:inputType="textPassword"
+                    android:text="@={viewModel.passwordLiveData}"
+                    app:hintTextColor="@color/secondaryColor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_login"
+                style="@style/CommonButton"
+                android:layout_width="match_parent"
+                android:layout_marginTop="80dp"
+                android:background="@drawable/selector_button_color"
+                android:enabled="@{viewModel.enabledNextLiveData}"
+                android:text="@string/greetings_login"
+                android:layout_marginHorizontal="16dp"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_description" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/secondaryColor"
+                app:layout_constraintBottom_toBottomOf="@+id/til_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/til_task" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

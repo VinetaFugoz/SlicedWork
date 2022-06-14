@@ -10,217 +10,223 @@
             type="com.slicedwork.slicedwork.presentation.viewmodel.registervacancy.GetDetailsViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_root"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".presentation.fragment.GreetingsFragment">
+        android:layout_height="wrap_content">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_picture"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_root"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:padding="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/til_task"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_subtitle">
+            tools:context=".presentation.fragment.GreetingsFragment">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/iv_picture"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_margin="8dp"
-                    android:background="@color/primaryDarkColor"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_painting"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_add"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/shape_circle"
-                    android:drawableStart="@drawable/ic_plus"
-                    android:drawableTint="@color/white"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/iv_picture" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/century_gothic"
-            android:gravity="center"
-            android:layout_marginTop="16dp"
-            android:paddingHorizontal="50dp"
-            android:text="@string/get_details_title"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/tv_subtitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <TextView
-            android:id="@+id/tv_subtitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:fontFamily="@font/century_gothic"
-            android:gravity="center"
-            android:paddingHorizontal="30dp"
-            android:text="@string/get_details_subtitle"
-            android:textColor="@color/description"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/cv_picture"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title"
-            tools:ignore="TextContrastCheck" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_task"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="?android:actionBarSize"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="16dp"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:errorEnabled="@{viewModel.taskErrorLiveData}"
-            app:layout_constraintBottom_toTopOf="@id/til_description"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cv_picture">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tiet_task"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:afterTextChanged="@{viewModel::afterTextChanged}"
-                android:focusedByDefault="true"
-                android:fontFamily="@font/century_gothic"
-                android:hint="@string/get_details_task"
-                android:inputType="text"
-                android:text="@={viewModel.taskLiveData}"
-                app:hintTextColor="@color/secondaryColor" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_description"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:errorEnabled="true"
-            app:layout_constraintBottom_toTopOf="@+id/til_occupation_area"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_task">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tiet_description"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_picture"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusedByDefault="true"
+                android:layout_margin="16dp"
+                android:padding="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/til_task"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_subtitle">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_picture"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_margin="8dp"
+                        android:background="@color/primaryDarkColor"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_painting"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_add"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/shape_circle"
+                        android:drawableStart="@drawable/ic_plus"
+                        android:drawableTint="@color/white"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="0dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/iv_picture" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/century_gothic"
-                android:hint="@string/get_details_description"
-                android:inputType="textMultiLine"
-                android:scrollbars="vertical"
-                app:hintTextColor="@color/secondaryColor" />
+                android:gravity="center"
+                android:paddingHorizontal="50dp"
+                android:text="@string/get_details_title"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/tv_subtitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_occupation_area"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="0dp"
-            android:layout_height="?android:actionBarSize"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:errorEnabled="@{viewModel.occupationAreaErrorLiveData}"
-            app:layout_constraintBottom_toTopOf="@+id/btn_next"
-            app:layout_constraintEnd_toStartOf="@+id/til_price"
-            app:layout_constraintHorizontal_weight="2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/til_description">
-
-            <AutoCompleteTextView
-                android:id="@+id/actv_occupation_area"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:afterTextChanged="@{viewModel::afterTextChanged}"
+            <TextView
+                android:id="@+id/tv_subtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
                 android:fontFamily="@font/century_gothic"
-                android:hint="@string/get_details_occupation_area"
-                android:inputType="none"
-                android:text="@={viewModel.occupationAreaLiveData}"
+                android:gravity="center"
+                android:paddingHorizontal="30dp"
+                android:text="@string/get_details_subtitle"
+                android:textColor="@color/description"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/cv_picture"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title"
                 tools:ignore="TextContrastCheck" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_task"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="?android:actionBarSize"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:errorEnabled="@{viewModel.taskErrorLiveData}"
+                app:layout_constraintBottom_toTopOf="@id/til_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cv_picture">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_price"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="?android:actionBarSize"
-            android:layout_marginEnd="16dp"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:errorEnabled="@{viewModel.priceErrorLiveData}"
-            app:layout_constraintBottom_toBottomOf="@+id/til_occupation_area"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/til_occupation_area"
-            app:layout_constraintTop_toTopOf="@+id/til_occupation_area">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiet_task"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:afterTextChanged="@{viewModel::afterTextChanged}"
+                    android:focusedByDefault="true"
+                    android:fontFamily="@font/century_gothic"
+                    android:hint="@string/get_details_task"
+                    android:inputType="text"
+                    android:text="@={viewModel.taskLiveData}"
+                    app:hintTextColor="@color/secondaryColor" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tiet_price"
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_description"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="?android:actionBarSize"
+                android:layout_marginHorizontal="16dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:errorEnabled="true"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/til_occupation_area"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_task">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiet_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:focusedByDefault="true"
+                    android:fontFamily="@font/century_gothic"
+                    android:hint="@string/get_details_description"
+                    android:inputType="textMultiLine"
+                    android:scrollbars="vertical"
+                    app:hintTextColor="@color/secondaryColor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_occupation_area"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="?android:actionBarSize"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:errorEnabled="@{viewModel.occupationAreaErrorLiveData}"
+                app:layout_constraintBottom_toTopOf="@+id/btn_next"
+                app:layout_constraintEnd_toStartOf="@+id/til_price"
+                app:layout_constraintHorizontal_weight="2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_description">
+
+                <AutoCompleteTextView
+                    android:id="@+id/actv_occupation_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:afterTextChanged="@{viewModel::afterTextChanged}"
+                    android:fontFamily="@font/century_gothic"
+                    android:hint="@string/get_details_occupation_area"
+                    android:inputType="none"
+                    android:text="@={viewModel.occupationAreaLiveData}"
+                    tools:ignore="TextContrastCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_price"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="?android:actionBarSize"
+                android:layout_marginEnd="16dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:errorEnabled="@{viewModel.priceErrorLiveData}"
+                app:layout_constraintBottom_toBottomOf="@+id/til_occupation_area"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/til_occupation_area"
+                app:layout_constraintTop_toTopOf="@+id/til_occupation_area">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiet_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:afterTextChanged="@{viewModel::afterTextChanged}"
+                    android:fontFamily="@font/century_gothic"
+                    android:hint="@string/get_details_price"
+                    android:inputType="numberDecimal"
+                    android:maxLength="9"
+                    android:text="@={viewModel.priceLiveData}"
+                    tools:ignore="TextContrastCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_next"
+                style="@style/CommonButton"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:afterTextChanged="@{viewModel::afterTextChanged}"
-                android:fontFamily="@font/century_gothic"
-                android:hint="@string/get_details_price"
-                android:inputType="numberDecimal"
-                android:maxLength="9"
-                android:text="@={viewModel.priceLiveData}"
-                tools:ignore="TextContrastCheck" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_next"
-            style="@style/CommonButton"
-            android:layout_width="match_parent"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="80dp"
-            android:background="@drawable/selector_button_color"
-            android:text="@string/get_details_next"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_occupation_area" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="80dp"
+                android:background="@drawable/selector_button_color"
+                android:text="@string/get_details_next"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_occupation_area" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

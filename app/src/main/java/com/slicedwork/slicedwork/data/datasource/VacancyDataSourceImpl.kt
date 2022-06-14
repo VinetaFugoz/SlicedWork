@@ -8,6 +8,7 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.slicedwork.slicedwork.domain.model.Vacancy
+import com.slicedwork.slicedwork.util.enumerator.FieldEnum
 import javax.inject.Inject
 
 class VacancyDataSourceImpl @Inject constructor(
@@ -15,9 +16,23 @@ class VacancyDataSourceImpl @Inject constructor(
 ) : VacancyDataSource {
     private lateinit var vacancy: Vacancy
 
-    override suspend fun registerVacancy(vacancy: Vacancy) {
+    override suspend fun registerVacancy(vacancy: Vacancy, vacancyCallback: (Boolean) -> Unit) {
         this.vacancy = vacancy
-        storagePicture()
+        val storageReference =
+            FirebaseStorage.getInstance().getReference("/images/vacancy_pictures/${vacancy.id}")
+        storageReference.putFile(Uri.parse(vacancy.picture)).addOnSuccessListener {
+            storageReference.downloadUrl.addOnSuccessListener { uri ->
+                vacancy.picture = uri.toString()
+                firebaseFirestore.collection("vacancy")
+                    .document(vacancy.id)
+                    .set(vacancy).addOnSuccessListener {
+                        vacancyCallback(true)
+                    }
+            }.addOnFailureListener { exception ->
+                val message = exception.message.toString()
+                Log.i("VacancyData", message)
+            }
+        }
     }
 
     override suspend fun getVacancies(
@@ -40,6 +55,37 @@ class VacancyDataSourceImpl @Inject constructor(
         }
     }
 
+    override suspend fun updateVacancy(
+        isMenu: Boolean,
+        document: String,
+        field: FieldEnum,
+        value: String,
+        vacancyCallback: (Boolean) -> Unit
+    ) {
+        firebaseFirestore.collection("vacancy")
+            .document(document)
+            .update(field.getText(), if (isMenu) value.toInt() else value).addOnSuccessListener {
+                vacancyCallback(true)
+            }
+    }
+
+    override suspend fun deleteVacancy(vacancyId: String, vacancyCallback: (Boolean) -> Unit) {
+        firebaseFirestore.collection("vacancy")
+            .document(vacancyId)
+            .delete().addOnSuccessListener {
+                vacancyCallback(true)
+            }
+    }
+
+
+    override suspend fun getVacancyById(vacancyId: String, vacancyCallback: (Vacancy) -> Unit) {
+        firebaseFirestore.collection("vacancy")
+            .document(vacancyId)
+            .get().addOnSuccessListener { snapshot ->
+                convertSnapshot(snapshot)?.let { vacancyCallback(it) }
+            }
+    }
+
     private fun convertSnapshot(snapshot: QuerySnapshot?): List<Vacancy> {
         val vacancies: MutableList<Vacancy> = mutableListOf()
         val documents: List<DocumentChange> = snapshot!!.documentChanges
@@ -50,23 +96,6 @@ class VacancyDataSourceImpl @Inject constructor(
         return vacancies
     }
 
-    private fun storagePicture() {
-        val storageReference =
-            FirebaseStorage.getInstance().getReference("/images/vacancy_pictures/${vacancy.id}")
-        storageReference.putFile(Uri.parse(vacancy.picture)).addOnSuccessListener {
-            storageReference.downloadUrl.addOnSuccessListener { uri ->
-                vacancy.picture = uri.toString()
-                createVacancyCollection()
-            }.addOnFailureListener { exception ->
-                val message = exception.message.toString()
-                Log.i("VacancyData", message)
-            }
-        }
-    }
-
-    private fun createVacancyCollection() {
-        firebaseFirestore.collection("vacancy")
-            .document(vacancy.id)
-            .set(vacancy)
-    }
+    private fun convertSnapshot(document: DocumentSnapshot?): Vacancy? =
+        document?.toObject<Vacancy>()
 }

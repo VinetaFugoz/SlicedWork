@@ -1,9 +1,7 @@
 package com.slicedwork.slicedwork.presentation.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -15,77 +13,154 @@ import com.slicedwork.slicedwork.databinding.FragmentVacancyDetailsBinding
 import com.slicedwork.slicedwork.domain.model.User
 import com.slicedwork.slicedwork.domain.model.Vacancy
 import com.slicedwork.slicedwork.presentation.viewmodel.VacancyDetailsViewModel
+import com.slicedwork.slicedwork.util.OccupationAreaUtil.getOccupationAreaString
+import com.slicedwork.slicedwork.util.enumerator.CollectionEnum
+import com.slicedwork.slicedwork.util.enumerator.CollectionEnum.VACANCY
+import com.slicedwork.slicedwork.util.enumerator.FieldEnum
+import com.slicedwork.slicedwork.util.enumerator.FieldEnum.STATUS
+import com.slicedwork.slicedwork.util.enumerator.VacancyStatusEnum.*
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
 
 @AndroidEntryPoint
 class VacancyDetailsFragment : Fragment() {
 
-    private lateinit var _vacancy: Vacancy
-    private lateinit var _binding: FragmentVacancyDetailsBinding
-    private var _user: User? = null
+    private lateinit var binding: FragmentVacancyDetailsBinding
+    private lateinit var vacancy: Vacancy
+    private var user: User? = null
     private val viewModel: VacancyDetailsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        setProps(inflater)
-        setLiveData()
-        return _binding.root
+        binding = FragmentVacancyDetailsBinding.inflate(inflater)
+
+        return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        setListeners()
+        setProps()
+        setEvents()
+        setObservers()
+        getUser()
     }
 
-    private fun setListeners() {
-        _binding.tvGoToProfile.setOnClickListener { goToProfile() }
+    private fun setProps() {
+        vacancy = getVacancy()
+        if (Firebase.auth.uid != vacancy.userId) binding.ivEditStatus.visibility = View.GONE
+        else setHasOptionsMenu(true)
+    }
+
+    private fun getVacancy(): Vacancy = requireArguments().get("vacancy") as Vacancy
+
+    private fun getDialogBackArgsObserver() {
+        this.findNavController()
+            .currentBackStackEntry
+            ?.savedStateHandle
+            ?.getLiveData<Boolean>("updated")
+            ?.observe(viewLifecycleOwner) { updated ->
+                if (updated) viewModel.getVacancyById(vacancy.id)
+            }
+    }
+
+    private fun setEvents() {
+        binding.ivEditStatus.setOnClickListener {
+            goToEditField(
+                VACANCY,
+                vacancy.id,
+                STATUS,
+                vacancy.status.toString()
+            )
+        }
+        binding.tvGoToProfile.setOnClickListener { goToProfile() }
+    }
+
+    private fun goToEditField(
+        collection: CollectionEnum,
+        document: String,
+        field: FieldEnum,
+        initialValue: String
+    ) {
+        findNavController().navigate(
+            VacancyDetailsFragmentDirections.actionVacancyDetailsFragmentToEditFieldDialog(
+                collection,
+                document,
+                field,
+                initialValue
+            )
+        )
     }
 
     private fun goToProfile() {
         findNavController().navigate(
-            VacancyDetailsFragmentDirections.actionVacancyDetailsFragmentToProfileFragment(_user)
+            VacancyDetailsFragmentDirections.actionVacancyDetailsFragmentToProfileFragment(user)
         )
     }
 
-    private fun setLiveData() {
+    private fun setObservers() {
+        getDialogBackArgsObserver()
+
         viewModel.userLiveData.observe(viewLifecycleOwner) { user ->
-            _user = user
+            this.user = user
             setVacancyProps()
+        }
+
+        viewModel.vacancyLiveData.observe(viewLifecycleOwner) { vacancy ->
+            this.vacancy = vacancy
+            setVacancyProps()
+        }
+
+        viewModel.deletedLiveData.observe(viewLifecycleOwner) { deleted ->
+            if (deleted) findNavController().navigateUp()
         }
     }
 
-    private fun setProps(inflater: LayoutInflater) {
-        _binding = FragmentVacancyDetailsBinding.inflate(inflater)
-        _vacancy = getVacancy()
-        viewModel.getUser(_vacancy.userId)
+    private fun getUser() {
+        viewModel.getUser(vacancy.userId)
     }
 
     private fun setVacancyProps() {
-        _binding.run {
-            Glide.with(requireContext()).load(_vacancy.picture).centerCrop().into(ivPicture)
-            tvTask.text = _vacancy.task
-            val signPrice = "R$ ${_vacancy.price}"
+        binding.run {
+            Glide.with(requireContext()).load(vacancy.picture).centerCrop().into(ivPicture)
+            tvTask.text = vacancy.task
+            val signPrice = "R$ ${vacancy.price}"
             tvPrice.text = signPrice
-            if (_vacancy.description != "") tvDescription.text = _vacancy.description
+            if (vacancy.description != "") tvDescription.text = vacancy.description
             else {
                 tvDescriptionLabel.visibility = View.GONE
                 tvDescription.visibility = View.GONE
             }
-            tvOccupationArea.text = _vacancy.occupationArea
+            tvOccupationArea.text = getOccupationAreaString(vacancy.occupationArea, requireContext())
             val localization =
-                "${R.string.get_address_street} ${_vacancy.street} ${_vacancy.number}\n${_vacancy.neighborhood}\n${_vacancy.city} - ${_vacancy.state}"
+                "${getString(R.string.get_address_street)} ${vacancy.street} ${vacancy.number}, ${vacancy.neighborhood}, ${vacancy.city} - ${vacancy.state}"
+
+            tvStatus.text = when (vacancy.status) {
+                OPENED.ordinal -> OPENED.getText(requireContext())
+                CLOSED.ordinal -> CLOSED.getText(requireContext())
+                else -> FINISHED.getText(requireContext())
+            }
 
             tvLocalization.text = localization
 
-            Glide.with(requireContext()).load(_user?.picture).circleCrop().into(ivUserPicture)
-            val fullname = "${_user?.firstName} ${_user?.lastName}"
+            Glide.with(requireContext()).load(user?.picture).circleCrop().into(ivUserPicture)
+            val fullname = "${user?.firstName} ${user?.lastName}"
             tvName.text = fullname
-            tvUsername.text = _user?.username
+            tvUsername.text = user?.username
         }
     }
 
-    private fun getVacancy(): Vacancy = requireArguments().get("vacancy") as Vacancy
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.vacancy_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.delete -> deleteEvent()
+        }
+        return true
+    }
+
+    private fun deleteEvent() = viewModel.deleteVacancy(vacancy.id)
 }

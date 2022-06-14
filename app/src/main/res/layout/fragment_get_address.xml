@@ -20,8 +20,8 @@
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="0dp"
-            android:layout_marginTop="16dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/century_gothic"
             android:gravity="center"
             android:paddingHorizontal="50dp"
@@ -132,9 +132,11 @@
                 android:id="@+id/tiet_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:afterTextChanged="@{viewModel::afterTextChanged}"
                 android:fontFamily="@font/century_gothic"
-                android:text="@={viewModel.cityLiveData}"
-                android:hint="@string/get_address_city" />
+                android:hint="@string/get_address_city"
+                android:inputType="text"
+                android:text="@={viewModel.cityLiveData}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

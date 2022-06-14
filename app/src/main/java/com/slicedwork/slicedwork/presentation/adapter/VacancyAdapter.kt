@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.slicedwork.slicedwork.databinding.ItemVacancyBinding
 import com.slicedwork.slicedwork.domain.model.Vacancy
-import com.slicedwork.slicedwork.generated.callback.OnClickListener
 import com.slicedwork.slicedwork.presentation.viewholder.VacancyViewHolder
 
 class VacancyAdapter(

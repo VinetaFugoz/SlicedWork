@@ -7,45 +7,53 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.slicedwork.slicedwork.R
 import com.slicedwork.slicedwork.databinding.FragmentLoginBinding
-import com.slicedwork.slicedwork.presentation.activity.MainActivity
 import com.slicedwork.slicedwork.presentation.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
 
-    private lateinit var _binding: FragmentLoginBinding
-    private lateinit var _activity: MainActivity
-    private val _viewModel: LoginViewModel by viewModels()
+    private lateinit var binding: FragmentLoginBinding
+    private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        setProps(inflater)
+        binding = FragmentLoginBinding.inflate(inflater)
 
-        _viewModel.loggedLiveData.observe(viewLifecycleOwner) { logged ->
-            if (logged == true) goBackToGreetings()
-        }
-
-        return _binding.root
+        return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        _binding.btnLogin.setOnClickListener { loginEvent() }
+        setBindingProps()
+        setLoginEvent()
+        setLoggedObserver()
     }
 
-    private fun setProps(inflater: LayoutInflater) {
-        _binding = FragmentLoginBinding.inflate(inflater)
-        _binding.viewModel = _viewModel
-        _binding.lifecycleOwner = this.viewLifecycleOwner
+    private fun setBindingProps() {
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this.viewLifecycleOwner
+    }
+
+    private fun setLoginEvent() {
+        binding.btnLogin.setOnClickListener { loginEvent() }
+    }
+
+    private fun setLoggedObserver() {
+        viewModel.loggedLiveData.observe(viewLifecycleOwner) { logged ->
+            binding.progressBar.visibility = View.GONE
+            if (logged == true){
+                goBackToGreetings()
+            }
+        }
     }
 
     private fun loginEvent() {
-        _viewModel.run {
+        binding.progressBar.visibility = View.VISIBLE
+        viewModel.run {
             loginUser(emailLiveData.value.toString(), passwordLiveData.value.toString())
         }
     }

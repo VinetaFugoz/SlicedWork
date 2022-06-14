@@ -1,13 +1,10 @@
 package com.slicedwork.slicedwork.presentation.fragment.registervacancy
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.ImageView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -19,58 +16,83 @@ import com.slicedwork.slicedwork.databinding.FragmentGetDetailsBinding
 import com.slicedwork.slicedwork.domain.model.Vacancy
 import com.slicedwork.slicedwork.presentation.activity.MainActivity
 import com.slicedwork.slicedwork.presentation.viewmodel.registervacancy.GetDetailsViewModel
-import com.slicedwork.slicedwork.util.enumerator.OccupationAreaEnum.*
+import com.slicedwork.slicedwork.util.OccupationAreaUtil.getOccupationAreaDrawable
 import com.slicedwork.slicedwork.util.extensions.navigate
-import com.slicedwork.slicedwork.util.validator.VacancyValidator
 import java.util.*
 
 class GetDetailsFragment : Fragment() {
 
-    private lateinit var _activity: MainActivity
+    private lateinit var binding: FragmentGetDetailsBinding
+    private val viewModel: GetDetailsViewModel by viewModels()
     private var imageUri: String? = null
-    private lateinit var _binding: FragmentGetDetailsBinding
-    private val _viewModel: GetDetailsViewModel by viewModels()
-    private lateinit var _vacancy: Vacancy
-    private lateinit var _vacancyValidator: VacancyValidator
     private var chosenOccupationArea: Int = 0
+    private lateinit var activity: MainActivity
+    private lateinit var occupationAreaAdapter: ArrayAdapter<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        setProps(inflater)
-        return _binding.root
+        binding = FragmentGetDetailsBinding.inflate(inflater)
+
+        return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        setListeners()
+        setProps()
+        setEvents()
         getDialogBackArgs()
-        _activity.showToolbar()
     }
 
-    private fun setProps(inflater: LayoutInflater) {
-        _binding = FragmentGetDetailsBinding.inflate(inflater)
-        _binding.viewModel = _viewModel
-        _binding.lifecycleOwner = viewLifecycleOwner
-        val occupationAreas = resources.getStringArray(R.array.occupation_areas)
-        val occupationAreaAdapter = ArrayAdapter(
-            this.requireContext(),
-            R.layout.support_simple_spinner_dropdown_item,
-            occupationAreas
-        )
-        _activity = this.requireActivity() as MainActivity
-        _binding.actvOccupationArea.setAdapter(occupationAreaAdapter)
-        _vacancyValidator = VacancyValidator()
+    private fun setProps() {
+        activity = this.requireActivity() as MainActivity
+        setBindingProps()
+        setActivityProps()
     }
 
-    private fun setListeners() {
-        _binding.run {
-            btnAdd.setOnClickListener { goToChooseCameraGallery() }
-            actvOccupationArea.setOnItemClickListener { _, _, position, _ ->
-                if (imageUri == null) occupationAreaEvent(position)
-            }
+    private fun setBindingProps() {
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+
+        val occupationAreaArray = resources.getStringArray(R.array.occupation_areas)
+        occupationAreaAdapter = getArrayAdapter(occupationAreaArray)
+        binding.actvOccupationArea.setAdapter(occupationAreaAdapter)
+    }
+
+    private fun getArrayAdapter(statusArray: Array<String>) = ArrayAdapter(
+        this.requireContext(),
+        R.layout.support_simple_spinner_dropdown_item,
+        statusArray
+    )
+
+    private fun setActivityProps() = activity.showToolbar()
+
+    private fun setEvents() {
+        binding.run {
+            btnAdd.setOnClickListener { addPictureEvent() }
             btnNext.setOnClickListener { nextEvent() }
+            actvOccupationArea.setOnItemClickListener { _, _, occupationArea, _ ->
+                occupationAreaEvent(occupationArea)
+            }
+        }
+    }
+
+    private fun addPictureEvent() = goToChooseCameraGallery()
+
+    private fun nextEvent() {
+        if (isFieldsValidated()) {
+            val vacancy = getVacancy()
+            goToGetAddress(vacancy)
+        }
+    }
+
+    private fun occupationAreaEvent(occupationArea: Int) {
+        if (imageUri == null) {
+            chosenOccupationArea = occupationArea
+            binding.ivPicture.setImageDrawable(
+                getOccupationAreaDrawable(occupationArea, requireContext())
+            )
         }
     }
 
@@ -88,78 +110,49 @@ class GetDetailsFragment : Fragment() {
                     this.imageUri = imageUri
 
                     Glide.with(requireContext()).load(imageUri).centerCrop()
-                        .into(_binding.ivPicture)
+                        .into(binding.ivPicture)
                 }
             }
     }
 
-    private fun occupationAreaEvent(position: Int) {
-        chosenOccupationArea = position
-        _binding.run {
-            ivPicture.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    when (position) {
-                        0 -> PAINTING.getImage()
-                        1 -> CLEANING.getImage()
-                        2 -> GARDENING.getImage()
-                        3 -> CONSTRUCTION.getImage()
-                        4 -> ELECTRIC.getImage()
-                        else -> PLUMBING.getImage()
-                    }
-                )
-            )
-        }
-    }
+    private fun isFieldsValidated(): Boolean {
 
-    private fun nextEvent() {
-        if (validateFields()) {
-            createVacancy()
-            goToGetAddress()
-        }
-    }
-
-    private fun validateFields(): Boolean {
-        var isValidate = true
-
-        _viewModel.run {
-            _binding.run {
+        viewModel.run {
+            binding.run {
                 if (taskErrorLiveData.value == true) {
                     tilTask.error = getString(R.string.get_details_task_error)
-                    isValidate = false
+                    return false
                 }
                 if (occupationAreaErrorLiveData.value == true) {
                     tilOccupationArea.error = getString(R.string.get_details_task_error)
-                    isValidate = false
+                    return false
                 }
                 if (priceErrorLiveData.value == true) {
                     tilPrice.error = getString(R.string.get_details_task_error)
-                    isValidate = false
+                    return false
                 }
             }
         }
 
-        return isValidate
+        return true
     }
 
-    private fun createVacancy() {
-        _binding.run {
-            if (Firebase.auth.currentUser != null)
-                _vacancy = Vacancy(
-                    id = UUID.randomUUID().toString(),
-                    userId = Firebase.auth.currentUser!!.uid,
-                    task = tietTask.text.toString(),
-                    description = tietDescription.text.toString(),
-                    occupationArea = chosenOccupationArea.toString(),
-                    picture = imageUri.toString(),
-                    price = tietPrice.text.toString(),
-                )
+    private fun getVacancy() = binding.run {
+            Vacancy(
+                id = UUID.randomUUID().toString(),
+                userId = Firebase.auth.currentUser!!.uid,
+                task = tietTask.text.toString(),
+                description = tietDescription.text.toString(),
+                occupationArea = chosenOccupationArea,
+                picture = imageUri.toString(),
+                price = tietPrice.text.toString().toDouble(),
+            )
         }
-    }
+    
 
-    private fun goToGetAddress() {
+    private fun goToGetAddress(vacancy: Vacancy) {
         findNavController().navigate(
-            GetDetailsFragmentDirections.actionGetDetailsFragmentToGetAddressFragment(_vacancy)
+            GetDetailsFragmentDirections.actionGetDetailsFragmentToGetAddressFragment(vacancy)
         )
     }
 }

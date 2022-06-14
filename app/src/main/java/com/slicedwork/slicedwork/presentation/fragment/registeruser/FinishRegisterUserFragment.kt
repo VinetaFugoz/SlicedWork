@@ -16,37 +16,53 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FinishRegisterUserFragment : Fragment() {
 
-    private lateinit var _binding: FragmentFinishRegisterUserBinding
-    private lateinit var _activity: MainActivity
-    private lateinit var _user: User
-    private val _viewModel: FinishRegisterUserViewModel by viewModels()
+    private lateinit var binding: FragmentFinishRegisterUserBinding
+    private lateinit var activity: MainActivity
+    private val viewModel: FinishRegisterUserViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        setProps(inflater)
+        binding = FragmentFinishRegisterUserBinding.inflate(inflater)
 
-        _viewModel.registeredLiveData.observe(viewLifecycleOwner) { registered ->
-            if (registered == true) _binding.btnFinish.visibility = View.VISIBLE
-        }
-
-        return _binding.root
+        return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        _binding.btnFinish.setOnClickListener { findNavController().navigateUp() }
-        _viewModel.registerUser(_user)
+        setProps()
+        setFinishEvent()
+        setRegisteredObserver()
 
+        val user = getUser()
+        registerUser(user)
+    }
+
+    private fun setProps() {
+        activity = requireActivity() as MainActivity
+        setActivityProps()
     }
 
     private fun getUser() = arguments?.get("user") as User
 
-    private fun setProps(inflater: LayoutInflater) {
-        _binding = FragmentFinishRegisterUserBinding.inflate(inflater)
-        _activity = requireActivity() as MainActivity
-        _activity.hideToolbar()
-        _user = getUser()
-    }
+    private fun setActivityProps() = activity.hideToolbar()
+
+    private fun setFinishEvent() = binding.btnFinish.setOnClickListener { finishEvent() }
+
+    private fun finishEvent() = findNavController().navigateUp()
+
+    private fun setRegisteredObserver() = viewModel.registeredLiveData
+        .observe(viewLifecycleOwner) { isRegistered ->
+            binding.run {
+                progressBar.visibility = View.GONE
+
+                if (isRegistered) {
+                    tvTitle.visibility = View.VISIBLE
+                    btnFinish.visibility = View.VISIBLE
+                }
+            }
+        }
+
+    private fun registerUser(user: User) = viewModel.registerUser(user)
 }

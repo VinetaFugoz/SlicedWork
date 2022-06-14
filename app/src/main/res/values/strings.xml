@@ -17,16 +17,6 @@
         <item>@string/plumbing</item>
     </string-array>
 
-    <string name="in_waiting">In Waiting</string>
-    <string name="approved">Approved</string>
-    <string name="disapproved">Disapproved</string>
-
-    <string-array name="candidate_status">
-        <item>@string/in_waiting</item>
-        <item>@string/approved</item>
-        <item>@string/disapproved</item>
-    </string-array>
-
     <!--Greetings-->
     <string name="greetings_login">Log In</string>
     <string name="greetings_register">Register</string>
@@ -164,11 +154,36 @@
     <string name="vacancy_details_contractor_label">Contractor</string>
     <string name="vacancy_details_apply_label">Apply</string>
     <string name="vacancy_details_go_to_profile">(Go to profile)</string>
+    <string name="vacancy_details_status" translatable="false">Status</string>
+    <string name="vacancy_details_opened">Opened</string>
+    <string name="vacancy_details_closed">Closed</string>
+    <string name="vacancy_details_finished">Finished</string>
+    <string-array name="vacancy_details_status">
+        <item>@string/vacancy_details_opened</item>
+        <item>@string/vacancy_details_closed</item>
+        <item>@string/vacancy_details_finished</item>
+    </string-array>
+    <string name="vacancy_details_delete">Delete</string>
 
     <!--Profile-->
     <string name="profile">Profile</string>
     <string name="profile_completed_works">Completed Works</string>
     <string name="profile_log_out">Log Out</string>
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--EditField-->
+    <string name="edit_field_cancel">Cancel</string>
+    <string name="edit_field_finish">Finish</string>
+
+    <!--AnnouncedVacancies-->
+    <string name="announced_vacancies_all">All</string>
+    <string name="announced_vacancies_opened">Opened</string>
+    <string name="announced_vacancies_closed">Closed</string>
+    <string name="announced_vacancies_finished">Finished</string>
+    <string name="announced_vacancies">Announced Vacancies</string>
+    <string-array name="announced_vacancies_status">
+        <item>@string/announced_vacancies_all</item>
+        <item>@string/announced_vacancies_opened</item>
+        <item>@string/announced_vacancies_closed</item>
+        <item>@string/announced_vacancies_finished</item>
+    </string-array>
 </resources>

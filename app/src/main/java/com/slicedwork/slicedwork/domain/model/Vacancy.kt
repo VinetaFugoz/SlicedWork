@@ -7,8 +7,8 @@ data class Vacancy(
     val userId: String = "",
     var task: String = "",
     var description: String = "",
-    var occupationArea: String = "",
-    var price: String = "",
+    var occupationArea: Int = 0,
+    var price: Double = 0.00,
     var picture: String = "",
     var country: String = "",
     var state: String = "",
@@ -17,5 +17,5 @@ data class Vacancy(
     var postalCode: String = "",
     var street: String = "",
     var number: String = "",
-    var status: Int = 0
+    var status: Int = 1
 ): Serializable

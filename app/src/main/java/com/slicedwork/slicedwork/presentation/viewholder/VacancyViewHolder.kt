@@ -9,6 +9,7 @@ import com.google.firebase.ktx.Firebase
 import com.slicedwork.slicedwork.R
 import com.slicedwork.slicedwork.databinding.ItemVacancyBinding
 import com.slicedwork.slicedwork.domain.model.Vacancy
+import com.slicedwork.slicedwork.util.OccupationAreaUtil
 import com.slicedwork.slicedwork.util.enumerator.OccupationAreaEnum.*
 import com.slicedwork.slicedwork.util.enumerator.VacancyStatusEnum.*
 
@@ -27,19 +28,14 @@ class VacancyViewHolder(
 
             binding.run {
 
-                setOccupationAreaProps(occupationArea.toInt(), context)
+                setOccupationAreaProps(occupationArea, context)
                 tvId.text = idWithHashtag
                 tvOccupationArea.text = occupationAreaText
                 tvTask.text = task
                 tvCityState.text = cityState
                 if (Firebase.auth.uid == userId) {
                     tvPrice.visibility = View.GONE
-                    val statusDrawable = when (status) {
-                        OPENED.ordinal -> context.getDrawable(R.drawable.ic_opened_door)
-                        CLOSED.ordinal -> context.getDrawable(R.drawable.ic_closed_door)
-                        else -> context.getDrawable(R.drawable.ic_correct)
-                    }
-
+                    val statusDrawable = getStatusDrawable(status, context)
                     ivStatus.setImageDrawable(statusDrawable)
 
                 } else {
@@ -55,32 +51,14 @@ class VacancyViewHolder(
         }
     }
 
-    private fun setOccupationAreaProps(occupationArea: Int, context: Context) {
-        when (occupationArea) {
-            PAINTING.ordinal -> {
-                occupationAreaImage = context.getDrawable(PAINTING.getImage())!!
-                occupationAreaText = PAINTING.getText(occupationArea, context)
-            }
-            CLEANING.ordinal -> {
-                occupationAreaImage = context.getDrawable(CLEANING.getImage())!!
-                occupationAreaText = CLEANING.getText(occupationArea, context)
-            }
-            GARDENING.ordinal -> {
-                occupationAreaImage = context.getDrawable(GARDENING.getImage())!!
-                occupationAreaText = GARDENING.getText(occupationArea, context)
-            }
-            CONSTRUCTION.ordinal -> {
-                occupationAreaImage = context.getDrawable(CONSTRUCTION.getImage())!!
-                occupationAreaText = CONSTRUCTION.getText(occupationArea, context)
-            }
-            ELECTRIC.ordinal -> {
-                occupationAreaImage = context.getDrawable(ELECTRIC.getImage())!!
-                occupationAreaText = ELECTRIC.getText(occupationArea, context)
-            }
-            else -> {
-                occupationAreaImage = context.getDrawable(PLUMBING.getImage())!!
-                occupationAreaText = PLUMBING.getText(occupationArea, context)
-            }
+    private fun getStatusDrawable(status: Int, context: Context): Drawable? = when (status) {
+            OPENED.ordinal -> context.getDrawable(R.drawable.ic_opened_door)
+            CLOSED.ordinal -> context.getDrawable(R.drawable.ic_closed_door)
+            else -> context.getDrawable(R.drawable.ic_correct)
         }
+
+    private fun setOccupationAreaProps(occupationArea: Int, context: Context) {
+        occupationAreaImage = OccupationAreaUtil.getOccupationAreaDrawable(occupationArea, context)!!
+        occupationAreaText = OccupationAreaUtil.getOccupationAreaString(occupationArea, context)
     }
 }

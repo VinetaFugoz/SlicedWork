@@ -11,54 +11,55 @@ import com.slicedwork.slicedwork.databinding.FragmentGetPasswordBinding
 import com.slicedwork.slicedwork.domain.model.User
 import com.slicedwork.slicedwork.presentation.viewmodel.registeruser.GetPasswordViewModel
 import com.slicedwork.slicedwork.util.extensions.focusAndShowSoftKeyboard
-import com.slicedwork.slicedwork.util.extensions.hideKeyBoard
+import com.slicedwork.slicedwork.util.extensions.hideKeyboard
 
 class GetPasswordFragment : Fragment() {
-    private lateinit var _binding: FragmentGetPasswordBinding
-    private lateinit var _user: User
-    private val _viewModel: GetPasswordViewModel by viewModels()
+    private lateinit var binding: FragmentGetPasswordBinding
+    private val viewModel: GetPasswordViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        setProps(inflater)
+        binding = FragmentGetPasswordBinding.inflate(inflater)
 
-        return _binding.root
+        return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        _binding.btnNext.setOnClickListener { onNextEvent(it)}
+        setBindingProps()
+        setEvents()
     }
 
-    private fun setProps(inflater: LayoutInflater) {
-        _binding = FragmentGetPasswordBinding.inflate(inflater)
+    private fun setEvents() {
+        binding.btnNext.setOnClickListener { nextEvent() }
+    }
 
-        _binding.run {
-            viewModel = _viewModel
+    private fun setBindingProps() {
+        binding.run {
+            viewModel = viewModel
             lifecycleOwner = viewLifecycleOwner
             tietPassword.focusAndShowSoftKeyboard(requireContext())
         }
     }
 
-    private fun onNextEvent(view: View) {
-        view.hideKeyBoard(requireContext())
-        getUser()
-        setUserProps()
-        goToGetPicture()
+    private fun nextEvent() {
+        hideKeyboard()
+
+        val user = getUser()
+        user.password = getUserPassword()
+        goToGetPicture(user)
     }
 
-    private fun getUser() {
-        _user = arguments?.get("user") as User
-    }
+    private fun hideKeyboard() = binding.root.hideKeyboard(requireContext())
 
-    private fun setUserProps() {
-        _user.password = _viewModel.passwordLiveData.value.toString()
-    }
+    private fun getUser() = arguments?.get("user") as User
 
-    private fun goToGetPicture() =
+    private fun getUserPassword() = viewModel.passwordLiveData.value.toString()
+
+    private fun goToGetPicture(user: User) =
         findNavController().navigate(
-            GetPasswordFragmentDirections.actionGetPasswordFragmentToGetPictureFragment(_user)
+            GetPasswordFragmentDirections.actionGetPasswordFragmentToGetPictureFragment(user)
         )
 }

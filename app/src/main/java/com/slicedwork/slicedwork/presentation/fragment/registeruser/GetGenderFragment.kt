@@ -10,48 +10,57 @@ import androidx.navigation.fragment.findNavController
 import com.slicedwork.slicedwork.databinding.FragmentGetGenderBinding
 import com.slicedwork.slicedwork.domain.model.User
 import com.slicedwork.slicedwork.presentation.viewmodel.registeruser.GetGenderViewModel
+import com.slicedwork.slicedwork.util.enumerator.GenderEnum.*
+import com.slicedwork.slicedwork.util.extensions.hideKeyboard
 
 class GetGenderFragment : Fragment() {
-    private lateinit var _binding: FragmentGetGenderBinding
+
+    private lateinit var binding: FragmentGetGenderBinding
     private val viewModel: GetGenderViewModel by viewModels()
-    private lateinit var _user: User
+    private lateinit var user: User
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        setProps(inflater)
+        binding = FragmentGetGenderBinding.inflate(inflater)
 
-        return _binding.root
+        return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        _binding.btnNext.setOnClickListener { onNextEvent() }
+        setProps()
+        setNextEvent()
     }
 
-    private fun setProps(inflater: LayoutInflater) {
-        _binding = FragmentGetGenderBinding.inflate(inflater)
-        _binding.viewModel = viewModel
-        _binding.lifecycleOwner = viewLifecycleOwner
+    private fun setProps() {
+        setBindingProps()
     }
 
-    private fun onNextEvent() {
-        getUser()
-        setUserProps()
-        goToGetPhoneNumber()
+    private fun setBindingProps() = binding.run {
+            viewModel = viewModel
+            lifecycleOwner = viewLifecycleOwner
+        }
+
+    private fun setNextEvent() {
+        binding.btnNext.setOnClickListener { nextEvent() }
     }
 
-    private fun getUser() {
-        _user = arguments?.get("user") as User
+    private fun nextEvent() {
+        hideKeyBoard()
+        user = getUser()
+        user.gender = getUserGender()
+        goToGetPhoneNumber(user)
     }
 
-    private fun setUserProps() {
-        _user.gender = viewModel.checkedRadioLiveData.value?.toInt() ?: 0
-    }
+    private fun hideKeyBoard() = binding.root.hideKeyboard(requireContext())
 
-    private fun goToGetPhoneNumber() =
-        findNavController().navigate(
-            GetGenderFragmentDirections.actionGetGenderFragmentToGetPhoneNumberFragment(_user)
-        )
+    private fun getUser() = arguments?.get("user") as User
+
+    private fun getUserGender() = viewModel.checkedRadioLiveData.value?.toInt() ?: MALE.ordinal
+
+    private fun goToGetPhoneNumber(user: User) = findNavController().navigate(
+        GetGenderFragmentDirections.actionGetGenderFragmentToGetPhoneNumberFragment(user)
+    )
 }

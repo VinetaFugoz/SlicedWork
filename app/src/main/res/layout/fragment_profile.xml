@@ -13,6 +13,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:src="@drawable/ic_profile"
+        android:visibility="gone"
         app:civ_border_color="@color/primaryColor"
         app:civ_border_width="3dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,15 +32,17 @@
         android:drawableTint="@color/white"
         android:paddingStart="-35dp"
         android:paddingEnd="0dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/iv_picture"
         app:layout_constraintTop_toTopOf="@+id/iv_picture" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cd_details"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="500dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_picture">
@@ -47,7 +50,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingHorizontal="8dp"
             android:paddingBottom="16dp">
 
             <TextView
@@ -78,7 +80,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_name"
                 tools:text="Refluenchai" />
 
-
             <TextView
                 android:id="@+id/tv_completed_works"
                 android:layout_width="wrap_content"
@@ -89,74 +90,39 @@
                 android:text="@string/profile_completed_works"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/inc_painting"
+                app:layout_constraintBottom_toTopOf="@+id/sv_completed_works"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_username" />
 
-            <include
-                android:id="@+id/inc_painting"
-                layout="@layout/item_completed_works"
+            <ScrollView
+                android:id="@+id/sv_completed_works"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
+                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_completed_works" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_completed_works">
 
-            <include
-                android:id="@+id/inc_cleaning"
-                layout="@layout/item_completed_works"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inc_painting" />
-
-            <include
-                android:id="@+id/inc_gardening"
-                layout="@layout/item_completed_works"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inc_cleaning" />
-
-            <include
-                android:id="@+id/inc_construction"
-                layout="@layout/item_completed_works"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inc_gardening" />
-
-            <include
-                android:id="@+id/inc_electric"
-                layout="@layout/item_completed_works"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inc_construction" />
-
-            <include
-                android:id="@+id/inc_plumbing"
-                layout="@layout/item_completed_works"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inc_electric" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_completed_works"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_completed_works" />
+            </ScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/secondaryColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

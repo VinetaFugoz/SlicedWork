@@ -19,59 +19,63 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class GreetingsFragment : Fragment() {
 
-    private lateinit var _binding: FragmentGreetingsBinding
-    private lateinit var _activity: MainActivity
-    private val _viewModel: GreetingsViewModel by viewModels()
-    private var _hasToExecuteAnimation = true
+    private lateinit var binding: FragmentGreetingsBinding
+    private lateinit var activity: MainActivity
+    private val viewModel: GreetingsViewModel by viewModels()
+    private var hasToExecuteAnimation = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        setProps(inflater)
-        checkToStartAnimation()
-        return _binding.root
+        binding = FragmentGreetingsBinding.inflate(inflater)
+
+        return binding.root
     }
 
     override fun onResume() {
         super.onResume()
         goBackToHome()
-        setListeners()
-        _activity.hideToolbar()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        _activity.showToolbar()
+        setProps()
+        checkToStartAnimation()
+        setEvents()
     }
 
     private fun goBackToHome() {
         if (!Firebase.auth.uid.isNullOrEmpty()) findNavController().navigateUp()
     }
 
-    private fun setListeners() {
-        _binding.run {
+    private fun setProps() {
+        activity = requireActivity() as MainActivity
+        setBindingProps()
+        setActivityProps()
+    }
+
+    private fun setBindingProps() {
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+    }
+
+    private fun setActivityProps() {
+        activity.colorStatusBar(R.color.primaryDarkColor)
+        activity.hideToolbar()
+    }
+
+    private fun checkToStartAnimation() {
+        if (hasToExecuteAnimation) {
+            startAnimation()
+            hasToExecuteAnimation = false
+        }
+    }
+
+    private fun startAnimation() = binding.layoutRoot.post { start(binding) }
+
+    private fun setEvents() {
+        binding.run {
             btnLogin.setOnClickListener { goToLogin() }
             btnRegister.setOnClickListener { goToRegister() }
         }
     }
-
-    private fun setProps(inflater: LayoutInflater) {
-        _binding = FragmentGreetingsBinding.inflate(inflater)
-        _binding.viewModel = _viewModel
-        _binding.lifecycleOwner = this.viewLifecycleOwner
-        _activity = this.requireActivity() as MainActivity
-        _activity.colorStatusBar(R.color.primaryDarkColor)
-    }
-
-    private fun checkToStartAnimation() {
-        if (_hasToExecuteAnimation) {
-            startAnimation()
-            _hasToExecuteAnimation = false
-        }
-    }
-
-    private fun startAnimation() = _binding.layoutRoot.post { start(_binding) }
 
     private fun goToLogin() = findNavController()
         .navigate(GreetingsFragmentDirections.actionGreetingsFragmentToLoginFragment())

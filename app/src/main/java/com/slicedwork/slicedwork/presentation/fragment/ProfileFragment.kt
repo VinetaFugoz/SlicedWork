@@ -4,116 +4,49 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.slicedwork.slicedwork.R
 import com.slicedwork.slicedwork.databinding.FragmentProfileBinding
 import com.slicedwork.slicedwork.domain.model.User
-import com.slicedwork.slicedwork.domain.model.Vacancy
+import com.slicedwork.slicedwork.presentation.adapter.CompletedWorksAdapter
 import com.slicedwork.slicedwork.presentation.viewmodel.ProfileViewModel
+import com.slicedwork.slicedwork.util.OccupationAreaUtil.occupationAreaList
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
-    private lateinit var _binding: FragmentProfileBinding
-    private var _user: User? = null
+    private lateinit var binding: FragmentProfileBinding
+    private var userArgs: Any? = null
+    private var user: User? = null
     private val viewModel: ProfileViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        setProps(inflater)
-        initializeIncludes()
+        binding = FragmentProfileBinding.inflate(inflater)
 
-        viewModel.userLiveData.observe(viewLifecycleOwner) { user ->
-            _user = user
-            setUserViews()
-        }
-        return _binding.root
+        return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        setListeners()
+        setProps()
+        toggleProfile()
+        setEvents()
+        setObservers()
+        setOccupationAreaListInRecycler(occupationAreaList)
     }
 
-    private fun setListeners() {
-        _binding.btnWpp.setOnClickListener { wppEvent() }
-    }
-
-    private fun wppEvent() {
-        val wppIntent = Intent(Intent.ACTION_VIEW)
-            .setData(Uri.parse("https://api.whatsapp.com/send?phone=+55${_user?.phoneNumber}"))
-
-        startActivity(wppIntent)
-    }
-
-    private fun setUserViews() {
-        _binding.run {
-            Glide.with(requireContext()).load(_user?.picture).circleCrop().into(ivPicture)
-
-            tvName.text = "${_user?.firstName} ${_user?.lastName}"
-            tvUsername.text = _user?.username
-        }
-    }
-
-    private fun setProps(inflater: LayoutInflater) {
-        _binding = FragmentProfileBinding.inflate(inflater)
-        val userArgs = arguments?.get("user")
-        if (userArgs == null) {
-            viewModel.getUser(Firebase.auth.currentUser!!.uid)
-            setHasOptionsMenu(true)
-        } else {
-            _user = userArgs as User
-            setUserViews()
-        }
-
-
-    }
-
-    private fun initializeIncludes() {
-        _binding.run {
-            incPainting.run {
-                viewHorizontal.visibility = View.GONE
-                ivOccupationArea.setImageDrawable(getOccupationAreaDrawable(R.drawable.ic_painting))
-                tvOccupationArea.text = requireContext().getText(R.string.painting)
-            }
-            incCleaning.run {
-                ivOccupationArea.setImageDrawable(getOccupationAreaDrawable(R.drawable.ic_cleaning))
-                tvOccupationArea.text = requireContext().getText(R.string.cleaning)
-            }
-            incGardening.run {
-                ivOccupationArea.setImageDrawable(getOccupationAreaDrawable(R.drawable.ic_gardening))
-                tvOccupationArea.text = requireContext().getText(R.string.gardening)
-            }
-            incConstruction.run {
-                ivOccupationArea.setImageDrawable(getOccupationAreaDrawable(R.drawable.ic_construction))
-                tvOccupationArea.text = requireContext().getText(R.string.construction)
-            }
-            incElectric.run {
-                ivOccupationArea.setImageDrawable(getOccupationAreaDrawable(R.drawable.ic_electric))
-                tvOccupationArea.text = requireContext().getText(R.string.electric)
-            }
-            incPlumbing.run {
-                ivOccupationArea.setImageDrawable(getOccupationAreaDrawable(R.drawable.ic_plumbing))
-                tvOccupationArea.text = requireContext().getText(R.string.plumbing)
-            }
-        }
-    }
-
-    private fun getOccupationAreaDrawable(drawable: Int) =
-        ContextCompat.getDrawable(requireContext(), drawable)
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.profile_menu, menu)
+    private fun setProps() {
+        userArgs = arguments?.get("user")
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -123,6 +56,68 @@ class ProfileFragment : Fragment() {
             }
         }
         return true
+    }
+
+    private fun toggleProfile() {
+        if (iAmOwner(userArgs)) {
+            viewModel.getUser(Firebase.auth.currentUser!!.uid)
+            setHasOptionsMenu(true)
+        } else {
+            binding.btnWpp.visibility = View.VISIBLE
+            user = userArgs as User
+            setUserProps()
+        }
+    }
+
+    private fun iAmOwner(userArgs: Any?): Boolean = userArgs == null
+
+    private fun setUserProps() {
+        setVisibility()
+        binding.run {
+            Glide.with(requireContext()).load(user?.picture).circleCrop().into(ivPicture)
+
+            tvName.text = "${user?.firstName} ${user?.lastName}"
+            tvUsername.text = user?.username
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.profile_menu, menu)
+    }
+
+    private fun setEvents() {
+        binding.btnWpp.setOnClickListener { wppEvent() }
+    }
+
+    private fun setObservers() {
+        viewModel.userLiveData.observe(viewLifecycleOwner) { user ->
+            setVisibility()
+            this@ProfileFragment.user = user
+            setUserProps()
+        }
+    }
+
+    private fun setVisibility() {
+        binding.run {
+            progressBar.visibility = View.GONE
+            ivPicture.visibility = View.VISIBLE
+            cdDetails.visibility = View.VISIBLE
+        }
+    }
+
+    private fun setOccupationAreaListInRecycler(occupationAreaList: List<Int>) {
+        binding.rvCompletedWorks.run {
+            layoutManager = LinearLayoutManager(this@ProfileFragment.requireContext())
+            adapter = CompletedWorksAdapter(occupationAreaList, requireContext())
+        }
+    }
+
+    private fun wppEvent() {
+        val wppIntent = Intent(Intent.ACTION_VIEW)
+            .setData(Uri.parse("https://api.whatsapp.com/send?phone=+55${user?.phoneNumber}"))
+
+        startActivity(wppIntent)
     }
 
     private fun logOutEvent() {

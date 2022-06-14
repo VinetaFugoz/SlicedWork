@@ -8,7 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class GetAddressViewModel @Inject constructor() : ViewModel() {
+class GetAddressViewModel @Inject constructor(): ViewModel() {
 
     var countryLiveData: MutableLiveData<String> = MutableLiveData()
     var countryErrorLiveData: MutableLiveData<Boolean> = MutableLiveData()
@@ -27,19 +27,19 @@ class GetAddressViewModel @Inject constructor() : ViewModel() {
 
     init {
         countryLiveData.value = ""
-        countryErrorLiveData.value = true
+        countryErrorLiveData.value = false
         stateLiveData.value = ""
-        stateErrorLiveData.value = true
+        stateErrorLiveData.value = false
         cityLiveData.value = ""
-        cityErrorLiveData.value = true
+        cityErrorLiveData.value = false
         neighborhoodLiveData.value = ""
-        neighborhoodErrorLiveData.value = true
+        neighborhoodErrorLiveData.value = false
         postalCodeLiveData.value = ""
-        postalCodeErrorLiveData.value = true
+        postalCodeErrorLiveData.value = false
         streetLiveData.value = ""
-        streetErrorLiveData.value = true
+        streetErrorLiveData.value = false
         numberLiveData.value = ""
-        numberErrorLiveData.value = true
+        numberErrorLiveData.value = false
     }
 
     fun afterTextChanged(editable: Editable) {

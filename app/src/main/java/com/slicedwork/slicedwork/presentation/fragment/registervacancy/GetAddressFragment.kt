@@ -14,48 +14,46 @@ import com.slicedwork.slicedwork.presentation.viewmodel.registervacancy.GetAddre
 
 class GetAddressFragment : Fragment() {
 
-    private lateinit var _binding: FragmentGetAddressBinding
-    private lateinit var _vacancy: Vacancy
-    private val _viewModel: GetAddressViewModel by viewModels()
+    private lateinit var binding: FragmentGetAddressBinding
+    private val viewModel: GetAddressViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        setProps(inflater)
-        return _binding.root
+        binding = FragmentGetAddressBinding.inflate(inflater)
+
+        return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        setListeners()
+        setBindingProps()
+        setNextEvent()
     }
 
-    private fun setProps(inflater: LayoutInflater) {
-        _binding = FragmentGetAddressBinding.inflate(inflater)
-        _binding.viewModel = _viewModel
-        _binding.lifecycleOwner = viewLifecycleOwner
+    private fun setBindingProps() {
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 
-    private fun setListeners() {
-        _binding.run {
-            btnNext.setOnClickListener { nextEvent() }
-        }
+    private fun setNextEvent() = binding.run {
+        btnNext.setOnClickListener { nextEvent() }
     }
 
     private fun nextEvent() {
         if (validateFields()) {
-            getVacancy()
-            setVacancyProps()
-            goToGetFinishRegisterVacancy()
+            val vacancy = getVacancy()
+            setVacancyProps(vacancy)
+            goToGetFinishRegisterVacancy(vacancy)
         }
     }
 
     private fun validateFields(): Boolean {
         var isValidate = true
 
-        _viewModel.run {
-            _binding.run {
+        viewModel.run {
+            binding.run {
                 if (countryErrorLiveData.value == true) {
                     tilCountry.error = getString(R.string.get_details_task_error)
                     isValidate = false
@@ -90,26 +88,22 @@ class GetAddressFragment : Fragment() {
         return isValidate
     }
 
-    private fun getVacancy() {
-        _vacancy = arguments?.get("vacancy") as Vacancy
+    private fun getVacancy() = arguments?.get("vacancy") as Vacancy
+
+    private fun setVacancyProps(vacancy: Vacancy) = binding.run {
+        vacancy.country = tietCountry.text.toString()
+        vacancy.state = tietState.text.toString()
+        vacancy.city = tietCity.text.toString()
+        vacancy.neighborhood = tietNeighborhood.text.toString()
+        vacancy.postalCode = tietPostalCode.text.toString()
+        vacancy.street = tietStreet.text.toString()
+        vacancy.number = tietNumber.text.toString()
     }
 
-    private fun setVacancyProps() {
-        _binding.run {
-            _vacancy.country = tietCountry.text.toString()
-            _vacancy.state = tietState.text.toString()
-            _vacancy.city = tietCity.text.toString()
-            _vacancy.neighborhood = tietNeighborhood.text.toString()
-            _vacancy.postalCode = tietPostalCode.text.toString()
-            _vacancy.street = tietStreet.text.toString()
-            _vacancy.number = tietNumber.text.toString()
-        }
-    }
-
-    private fun goToGetFinishRegisterVacancy() {
+    private fun goToGetFinishRegisterVacancy(vacancy: Vacancy) {
         findNavController().navigate(
             GetAddressFragmentDirections.actionGetAddressFragmentToFinishRegisterVacancyFragment(
-                _vacancy
+                vacancy
             )
         )
     }

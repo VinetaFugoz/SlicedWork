@@ -21,30 +21,58 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    private lateinit var _binding: FragmentHomeBinding
-    private lateinit var _activity: MainActivity
+    private lateinit var binding: FragmentHomeBinding
+    private lateinit var activity: MainActivity
     private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        setProps(inflater)
-        return _binding.root
+        binding = FragmentHomeBinding.inflate(inflater)
+
+        return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        goToGreetings()
+        if (isLogged()) {
+            setProps()
+            setAnnouncementEvent()
+            setVacanciesObserver()
+            getVacancies()
+        } else goToGreetings()
     }
 
-    private fun setProps(inflater: LayoutInflater) {
-        _binding = FragmentHomeBinding.inflate(inflater)
-        _activity = this.requireActivity() as MainActivity
+    private fun setProps() {
+        activity = requireActivity() as MainActivity
+        setActivityProps()
     }
 
-    private fun setVacancies(vacancies: List<Vacancy>) {
-        _binding.rvVacancies.run {
+    private fun setActivityProps() {
+        activity.showToolbar()
+        activity.colorStatusBar(R.color.primaryDarkColor)
+    }
+
+    private fun isLogged(): Boolean = !Firebase.auth.uid.isNullOrEmpty()
+
+    private fun setAnnouncementEvent() {
+        binding.fabAnnouncement.setOnClickListener { goToRegisterVacancy() }
+    }
+
+    private fun setVacanciesObserver() {
+        viewModel.vacanciesLiveData.observe(viewLifecycleOwner) { vacancies ->
+            binding.run {
+                rvVacancies.visibility = View.VISIBLE
+                progressBar.visibility = View.GONE
+            }
+
+            setVacanciesInRecycler(vacancies)
+        }
+    }
+
+    private fun setVacanciesInRecycler(vacancies: List<Vacancy>) {
+        binding.rvVacancies.run {
             layoutManager = LinearLayoutManager(this@HomeFragment.requireContext())
             adapter = VacancyAdapter(vacancies, requireContext()) { vacancy ->
                 goToVacancyDetails(vacancy)
@@ -52,31 +80,23 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setListeners() {
-        _binding.fabAnnouncement.setOnClickListener { goToRegisterVacancy() }
-    }
+    private fun getVacancies() = viewModel.getVacancies()
 
     private fun goToGreetings() {
-        if (Firebase.auth.uid.isNullOrEmpty()) findNavController()
-            .navigate(HomeFragmentDirections.actionHomeFragmentToGreetingsFragment())
-        else {
-            setListeners()
-            _activity.showToolbar()
-            _activity.colorStatusBar(R.color.primaryDarkColor)
-            viewModel.getVacancies()
-            viewModel.vacanciesLiveData.observe(viewLifecycleOwner) { vacancies ->
-                setVacancies(vacancies)
-            }
-        }
+        findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToGreetingsFragment()
+        )
     }
 
     private fun goToVacancyDetails(vacancy: Vacancy) {
-        findNavController().navigate(
-            HomeFragmentDirections.actionHomeFragmentToVacancyDetailsFragment(vacancy)
+        findNavController().navigate(HomeFragmentDirections
+                .actionHomeFragmentToVacancyDetailsFragment(vacancy)
         )
     }
 
     private fun goToRegisterVacancy() {
-        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToRegisterVacancyGraph())
+        findNavController().navigate(HomeFragmentDirections
+                .actionHomeFragmentToRegisterVacancyGraph()
+        )
     }
 }
