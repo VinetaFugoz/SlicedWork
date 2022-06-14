@@ -14,6 +14,7 @@ import com.google.firebase.ktx.Firebase
 import com.slicedwork.slicedwork.R
 import com.slicedwork.slicedwork.databinding.FragmentProfileBinding
 import com.slicedwork.slicedwork.domain.model.User
+import com.slicedwork.slicedwork.domain.model.Vacancy
 import com.slicedwork.slicedwork.presentation.adapter.CompletedWorksAdapter
 import com.slicedwork.slicedwork.presentation.viewmodel.ProfileViewModel
 import com.slicedwork.slicedwork.util.OccupationAreaUtil.occupationAreaList
@@ -42,7 +43,6 @@ class ProfileFragment : Fragment() {
         toggleProfile()
         setEvents()
         setObservers()
-        setOccupationAreaListInRecycler(occupationAreaList)
     }
 
     private fun setProps() {
@@ -59,6 +59,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun toggleProfile() {
+        viewModel.getVacancies()
         if (iAmOwner(userArgs)) {
             viewModel.getUser(Firebase.auth.currentUser!!.uid)
             setHasOptionsMenu(true)
@@ -96,6 +97,10 @@ class ProfileFragment : Fragment() {
             this@ProfileFragment.user = user
             setUserProps()
         }
+
+        viewModel.vacanciesLiveData.observe(viewLifecycleOwner) { vacancies ->
+            setOccupationAreaListInRecycler(occupationAreaList, vacancies)
+        }
     }
 
     private fun setVisibility() {
@@ -106,10 +111,13 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun setOccupationAreaListInRecycler(occupationAreaList: List<Int>) {
+    private fun setOccupationAreaListInRecycler(
+        occupationAreaList: List<Int>,
+        vacancies: List<Vacancy>
+    ) {
         binding.rvCompletedWorks.run {
             layoutManager = LinearLayoutManager(this@ProfileFragment.requireContext())
-            adapter = CompletedWorksAdapter(occupationAreaList, requireContext())
+            adapter = CompletedWorksAdapter(occupationAreaList, vacancies, requireContext())
         }
     }
 

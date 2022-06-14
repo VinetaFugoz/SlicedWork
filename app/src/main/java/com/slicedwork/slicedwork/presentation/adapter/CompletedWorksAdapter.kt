@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.slicedwork.slicedwork.databinding.ItemCompletedWorksBinding
+import com.slicedwork.slicedwork.domain.model.Vacancy
 import com.slicedwork.slicedwork.presentation.viewholder.CompletedWorksViewHolder
 
 class CompletedWorksAdapter(
     private val occupationAreaList: List<Int>,
+    private val vacancies: List<Vacancy>,
     private val context: Context,
 ) : RecyclerView.Adapter<CompletedWorksViewHolder>() {
 
@@ -21,7 +23,7 @@ class CompletedWorksAdapter(
     }
 
     override fun onBindViewHolder(holder: CompletedWorksViewHolder, position: Int) {
-        holder.bind(occupationAreaList[position], context)
+        holder.bind(occupationAreaList[position], vacancies, context)
     }
 
     override fun getItemCount(): Int = occupationAreaList.size
