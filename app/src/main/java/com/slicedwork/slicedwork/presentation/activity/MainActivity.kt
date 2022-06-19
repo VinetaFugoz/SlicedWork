@@ -1,6 +1,7 @@
 package com.slicedwork.slicedwork.presentation.activity
 
 import android.os.Bundle
+import android.view.WindowInsetsController
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -10,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.slicedwork.slicedwork.R
 import com.slicedwork.slicedwork.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,8 +48,20 @@ class MainActivity : AppCompatActivity() {
 
     private fun getNavController(): NavController = navHostFragment.navController
 
-    fun colorStatusBar(color: Int) {
-        window.statusBarColor = ContextCompat.getColor(this, color)
+    fun colorStatusBar(isInGreetings: Boolean) {
+        if (isInGreetings) {
+            window.insetsController?.setSystemBarsAppearance(
+                0,
+                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+            )
+            window.statusBarColor = ContextCompat.getColor(this, R.color.primaryDarkColor)
+        } else {
+            window.insetsController?.setSystemBarsAppearance(
+                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+            )
+            window.statusBarColor = ContextCompat.getColor(this, R.color.white)
+        }
     }
 
     fun colorToolBar(color: Int) {

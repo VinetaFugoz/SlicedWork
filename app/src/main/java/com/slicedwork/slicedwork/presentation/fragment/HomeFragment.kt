@@ -51,7 +51,7 @@ class HomeFragment : Fragment() {
 
     private fun setActivityProps() {
         activity.showToolbar()
-        activity.colorStatusBar(R.color.primaryDarkColor)
+        activity.colorStatusBar(false)
     }
 
     private fun isLogged(): Boolean = !Firebase.auth.uid.isNullOrEmpty()

@@ -41,6 +41,11 @@ class GreetingsFragment : Fragment() {
         setEvents()
     }
 
+    override fun onPause() {
+        super.onPause()
+        activity.colorStatusBar(false)
+    }
+
     private fun goBackToHome() {
         if (!Firebase.auth.uid.isNullOrEmpty()) findNavController().navigateUp()
     }
@@ -57,7 +62,7 @@ class GreetingsFragment : Fragment() {
     }
 
     private fun setActivityProps() {
-        activity.colorStatusBar(R.color.primaryDarkColor)
+        activity.colorStatusBar(true)
         activity.hideToolbar()
     }
 
