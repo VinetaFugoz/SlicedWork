@@ -18,4 +18,8 @@ interface DataSourceModule {
     @Singleton
     @Binds
     fun bindVacancyDataSource(vacancyDataSource: VacancyDataSourceImpl): VacancyDataSource
+
+    @Singleton
+    @Binds
+    fun bindRatingDataSource(ratingDataSource: RatingDataSourceImpl): RatingDataSource
 }

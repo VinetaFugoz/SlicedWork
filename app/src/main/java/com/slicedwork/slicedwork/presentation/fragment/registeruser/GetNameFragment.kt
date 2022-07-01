@@ -43,11 +43,9 @@ class GetNameFragment : Fragment() {
     }
 
     private fun setBindingProps() {
-        binding.run {
-            viewModel = viewModel
-            lifecycleOwner = viewLifecycleOwner
-            tietFirstName.focusAndShowSoftKeyboard(requireContext())
-        }
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.tietFirstName.focusAndShowSoftKeyboard(requireContext())
     }
 
     private fun setActivityProps() {

@@ -39,11 +39,10 @@ class GetEmailFragment : Fragment() {
     }
 
     private fun setBindingProps() {
-        binding.run {
-            viewModel = viewModel
-            lifecycleOwner = viewLifecycleOwner
-            tietEmail.focusAndShowSoftKeyboard(requireContext())
-        }
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.tietEmail.focusAndShowSoftKeyboard(requireContext())
+
     }
 
     private fun nextEvent() {

@@ -3,6 +3,7 @@ package com.slicedwork.slicedwork.presentation.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.FirebaseAuth
 import com.slicedwork.slicedwork.domain.model.Vacancy
 import com.slicedwork.slicedwork.domain.usecase.vacancy.GetVacanciesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,7 +21,7 @@ class AnnouncedViewModel @Inject constructor(private val getVacanciesUseCase: Ge
     }
 
     fun getVacancies() = viewModelScope.launch {
-        getVacanciesUseCase.invoke { vacancies ->
+        getVacanciesUseCase.invoke(userId = FirebaseAuth.getInstance().currentUser!!.uid) { vacancies ->
             vacanciesLiveData.value = vacancies
         }
     }

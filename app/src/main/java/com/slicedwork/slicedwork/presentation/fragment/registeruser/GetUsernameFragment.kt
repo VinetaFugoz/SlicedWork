@@ -35,11 +35,9 @@ class GetUsernameFragment : Fragment() {
     }
 
     private fun setBindingProps() {
-        binding.run {
-            viewModel = viewModel
-            lifecycleOwner = viewLifecycleOwner
-            tietNickname.focusAndShowSoftKeyboard(requireContext())
-        }
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.tietNickname.focusAndShowSoftKeyboard(requireContext())
     }
 
     private fun nextEvent(btnNext: View) {

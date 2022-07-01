@@ -38,17 +38,18 @@ class VacancyDataSourceImpl @Inject constructor(
     override suspend fun getVacancies(
         isInHome: Boolean,
         status: Int?,
+        userId: String,
         vacancyCallback: (List<Vacancy>) -> Unit
     ) {
         val query = firebaseFirestore.collection("/vacancy")
         if (isInHome) {
-            query.whereNotEqualTo("userId", Firebase.auth.currentUser!!.uid)
+            query.whereNotEqualTo("userId", userId)
                 .addSnapshotListener { snapshot, _ ->
                     vacancyCallback(convertSnapshot(snapshot))
                 }
         } else {
             firebaseFirestore.collection("/vacancy")
-                .whereEqualTo("userId", Firebase.auth.currentUser!!.uid)
+                .whereEqualTo("userId", userId)
                 .addSnapshotListener { snapshot, _ ->
                     vacancyCallback(convertSnapshot(snapshot))
                 }

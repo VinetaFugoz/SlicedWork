@@ -1,5 +1,6 @@
 package com.slicedwork.slicedwork.di
 
+import com.slicedwork.slicedwork.domain.usecase.rating.*
 import com.slicedwork.slicedwork.domain.usecase.user.*
 import com.slicedwork.slicedwork.domain.usecase.vacancy.*
 import dagger.Binds
@@ -37,4 +38,16 @@ interface UseCaseModule {
     @Binds
     fun bindDeleteVacancyUseCase(deleteVacancyUseCase: DeleteVacancyUseCaseImpl): DeleteVacancyUseCase
 
+    //Rating
+    @Binds
+    fun bindRegisterRatingUseCase(registerRatingUseCase: RegisterRatingUseCaseImpl): RegisterRatingUseCase
+
+    @Binds
+    fun bindGetRatingsUseCase(getRatingsUseCase: GetRatingsUseCaseImpl): GetRatingsUseCase
+
+    @Binds
+    fun bindUpdateRatingUseCase(updateRatingUseCase: UpdateRatingUseCaseImpl): UpdateRatingUseCase
+
+    @Binds
+    fun bindGetRatingUseCase(getRatingUseCase: GetRatingUseCaseImpl): GetRatingUseCase
 }

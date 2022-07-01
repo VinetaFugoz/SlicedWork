@@ -13,7 +13,7 @@
 
   <!--Common Colors-->
   <color name="white">#ffffff</color>
-  <color name="black">#000000</color>
+  <color name="black">#121212</color>
   <color name="transparent">#00000000</color>
   <color name="disableColor">#9D9D9D</color>
   <color name="enableColor">@color/secondaryColor</color>

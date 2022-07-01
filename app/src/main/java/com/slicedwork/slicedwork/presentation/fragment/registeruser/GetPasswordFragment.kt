@@ -37,11 +37,9 @@ class GetPasswordFragment : Fragment() {
     }
 
     private fun setBindingProps() {
-        binding.run {
-            viewModel = viewModel
-            lifecycleOwner = viewLifecycleOwner
-            tietPassword.focusAndShowSoftKeyboard(requireContext())
-        }
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.tietPassword.focusAndShowSoftKeyboard(requireContext())
     }
 
     private fun nextEvent() {

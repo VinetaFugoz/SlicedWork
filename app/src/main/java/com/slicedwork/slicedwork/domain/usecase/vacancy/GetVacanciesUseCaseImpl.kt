@@ -9,9 +9,10 @@ class GetVacanciesUseCaseImpl @Inject constructor(private val vacancyRepository:
     override suspend fun invoke(
         isInHome: Boolean,
         status: Int?,
+        userId: String,
         vacancyCallBack: (List<Vacancy>) -> Unit
     ) {
-        vacancyRepository.getVacancies(isInHome = isInHome) { vacancies ->
+        vacancyRepository.getVacancies(isInHome = isInHome, userId = userId) { vacancies ->
             vacancyCallBack(vacancies)
         }
     }

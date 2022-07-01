@@ -38,6 +38,11 @@ class FinishRegisterVacancyFragment : Fragment() {
         registerVacancy()
     }
 
+    override fun onPause() {
+        super.onPause()
+        activity.colorStatusBar(false)
+    }
+
     private fun setProps() {
         activity = requireActivity() as MainActivity
         vacancy = getVacancy()
@@ -46,7 +51,10 @@ class FinishRegisterVacancyFragment : Fragment() {
 
     private fun getVacancy() = arguments?.get("vacancy") as Vacancy
 
-    private fun setActivityProps() = activity.hideToolbar()
+    private fun setActivityProps() {
+        activity.colorStatusBar(true)
+        activity.hideToolbar()
+    }
 
     private fun setFinishEvent() =
         binding.btnFinish.setOnClickListener { findNavController().navigateUp() }

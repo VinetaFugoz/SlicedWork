@@ -15,9 +15,10 @@ class VacancyRepositoryImpl @Inject constructor(private val vacancyDataSource: V
     override suspend fun getVacancies(
         isInHome: Boolean,
         status: Int?,
+        userId: String,
         vacancyCallback: (List<Vacancy>) -> Unit
     ) {
-        vacancyDataSource.getVacancies(isInHome = isInHome) { vacancies ->
+        vacancyDataSource.getVacancies(isInHome = isInHome, userId = userId) { vacancies ->
             vacancyCallback(vacancies)
         }
     }

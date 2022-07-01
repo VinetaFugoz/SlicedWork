@@ -39,6 +39,11 @@ class FinishRegisterUserFragment : Fragment() {
         registerUser(user)
     }
 
+    override fun onPause() {
+        super.onPause()
+        activity.colorStatusBar(false)
+    }
+
     private fun setProps() {
         activity = requireActivity() as MainActivity
         setActivityProps()
@@ -46,7 +51,10 @@ class FinishRegisterUserFragment : Fragment() {
 
     private fun getUser() = arguments?.get("user") as User
 
-    private fun setActivityProps() = activity.hideToolbar()
+    private fun setActivityProps() {
+        activity.colorStatusBar(true)
+        activity.hideToolbar()
+    }
 
     private fun setFinishEvent() = binding.btnFinish.setOnClickListener { finishEvent() }
 

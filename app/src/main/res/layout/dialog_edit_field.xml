@@ -65,6 +65,18 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_cancel"
+            style="@style/CommonButton"
+            android:layout_width="wrap_content"
+            android:background="@color/transparent"
+            android:paddingHorizontal="16dp"
+            android:text="@string/edit_field_cancel"
+            android:textColor="@color/secondaryColor"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_finish"
+            app:layout_constraintEnd_toStartOf="@+id/btn_finish"
+            app:layout_constraintTop_toTopOf="@+id/btn_finish" />
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_finish"
             style="@style/CommonButton"
             android:layout_width="wrap_content"
@@ -77,18 +89,6 @@
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_cancel"
-            style="@style/CommonButton"
-            android:layout_width="wrap_content"
-            android:background="@color/transparent"
-            android:paddingHorizontal="16dp"
-            android:text="@string/edit_field_cancel"
-            android:textColor="@color/secondaryColor"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_finish"
-            app:layout_constraintEnd_toStartOf="@+id/btn_finish"
-            app:layout_constraintTop_toTopOf="@+id/btn_finish" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

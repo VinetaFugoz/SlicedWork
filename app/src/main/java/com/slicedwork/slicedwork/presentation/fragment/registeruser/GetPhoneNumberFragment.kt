@@ -35,11 +35,9 @@ class GetPhoneNumberFragment : Fragment() {
     }
 
     private fun setBindingProps() {
-        binding.run {
-            viewModel = viewModel
-            lifecycleOwner = viewLifecycleOwner
-            tietPhoneNumber.focusAndShowSoftKeyboard(requireContext())
-        }
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.tietPhoneNumber.focusAndShowSoftKeyboard(requireContext())
     }
 
     private fun nextView() {

@@ -16,7 +16,6 @@ class UserValidator: Validator() {
         return true
     }
 
-
     private fun isEmailValidRegex(email: String): Boolean {
         val emailRegex = Pattern
             .compile(
@@ -27,7 +26,7 @@ class UserValidator: Validator() {
     }
 
     fun validatePhoneNumber(phoneNumber: String): Boolean {
-        if (phoneNumber.length != 11) return false
+        if (phoneNumber.length != 12 && phoneNumber.length != 11) return false
 
         return true
     }

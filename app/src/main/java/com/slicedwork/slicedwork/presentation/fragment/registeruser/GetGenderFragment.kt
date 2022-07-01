@@ -38,10 +38,10 @@ class GetGenderFragment : Fragment() {
         setBindingProps()
     }
 
-    private fun setBindingProps() = binding.run {
-            viewModel = viewModel
-            lifecycleOwner = viewLifecycleOwner
-        }
+    private fun setBindingProps() {
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+    }
 
     private fun setNextEvent() {
         binding.btnNext.setOnClickListener { nextEvent() }

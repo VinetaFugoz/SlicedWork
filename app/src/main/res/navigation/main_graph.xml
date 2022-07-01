@@ -35,14 +35,14 @@
         tools:layout="@layout/fragment_greetings">
         <action
             android:id="@+id/action_greetingsFragment_to_LoginFragment"
-            app:destination="@id/LoginFragment" />
+            app:destination="@id/loginFragment" />
         <action
             android:id="@+id/action_greetingsFragment_to_register_graph"
             app:destination="@id/register_user_graph" />
     </fragment>
-    <!--SignIn-->
+    <!--LogIn-->
     <fragment
-        android:id="@+id/LoginFragment"
+        android:id="@+id/loginFragment"
         android:name="com.slicedwork.slicedwork.presentation.fragment.LoginFragment"
         android:label=""
         tools:layout="@layout/fragment_login" />
@@ -199,6 +199,9 @@
             android:name="user"
             app:argType="com.slicedwork.slicedwork.domain.model.User"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_profileFragment_to_ratingDialog"
+            app:destination="@id/ratingDialog" />
     </fragment>
     <!--RegisterVacancy-->
     <navigation
@@ -276,6 +279,15 @@
             app:argType="com.slicedwork.slicedwork.util.enumerator.FieldEnum" />
         <argument
             android:name="initialValue"
+            app:argType="string" />
+    </dialog>
+    <dialog
+        android:id="@+id/ratingDialog"
+        android:name="com.slicedwork.slicedwork.presentation.dialog.RatingDialog"
+        android:label=""
+        tools:layout="@layout/dialog_rating" >
+        <argument
+            android:name="userId"
             app:argType="string" />
     </dialog>
 </navigation>

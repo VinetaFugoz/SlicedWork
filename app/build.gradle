@@ -64,7 +64,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0"
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -74,7 +74,7 @@ dependencies {
     implementation "androidx.core:core-splashscreen:$splashVersion"
 
     // Fragment KTX
-    implementation("androidx.fragment:fragment-ktx:1.4.1")
+    implementation("androidx.fragment:fragment-ktx:1.5.0")
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
@@ -99,7 +99,7 @@ dependencies {
     // Circle Image
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
-    def liveDataVersion = "2.4.1"
+    def liveDataVersion = "2.5.0"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$liveDataVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$liveDataVersion"
 
@@ -122,8 +122,8 @@ dependencies {
 
     // Firebase
     implementation 'com.google.firebase:firebase-core:21.0.0'
-    implementation 'com.google.firebase:firebase-auth-ktx:21.0.5'
-    implementation 'com.google.firebase:firebase-firestore-ktx:24.1.2'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.6'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.2.0'
     implementation 'com.google.firebase:firebase-storage-ktx:20.0.1'
 
     // Junit

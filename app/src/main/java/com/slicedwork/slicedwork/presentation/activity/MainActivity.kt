@@ -1,7 +1,9 @@
 package com.slicedwork.slicedwork.presentation.activity
 
 import android.os.Bundle
-import android.view.WindowInsetsController
+import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -9,11 +11,11 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.slicedwork.slicedwork.R
 import com.slicedwork.slicedwork.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -32,6 +34,11 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 
+    override fun onStart() {
+        super.onStart()
+        colorStatusBar(false)
+    }
+
     private fun setProps() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         navHostFragment = getNavHostFragment()
@@ -48,18 +55,19 @@ class MainActivity : AppCompatActivity() {
 
     private fun getNavController(): NavController = navHostFragment.navController
 
-    fun colorStatusBar(isInGreetings: Boolean) {
-        if (isInGreetings) {
-            window.insetsController?.setSystemBarsAppearance(
-                0,
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
-            )
+    fun colorStatusBar(isBlue: Boolean) {
+        val window: Window = this.window
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        if (isBlue) {
+            window.decorView.systemUiVisibility = 0
             window.statusBarColor = ContextCompat.getColor(this, R.color.primaryDarkColor)
+        }
+        else if (!isBlue && resources.configuration.uiMode == 33) {
+            window.decorView.systemUiVisibility = 0
+            window.statusBarColor = ContextCompat.getColor(this, R.color.black)
         } else {
-            window.insetsController?.setSystemBarsAppearance(
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
-            )
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             window.statusBarColor = ContextCompat.getColor(this, R.color.white)
         }
     }

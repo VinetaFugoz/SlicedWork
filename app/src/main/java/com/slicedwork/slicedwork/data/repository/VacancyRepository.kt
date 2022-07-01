@@ -6,7 +6,7 @@ import com.slicedwork.slicedwork.util.enumerator.FieldEnum
 interface VacancyRepository {
     suspend fun registerVacancy(vacancy: Vacancy, vacancyCallback: (Boolean) -> Unit)
 
-    suspend fun getVacancies(isInHome: Boolean = false, status: Int? = null, vacancyCallback: (List<Vacancy>) -> Unit)
+    suspend fun getVacancies(isInHome: Boolean = false, status: Int? = null, userId: String, vacancyCallback: (List<Vacancy>) -> Unit)
 
     suspend fun getVacancyById(vacancyId: String, vacancyCallback: (Vacancy) -> Unit)
 

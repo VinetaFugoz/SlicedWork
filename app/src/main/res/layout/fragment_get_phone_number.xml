@@ -72,7 +72,7 @@
                 android:fontFamily="@font/century_gothic"
                 android:hint="@string/get_phone_number_phone_number"
                 android:inputType="number"
-                android:maxLength="11"
+                android:maxLength="12"
                 android:text="@={viewModel.phoneNumberLiveData}" />
 
         </com.google.android.material.textfield.TextInputLayout>

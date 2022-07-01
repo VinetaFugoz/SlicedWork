@@ -18,4 +18,8 @@ interface RepositoryModule {
     @Singleton
     @Binds
     fun bindVacancyRepository(vacancyRepository: VacancyRepositoryImpl): VacancyRepository
+
+    @Singleton
+    @Binds
+    fun bindRatingRepository(ratingRepository: RatingRepositoryImpl): RatingRepository
 }

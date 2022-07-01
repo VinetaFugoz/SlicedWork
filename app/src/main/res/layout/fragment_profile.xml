@@ -6,114 +6,117 @@
     android:layout_height="match_parent"
     tools:context=".presentation.fragment.HomeFragment">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/iv_picture"
-        android:layout_width="108dp"
-        android:layout_height="108dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_profile"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_views"
         android:visibility="gone"
-        app:civ_border_color="@color/primaryColor"
-        app:civ_border_width="3dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_wpp"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="-10dp"
-        android:layout_marginEnd="-10dp"
-        android:background="@drawable/shape_circle"
-        android:drawableStart="@drawable/ic_wpp_foreground"
-        android:drawableTint="@color/white"
-        android:paddingStart="-35dp"
-        android:paddingEnd="0dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@+id/iv_picture"
-        app:layout_constraintTop_toTopOf="@+id/iv_picture" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cd_details"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_picture">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_picture"
+            android:layout_width="108dp"
+            android:layout_height="108dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_profile"
+            app:civ_border_color="@color/primaryColor"
+            app:civ_border_width="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_wpp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="-10dp"
+            android:layout_marginEnd="-10dp"
+            android:background="@drawable/shape_circle"
+            android:drawableStart="@drawable/ic_wpp_foreground"
+            android:drawableTint="@color/white"
+            android:paddingStart="-35dp"
+            android:visibility="gone"
+            android:paddingEnd="0dp"
+            app:layout_constraintEnd_toEndOf="@+id/iv_picture"
+            app:layout_constraintTop_toTopOf="@+id/iv_picture" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/century_gothic"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+            tools:text="Victor Queiroz" />
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/century_gothic"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            tools:text="Refluenchai" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:progressTint="@color/secondaryColor"
+            android:rating="4"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:max="5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_picture" />
+
+        <TextView
+            android:id="@+id/tv_completed_works"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/century_gothic"
+            android:gravity="center"
+            android:text="@string/profile_completed_works"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/sv_completed_works"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+
+        <ScrollView
+            android:id="@+id/sv_completed_works"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="16dp">
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_completed_works">
 
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/century_gothic"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                app:layout_constraintBottom_toTopOf="@+id/tv_username"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Victor Queiroz" />
-
-            <TextView
-                android:id="@+id/tv_username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/century_gothic"
-                android:gravity="center"
-                app:layout_constraintBottom_toTopOf="@+id/tv_completed_works"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_name"
-                tools:text="Refluenchai" />
-
-            <TextView
-                android:id="@+id/tv_completed_works"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:fontFamily="@font/century_gothic"
-                android:gravity="center"
-                android:text="@string/profile_completed_works"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/sv_completed_works"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_username" />
-
-            <ScrollView
-                android:id="@+id/sv_completed_works"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_completed_works"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_completed_works">
+                tools:listitem="@layout/item_completed_works" />
+        </ScrollView>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_completed_works"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/item_completed_works" />
-            </ScrollView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ProgressBar
         android:id="@+id/progress_bar"
