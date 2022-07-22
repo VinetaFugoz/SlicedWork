@@ -42,7 +42,7 @@ class ProfileFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         setProps()
-        toggleProfile()
+        toggleProfile() 
         setEvents()
         setObservers()
     }

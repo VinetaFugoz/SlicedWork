@@ -78,18 +78,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_task"
                 tools:text="Franco da Rocha - SP" />
 
-            <TextView
-                android:id="@+id/tv_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/century_gothic"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_city_state"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_occupation_area"
-                tools:text="R$200.00" />
-
             <ImageView
                 android:id="@+id/iv_status"
                 android:layout_width="30dp"

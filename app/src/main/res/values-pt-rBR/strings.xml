@@ -138,6 +138,10 @@
     <string name="vacancy_details_closed">Fechada</string>
     <string name="vacancy_details_finished">Concluída</string>
     <string name="vacancy_details_delete">Deletar</string>
+    <string name="vacancy_detaild_apply_for">Candidatar-se</string>
+    <string name="vacancy_detaild_see_candidates">Ver Candidatos</string>
+    <string name="vacancy_detaild_finish_vacancy">Finalizar Vaga</string>
+    <string name="vacancy_details_worker_label">Trabalhador</string>
 
     <!--Profile-->
     <string name="profile">Perfil</string>
@@ -154,4 +158,18 @@
     <string name="announced_vacancies_finished">Concluídas</string>
     <string name="announced_vacancies_all">Todas</string>
     <string name="announced_vacancies">Vagas Anunciadas</string>
+
+    <!--AppliedVacancies-->
+    <string name="applied_vacancies">Vagas Aplicadas</string>
+    <string name="applied_vacancies_all">Todos</string>
+    <string name="applied_vacancies_in_waiting">Em aguardo</string>
+    <string name="applied_vacancies_approved">Aprovado(a)</string>
+    <string name="applied_vacancies_disapproved">Desaprovado(a)</string>
+
+    <!--Candidates-->
+    <string name="candidates_title">Candidatos</string>
+
+    <!--ItemCandidate-->
+    <string name="item_candidate_disapprove">Desaprovar</string>
+    <string name="item_candidate_approve">Aprovar</string>
 </resources>

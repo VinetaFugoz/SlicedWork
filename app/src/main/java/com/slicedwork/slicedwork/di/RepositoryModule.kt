@@ -22,4 +22,8 @@ interface RepositoryModule {
     @Singleton
     @Binds
     fun bindRatingRepository(ratingRepository: RatingRepositoryImpl): RatingRepository
+
+    @Singleton
+    @Binds
+    fun bindCandidateRepository(candidateRepository: CandidateRepositoryImpl): CandidateRepository
 }

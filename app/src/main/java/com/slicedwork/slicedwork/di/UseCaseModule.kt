@@ -1,5 +1,6 @@
 package com.slicedwork.slicedwork.di
 
+import com.slicedwork.slicedwork.domain.usecase.candidate.*
 import com.slicedwork.slicedwork.domain.usecase.rating.*
 import com.slicedwork.slicedwork.domain.usecase.user.*
 import com.slicedwork.slicedwork.domain.usecase.vacancy.*
@@ -12,7 +13,7 @@ import dagger.hilt.android.components.ViewModelComponent
 @InstallIn(ViewModelComponent::class)
 interface UseCaseModule {
 
-    // User
+    //User
     @Binds
     fun bindRegisterUserUseCase(registerUserUseCase: RegisterUserUseCaseImpl): RegisterUserUseCase
 
@@ -22,7 +23,7 @@ interface UseCaseModule {
     @Binds
     fun bindGetUserUseCase(getUserUseCase: GetUserUseCaseImpl): GetUserUseCase
 
-    // Vacancy
+    //Vacancy
     @Binds
     fun bindRegisterVacancyUseCase(registerVacancyUseCase: RegisterVacancyUseCaseImpl): RegisterVacancyUseCase
 
@@ -33,7 +34,7 @@ interface UseCaseModule {
     fun bindUpdateVacancyUseCase(updateVacancyUseCase: UpdateVacancyUseCaseImpl): UpdateVacancyUseCase
 
     @Binds
-    fun bindGetVacancyByIdUseCase(getVacancyById: GetVacancyByIdUseCaseImpl): GetVacancyByIdUseCase
+    fun bindGetVacancyByIdUseCase(getVacancyByIdUseCase: GetVacancyByIdUseCaseImpl): GetVacancyByIdUseCase
 
     @Binds
     fun bindDeleteVacancyUseCase(deleteVacancyUseCase: DeleteVacancyUseCaseImpl): DeleteVacancyUseCase
@@ -50,4 +51,17 @@ interface UseCaseModule {
 
     @Binds
     fun bindGetRatingUseCase(getRatingUseCase: GetRatingUseCaseImpl): GetRatingUseCase
+
+    //Candidate
+    @Binds
+    fun bindRegisterCandidateUseCase(registerCandidateUseCase: RegisterCandidateUseCaseImpl): RegisterCandidateUseCase
+
+    @Binds
+    fun bindGetCandidatesByIdUseCase(getCandidatesByIdUseCase: GetCandidatesByIdUseCaseImpl): GetCandidatesByIdUseCase
+
+    @Binds
+    fun bindGetCandidatesByFieldAndVacancyUseCase(getCandidateByFieldAndVacancyUseCase: GetCandidateByFieldAndVacancyUseCaseImpl): GetCandidateByFieldVacancyUseCase
+
+    @Binds
+    fun bindUpdateCandidateUseCase(updateCandidateUseCase: UpdateCandidateUseCaseImpl): UpdateCandidateUseCase
 }

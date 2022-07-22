@@ -109,8 +109,7 @@ class GetDetailsFragment : Fragment() {
                 if (imageUri != null) {
                     this.imageUri = imageUri
 
-                    Glide.with(requireContext()).load(imageUri).centerCrop()
-                        .into(binding.ivPicture)
+                    Glide.with(requireContext()).load(imageUri).centerCrop().into(binding.ivPicture)
                 }
             }
     }
@@ -127,10 +126,6 @@ class GetDetailsFragment : Fragment() {
                     tilOccupationArea.error = getString(R.string.get_details_task_error)
                     return false
                 }
-                if (priceErrorLiveData.value == true) {
-                    tilPrice.error = getString(R.string.get_details_task_error)
-                    return false
-                }
             }
         }
 
@@ -144,8 +139,7 @@ class GetDetailsFragment : Fragment() {
                 task = tietTask.text.toString(),
                 description = tietDescription.text.toString(),
                 occupationArea = chosenOccupationArea,
-                picture = imageUri.toString(),
-                price = tietPrice.text.toString().toDouble(),
+                picture = imageUri.toString()
             )
         }
     

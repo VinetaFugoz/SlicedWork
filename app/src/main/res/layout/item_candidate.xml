@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:layout_marginHorizontal="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/inc_user"
+            layout="@layout/item_user"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_status"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_hourglass"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/inc_user"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/inc_user"
+            tools:ignore="ContentDescription" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_approve"
+            style="@style/CommonButton"
+            android:layout_width="0dp"
+            android:background="@drawable/selector_button_color_blue"
+            android:paddingHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/item_candidate_approve"
+            android:drawableStart="@drawable/ic_right"
+            android:drawableTint="@color/white"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/btn_disapprove"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inc_user" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_disapprove"
+            style="@style/CommonButton"
+            android:layout_width="0dp"
+            app:layout_constraintStart_toEndOf="@+id/btn_approve"
+            android:background="@drawable/selector_button_color_orange"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/ic_wrong"
+            android:drawableTint="@color/white"
+            android:paddingHorizontal="16dp"
+            android:text="@string/item_candidate_disapprove"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inc_user" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

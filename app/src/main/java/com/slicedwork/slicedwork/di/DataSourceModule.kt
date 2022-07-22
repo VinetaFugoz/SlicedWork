@@ -22,4 +22,8 @@ interface DataSourceModule {
     @Singleton
     @Binds
     fun bindRatingDataSource(ratingDataSource: RatingDataSourceImpl): RatingDataSource
+
+    @Singleton
+    @Binds
+    fun bindCandidateDataSource(candidateDataSource: CandidateDataSourceImpl): CandidateDataSource
 }

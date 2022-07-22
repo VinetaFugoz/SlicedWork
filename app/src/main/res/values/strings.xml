@@ -164,6 +164,10 @@
         <item>@string/vacancy_details_finished</item>
     </string-array>
     <string name="vacancy_details_delete">Delete</string>
+    <string name="vacancy_detaild_apply_for">Apply For</string>
+    <string name="vacancy_detaild_see_candidates">See Candidates</string>
+    <string name="vacancy_detaild_finish_vacancy">Finish Vacancy</string>
+    <string name="vacancy_details_worker_label">Worker</string>
 
     <!--Profile-->
     <string name="profile">Profile</string>
@@ -186,6 +190,26 @@
         <item>@string/announced_vacancies_closed</item>
         <item>@string/announced_vacancies_finished</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--AppliedVacancies-->
+    <string name="applied_vacancies">Applied Vacancies</string>
+    <string name="applied_vacancies_all">All</string>
+    <string name="applied_vacancies_in_waiting">In waiting</string>
+    <string name="applied_vacancies_approved">Approved</string>
+    <string name="applied_vacancies_disapproved">Disapproved</string>
+    <string-array name="applied_vacancies_status">
+        <item>@string/applied_vacancies_all</item>
+        <item>@string/applied_vacancies_in_waiting</item>
+        <item>@string/applied_vacancies_approved</item>
+        <item>@string/applied_vacancies_disapproved</item>
+    </string-array>
+
+    <!--Candidates-->
+    <string name="candidates_title">Candidates</string>
+
+    <!--ItemCandidate-->
+    <string name="item_candidate_disapprove">Disapprove</string>
+    <string name="item_candidate_approve">Approve</string>
+    <string name="no_vacancy">There is no vacancy!</string>
+
 </resources>

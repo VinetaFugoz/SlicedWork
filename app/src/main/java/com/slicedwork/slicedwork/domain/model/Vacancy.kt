@@ -8,7 +8,6 @@ data class Vacancy(
     var task: String = "",
     var description: String = "",
     var occupationArea: Int = 0,
-    var price: Double = 0.00,
     var picture: String = "",
     var country: String = "",
     var state: String = "",

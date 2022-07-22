@@ -34,14 +34,12 @@ class VacancyViewHolder(
                 tvTask.text = task
                 tvCityState.text = cityState
                 if (Firebase.auth.uid == userId) {
-                    tvPrice.visibility = View.GONE
                     val statusDrawable = getStatusDrawable(status, context)
                     ivStatus.setImageDrawable(statusDrawable)
 
-                } else {
+                }
+                else {
                     ivStatus.visibility = View.GONE
-                    val signPrice = "R$ $price"
-                    tvPrice.text = signPrice
                 }
 
                 root.setOnClickListener {

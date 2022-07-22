@@ -56,13 +56,7 @@ class VacancyDataSourceImpl @Inject constructor(
         }
     }
 
-    override suspend fun updateVacancy(
-        isMenu: Boolean,
-        document: String,
-        field: FieldEnum,
-        value: String,
-        vacancyCallback: (Boolean) -> Unit
-    ) {
+    override suspend fun updateVacancy(isMenu: Boolean, document: String, field: FieldEnum, value: String, vacancyCallback: (Boolean) -> Unit) {
         firebaseFirestore.collection("vacancy")
             .document(document)
             .update(field.getText(), if (isMenu) value.toInt() else value).addOnSuccessListener {
@@ -83,7 +77,9 @@ class VacancyDataSourceImpl @Inject constructor(
         firebaseFirestore.collection("vacancy")
             .document(vacancyId)
             .get().addOnSuccessListener { snapshot ->
-                convertSnapshot(snapshot)?.let { vacancyCallback(it) }
+                convertSnapshot(snapshot)?.let {
+                    vacancyCallback(it)
+                }
             }
     }
 

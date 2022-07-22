@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_homeFragment_to_announcedVacanciesFragment"
             app:destination="@id/announcedVacanciesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_appliedVacanciesFragment"
+            app:destination="@id/appliedVacanciesFragment" />
     </fragment>
     <!--Greetings-->
     <fragment
@@ -61,6 +64,9 @@
         <action
             android:id="@+id/action_vacancyDetailsFragment_to_editFieldDialog"
             app:destination="@id/editFieldDialog" />
+        <action
+            android:id="@+id/action_vacancyDetailsFragment_to_candidatesDialog"
+            app:destination="@id/candidatesDialog" />
     </fragment>
     <!--RegisterUser-->
     <navigation
@@ -262,6 +268,16 @@
             android:id="@+id/action_announcedVacanciesFragment_to_vacancyDetailsFragment"
             app:destination="@id/vacancyDetailsFragment" />
     </fragment>
+    <!--AppliedVacancies-->
+    <fragment
+        android:id="@+id/appliedVacanciesFragment"
+        android:name="com.slicedwork.slicedwork.presentation.fragment.AppliedVacanciesFragment"
+        android:label=""
+        tools:layout="@layout/fragment_applied_vacancies" >
+        <action
+            android:id="@+id/action_appliedVacanciesFragment_to_vacancyDetailsFragment"
+            app:destination="@id/vacancyDetailsFragment" />
+    </fragment>
     <!--EditField-->
     <dialog
         android:id="@+id/editFieldDialog"
@@ -281,6 +297,7 @@
             android:name="initialValue"
             app:argType="string" />
     </dialog>
+    <!--Rating-->
     <dialog
         android:id="@+id/ratingDialog"
         android:name="com.slicedwork.slicedwork.presentation.dialog.RatingDialog"
@@ -289,5 +306,19 @@
         <argument
             android:name="userId"
             app:argType="string" />
+    </dialog>
+    <!--Candidates-->
+    <dialog
+        android:id="@+id/candidatesDialog"
+        android:name="com.slicedwork.slicedwork.presentation.dialog.CandidatesDialog"
+        android:label=""
+        tools:layout="@layout/dialog_candidates" >
+        <action
+            android:id="@+id/action_candidatesDialog_to_vacancyDetailsFragment"
+            app:destination="@id/vacancyDetailsFragment"
+            app:popUpTo="@id/announcedVacanciesFragment" />
+        <argument
+            android:name="vacancy"
+            app:argType="com.slicedwork.slicedwork.domain.model.Vacancy" />
     </dialog>
 </navigation>

@@ -76,10 +76,14 @@ class AnnouncedVacanciesFragment : Fragment() {
             binding.run {
                 rvVacancies.visibility = View.VISIBLE
                 progressBar.visibility = View.GONE
+
+                if (vacancies.isNotEmpty()) {
+                    this@AnnouncedVacanciesFragment.vacancies = vacancies as MutableList<Vacancy>
+                    tvHint.visibility = View.GONE
+                    setVacanciesInRecycler(vacancies)
+                }
+                else tvHint.visibility = View.VISIBLE
             }
-            if (vacancies.isNotEmpty())
-                this@AnnouncedVacanciesFragment.vacancies = vacancies as MutableList<Vacancy>
-            setVacanciesInRecycler(vacancies)
         }
 
     private fun getVacancies() = viewModel.getVacancies()

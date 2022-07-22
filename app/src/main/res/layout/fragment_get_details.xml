@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:padding="16dp"
-                app:layout_constraintBottom_toTopOf="@+id/til_task"
+                app:layout_constraintBottom_toTopOf="@+id/til_occupation_area"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_subtitle">
@@ -45,7 +45,6 @@
                         android:src="@drawable/ic_painting"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
@@ -115,7 +114,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cv_picture">
+                app:layout_constraintTop_toBottomOf="@id/til_occupation_area">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_task"
@@ -137,10 +136,10 @@
                 android:layout_width="0dp"
                 android:layout_height="?android:actionBarSize"
                 android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
                 app:boxBackgroundColor="@android:color/transparent"
                 app:errorEnabled="true"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toTopOf="@+id/til_occupation_area"
+                app:layout_constraintBottom_toTopOf="@+id/btn_next"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
@@ -166,13 +165,14 @@
                 android:layout_height="?android:actionBarSize"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
                 app:boxBackgroundColor="@android:color/transparent"
                 app:errorEnabled="@{viewModel.occupationAreaErrorLiveData}"
-                app:layout_constraintBottom_toTopOf="@+id/btn_next"
-                app:layout_constraintEnd_toStartOf="@+id/til_price"
+                app:layout_constraintBottom_toTopOf="@+id/til_task"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_weight="2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/til_description">
+                app:layout_constraintTop_toBottomOf="@+id/cv_picture">
 
                 <AutoCompleteTextView
                     android:id="@+id/actv_occupation_area"
@@ -187,46 +187,18 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_price"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="?android:actionBarSize"
-                android:layout_marginEnd="16dp"
-                app:boxBackgroundColor="@android:color/transparent"
-                app:errorEnabled="@{viewModel.priceErrorLiveData}"
-                app:layout_constraintBottom_toBottomOf="@+id/til_occupation_area"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_weight="1"
-                app:layout_constraintStart_toEndOf="@+id/til_occupation_area"
-                app:layout_constraintTop_toTopOf="@+id/til_occupation_area">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tiet_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:afterTextChanged="@{viewModel::afterTextChanged}"
-                    android:fontFamily="@font/century_gothic"
-                    android:hint="@string/get_details_price"
-                    android:inputType="numberDecimal"
-                    android:maxLength="9"
-                    android:text="@={viewModel.priceLiveData}"
-                    tools:ignore="TextContrastCheck" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_next"
                 style="@style/CommonButton"
                 android:layout_width="match_parent"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="80dp"
-                android:background="@drawable/selector_button_color"
+                android:background="@drawable/selector_button_color_orange"
                 android:text="@string/get_details_next"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/til_occupation_area" />
+                app:layout_constraintTop_toBottomOf="@id/til_description" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

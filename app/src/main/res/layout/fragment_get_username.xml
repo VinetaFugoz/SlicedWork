@@ -80,7 +80,7 @@
             style="@style/CommonButton"
             android:layout_width="match_parent"
             android:layout_marginTop="80dp"
-            android:background="@drawable/selector_button_color"
+            android:background="@drawable/selector_button_color_orange"
             android:text="@string/get_username_next"
             android:enabled="@{viewModel.enabledNextLiveData}"
             android:textColor="@color/white"

@@ -7,6 +7,7 @@
     android:paddingBottom="16dp">
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
@@ -22,10 +23,10 @@
                 android:id="@+id/iv_picture"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
+                android:layout_marginTop="30dp"
                 android:background="@color/primaryDarkColor"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_painting"
-                android:layout_marginTop="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -36,8 +37,8 @@
             <TextView
                 android:id="@+id/tv_task"
                 android:layout_width="0dp"
-                android:layout_marginTop="16dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/century_gothic"
                 android:gravity="center"
                 android:paddingHorizontal="50dp"
@@ -50,33 +51,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_price_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/century_gothic"
-                android:text="@string/vacancy_details_price_label"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/tv_price"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_occupation_area_label" />
-
-            <TextView
-                android:id="@+id/tv_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/century_gothic"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_price_label"
-                tools:text="R$ 200.00" />
-
-            <TextView
                 android:id="@+id/tv_description_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/century_gothic"
                 android:text="@string/vacancy_details_description_label"
-                android:layout_marginTop="16dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/tv_description"
@@ -100,10 +80,10 @@
                 android:id="@+id/tv_occupation_area_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/century_gothic"
                 android:text="@string/vacancy_details_occupation_area_label"
                 android:textColor="@color/black"
-                android:layout_marginTop="16dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/tv_occupation_area"
                 app:layout_constraintStart_toStartOf="parent"
@@ -126,11 +106,11 @@
                 android:id="@+id/tv_localization_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/century_gothic"
                 android:text="@string/vacancy_details_localization_label"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:layout_marginTop="16dp"
                 app:layout_constraintBottom_toTopOf="@+id/tv_localization"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_occupation_area"
@@ -190,12 +170,12 @@
                 android:text="@string/vacancy_details_contractor_label"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/iv_user_picture"
+                app:layout_constraintBottom_toTopOf="@+id/inc_user_owner"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_status" />
 
             <TextView
-                android:id="@+id/tv_go_to_profile"
+                android:id="@+id/tv_go_to_profile_owner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/vacancy_details_go_to_profile"
@@ -203,43 +183,99 @@
                 app:layout_constraintBottom_toBottomOf="@+id/tv_contractor_label"
                 app:layout_constraintStart_toEndOf="@+id/tv_contractor_label" />
 
-            <ImageView
-                android:id="@+id/iv_user_picture"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+            <include
+                android:id="@+id/inc_user_owner"
+                layout="@layout/item_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:src="@drawable/ic_profile"
-                app:civ_border_color="@color/primaryColor"
-                app:civ_border_width="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_contractor_label"
-                tools:ignore="ContentDescription" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_contractor_label" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_apply_for"
+                style="@style/CommonButton"
+                android:layout_width="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/primaryColor"
+                android:text="@string/vacancy_detaild_apply_for"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/inc_user_worker"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/inc_user_owner" />
 
             <TextView
-                android:id="@+id/tv_name"
+                android:id="@+id/tv_worker_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/century_gothic"
+                android:visibility="gone"
+                android:text="@string/vacancy_details_worker_label"
+                android:textColor="@color/black"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inc_user_owner" />
+
+            <TextView
+                android:id="@+id/tv_go_to_profile_worker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="@string/vacancy_details_go_to_profile"
+                android:textColor="@color/primaryColor"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_worker_label"
+                app:layout_constraintStart_toEndOf="@+id/tv_worker_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_worker_label" />
+
+            <include
+                android:id="@+id/inc_user_worker"
+                layout="@layout/item_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:fontFamily="@font/century_gothic"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/iv_user_picture"
-                app:layout_constraintTop_toTopOf="@+id/iv_user_picture"
-                tools:text="Victor Queiroz" />
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_worker_label" />
 
-            <TextView
-                android:id="@+id/tv_username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/century_gothic"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_name"
-                app:layout_constraintTop_toBottomOf="@+id/tv_name"
-                tools:text="Refluenchai" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_see_candidates"
+                style="@style/CommonButton"
+                android:layout_width="0dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/transparent"
+                android:text="@string/vacancy_detaild_see_candidates"
+                android:textColor="@color/primaryColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inc_user_worker" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_finish_vacancy"
+                style="@style/CommonButton"
+                android:layout_width="0dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@color/secondaryColor"
+                android:text="@string/vacancy_detaild_finish_vacancy"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_see_candidates" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/secondaryColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
