@@ -10,13 +10,17 @@ apply plugin: 'kotlin-android'
 
 android {
 
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
+
     defaultConfig {
         applicationId "com.slicedwork.slicedwork"
 
         // Version Sdk
-        compileSdk 31
+        compileSdk 32
         minSdk 27
-        targetSdk 31
+        targetSdk 32
 
         // Version Apk
         versionCode 1
@@ -62,19 +66,20 @@ android {
 dependencies {
     implementation "androidx.core:core-ktx:1.8.0"
     implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'androidx.appcompat:appcompat:1.5.0'
     implementation 'com.google.android.material:material:1.6.1'
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'org.jboss.forge.addon:mockito:2.13.0'
 
     // Splash Screen
-    def splashVersion = "1.0.0-rc01"
+    def splashVersion = "1.0.0"
     implementation "androidx.core:core-splashscreen:$splashVersion"
 
     // Fragment KTX
-    implementation("androidx.fragment:fragment-ktx:1.5.0")
+    implementation("androidx.fragment:fragment-ktx:1.5.2")
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
@@ -92,14 +97,10 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$daggerVersion"
     kapt "com.google.dagger:hilt-android-compiler:$daggerVersion"
 
-    // Dagger Hilt VM
-    def daggerHiltVMVersion = "1.0.0-alpha03"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$daggerHiltVMVersion"
-
     // Circle Image
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
-    def liveDataVersion = "2.5.0"
+    def liveDataVersion = "2.5.1"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$liveDataVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$liveDataVersion"
 
@@ -113,7 +114,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
 
     // Gms
-    def gmsVersion = "20.2.0"
+    def gmsVersion = "20.3.0"
     implementation "com.google.android.gms:play-services-auth:$gmsVersion"
 
     // GmsPhone
@@ -121,13 +122,15 @@ dependencies {
     implementation "com.google.android.gms:play-services-auth-api-phone:$gmsPhoneVersion"
 
     // Firebase
-    implementation 'com.google.firebase:firebase-core:21.0.0'
-    implementation 'com.google.firebase:firebase-auth-ktx:21.0.6'
-    implementation 'com.google.firebase:firebase-firestore-ktx:24.2.0'
-    implementation 'com.google.firebase:firebase-storage-ktx:20.0.1'
+    implementation 'com.google.firebase:firebase-core:21.1.1'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.8'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.3.0'
+    implementation 'com.google.firebase:firebase-storage-ktx:20.0.2'
 
     // Junit
     testImplementation 'junit:junit:4.13.2'
+    testImplementation "android.arch.core:core-testing:1.1.1"
+
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
